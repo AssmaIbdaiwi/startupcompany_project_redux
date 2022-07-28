@@ -1,8 +1,4 @@
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
-
-
-
-
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
