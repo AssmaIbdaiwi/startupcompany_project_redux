@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('posts',[PostController::class , 'PostsAPI']);
+Route::get('apiposts',[PostController::class , 'PostsAPI']);
 
 Route::get('apicomment/{id}',[CommentController::class , 'CommentAPI']);
 Route::post('addComment',[CommentController::class , 'addComment']);
