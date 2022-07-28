@@ -1,23 +1,25 @@
 import React from "react";
+import { useSelector } from 'react-redux';
 
 const Doctors =()=>{
+  
+
+    
         return(
 
   <>
-    
-
-        
+ 
         <div class="page-banner-area item-bg1">
             <div class="d-table">
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-banner-content">
-                            <h2>Teacher</h2>
+                            <h2>Doctors</h2>
                             <ul>
                                 <li>
                                     <a href="index.html">Home</a>
                                 </li>
-                                <li>Teacher</li>
+                                <li>Doctors</li>
                             </ul>
                         </div>
                     </div>
@@ -27,6 +29,9 @@ const Doctors =()=>{
         {/* <!-- End Page Banner -->
 
         <!-- Start Teacher Area --> */}
+
+
+    
         <section class="teacher-area pt-100 pb-70">
             <div class="container-fluid">
                 <div class="row">

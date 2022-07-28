@@ -2,11 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AskDoctor;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller
 {
+
+    public  function getDoctors()
+    {
+        $doctors = Doctor::all();
+
+        return $doctors;
+    }
+
+
+    public  function getDoctorDetail($id)
+    {
+        $doctor = Doctor::where('id', $id)->get();
+
+        return $doctor;
+    }
+
+    public function updateDoctorDetails(Request $request, $id)
+    {
+
+
+        $doctor = Doctor::find($id);
+        $doctor->name = $request->name;
+        $doctor->email = $request->email;
+        $doctor->image = $request->image;
+        $doctor->clinic_address = $request->clinic_address;
+        $doctor->clinic_mobile = $request->clinic_mobile;
+        $doctor->experience = $request->experience;
+        $doctor->specialization = $request->specialization;
+        $doctor->description = $request->description;
+
+       
+        $doctor->save();
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *

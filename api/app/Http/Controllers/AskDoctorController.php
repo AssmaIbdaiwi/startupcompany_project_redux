@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class AskDoctorController extends Controller
 {
+
+    public function addAsk(Request $request)
+    {
+
+        $ask = new AskDoctor();
+        $ask->user_id_ask = $request->user_id_ask;
+        $ask->doctor_id_ask = $request->doctor_id_ask;
+        $ask->question = $request->question;
+       
+        $ask->save();
+    }
     /**
      * Display a listing of the resource.
      *
