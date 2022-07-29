@@ -1,48 +1,25 @@
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login =()=>{
         return(
 
   <>
-        <div class="page-banner-area item-bg3">
-            <div class="d-table">
-                <div class="d-table-cell">
-                    <div class="container">
-                        <div class="page-banner-content">
-                            <h2>Login</h2>
-                            <ul>
-                                <li>
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li>Login</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {/* <!-- End Page Banner -->
-
-        <!-- Start Login Area --> */}
         <section class="login-area ptb-100">
             <div class="container">
                 <div class="login-form">
                     <h2>Login</h2>
 
                     <form>
+
                         <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" placeholder="Username"/>
+                            {/* <label>Email or phone</label> */}
+                            <input type="text" class="form-control" placeholder="Email"/>
                         </div>
 
                         <div class="form-group">
-                            <label>Email or phone</label>
-                            <input type="text" class="form-control" placeholder="Email or phone"/>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Password</label>
+                            {/* <label>Password</label> */}
                             <input type="text" class="form-control" placeholder="Password"/>
                         </div>
 
@@ -63,7 +40,7 @@ const Login =()=>{
                     </form>
 
                     <div class="important-text">
-                        <p>Don't have an account? <a href="register.html">Register now!</a></p>
+                        <p>Don't have an account?  <Link to ="/Sign_Up"><a href="register.html">Register now!</a></Link></p>
                     </div>
                 </div>
             </div>

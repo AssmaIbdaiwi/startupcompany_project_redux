@@ -1,5 +1,6 @@
   
   import { NavLink } from "react-router-dom";
+  import { Link } from "react-router-dom";
 
 const Nav =()=>{
         return(
@@ -256,7 +257,7 @@ const Nav =()=>{
                             </ul>
 
                             <div class="others-options d-flex align-items-center">
-                                <div class="option-item">
+                                {/* <div class="option-item">
                                     <div class="dropdown language-switcher d-inline-block">
                                         <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span>Language <i class='bx bx-chevron-down'></i></span>
@@ -285,11 +286,16 @@ const Nav =()=>{
                                             </a>
                                         </div>
                                     </div>
+                                </div> */}
+
+                                <div class="option-item">
+                                <Link to ="/login"> <a href="#" class="default-btn">Login</a></Link>
                                 </div>
 
                                 <div class="option-item">
-                                    <a href="#" class="default-btn">Contact Us</a>
+                                <Link to ="/sign_up"><a href="#" class="default-btn">Sign Up</a></Link>
                                 </div>
+
                             </div>
                         </div>
                     </nav>
