@@ -1,8 +1,4 @@
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
-
-
-
-
 import Register from "./components/Register";
 import Login from "./components/login/Login";
 import Sign_UP from "./components/login/Sign_Up";
@@ -17,8 +13,15 @@ import News from "./components/News";
 import NewsDetails from "./components/NewsDetails";
 import "./App.css";
 import Index from "./components/Index";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from './redux/postSlice';
 
 function App() {
+
+
+
+
   return (
     <>
       <BrowserRouter>

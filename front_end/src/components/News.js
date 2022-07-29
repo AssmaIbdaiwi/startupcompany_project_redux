@@ -1,239 +1,113 @@
-import React from "react";
+import React, { useState } from "react";
+// import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../redux/postSlice";
 
 const News =()=>{
-        return(
-
-  <>
-
+      const dispatch = useDispatch();
+    // const [data,setData]= useState ({})
      
-        <div class="page-banner-area">
-            <div class="d-table">
-                <div class="d-table-cell">
-                    <div class="container">
-                        <div class="page-banner-content">
-                            <h2>Blog</h2>
-                            <ul>
-                                <li>
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li>Blog</li>
-                            </ul>
-                        </div>
+      useEffect(() => {
+        dispatch(getPosts());
+        //  setData(posts)
+      }, [dispatch]);
+   const posts = useSelector((state) => state.post);
+         console.log(posts);
+//   const posts = useSelector((state) => state.post);
+
+  
+
+        return (
+          <>
+            <div className="page-banner-area">
+              <div className="d-table">
+                <div className="d-table-cell">
+                  <div className="container">
+                    <div className="page-banner-content">
+                      <h2>Blog</h2>
+                      <ul>
+                        <li>
+                          <a href="index.html">Home</a>
+                        </li>
+                        <li>Blog</li>
+                      </ul>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        {/* <!-- End Page Banner -->
+            {/* <!-- End Page Banner -->
 
         <!-- Start Blog Area --> */}
-        <section class="blog-area pt-100 pb-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog-item">
-                            <div class="blog-image">
-                                <a href="#">
-                                    <img src="assets/img/blog/blog-1.jpg" alt="image"/>
-                                </a>
-                            </div>
-
-                            <div class="blog-content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <span>By Admin:</span>
-                                        <a href="#">Jack John</a>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        25 Dec 2022
-                                    </li>
-                                </ul>
-                                <h3>
-                                    <a href="blog-details.html">Red Green Color Blindness</a>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                                <div class="blog-btn">
-                                    <a href="#" class="default-btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog-item">
-                            <div class="blog-image">
-                                <a href="#">
-                                    <img src="assets/img/blog/blog-2.jpg" alt="image"/>
-                                </a>
-                            </div>
-
-                            <div class="blog-content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <span>By Admin:</span>
-                                        <a href="#">Jack John</a>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        25 Dec 2022
-                                    </li>
-                                </ul>
-                                <h3>
-                                    <a href="blog-details.html">8 Ways to Learning Lesson</a>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                                <div class="blog-btn">
-                                    <a href="#" class="default-btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog-item">
-                            <div class="blog-image">
-                                <a href="#">
-                                    <img src="assets/img/blog/blog-3.jpg" alt="image"/>
-                                </a>
-                            </div>
-
-                            <div class="blog-content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <span>By Admin:</span>
-                                        <a href="#">Jack John</a>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        25 Dec 2022
-                                    </li>
-                                </ul>
-                                <h3>
-                                    <a href="blog-details.html">Full-Day Session With Activities</a>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                                <div class="blog-btn">
-                                    <a href="#" class="default-btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog-item">
-                            <div class="blog-image">
-                                <a href="#">
-                                    <img src="assets/img/blog/blog-4.jpg" alt="image"/>
-                                </a>
-                            </div>
-
-                            <div class="blog-content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <span>By Admin:</span>
-                                        <a href="#">Jack John</a>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        25 Dec 2022
-                                    </li>
-                                </ul>
-                                <h3>
-                                    <a href="#">Conversion Rate the Sales Funnel Optimization</a>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                                <div class="blog-btn">
-                                    <a href="#" class="default-btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog-item">
-                            <div class="blog-image">
-                                <a href="#">
-                                    <img src="assets/img/blog/blog-5.jpg" alt="image"/>
-                                </a>
-                            </div>
-
-                            <div class="blog-content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <span>By Admin:</span>
-                                        <a href="#">Jack John</a>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        25 Dec 2022
-                                    </li>
-                                </ul>
-                                <h3>
-                                    <a href="#">Business Data is changing the world’s Energy</a>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                                <div class="blog-btn">
-                                    <a href="#" class="default-btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog-item">
-                            <div class="blog-image">
-                                <a href="#">
-                                    <img src="assets/img/blog/blog-6.jpg" alt="image"/>
-                                </a>
-                            </div>
-
-                            <div class="blog-content">
-                                <ul class="post-meta">
-                                    <li>
-                                        <span>By Admin:</span>
-                                        <a href="#">Jack John</a>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        25 Dec 2022
-                                    </li>
-                                </ul>
-                                <h3>
-                                    <a href="#">The Billionaire Guide On Design That Will Get You Rich</a>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                                <div class="blog-btn">
-                                    <a href="#" class="default-btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12 col-md-12">
-                        <div class="pagination-area">
-                            <a href="#" class="prev page-numbers">
-                                <i class='bx bx-chevron-left'></i>
+            <section className="blog-area pt-100 pb-100">
+              <div className="container">
+                <div className="row">
+                  { posts.posts.map((post) => {
+                    
+                    return (
+                      <div className="col-lg-4 col-md-6" key={post.id}>
+                        <div className="single-blog-item">
+                          <div className="blog-image">
+                            <a href="#">
+                              <img src={ "http://127.0.0.1:8000/api/apiposts/" + post.main_image  }/>
                             </a>
-                            <a href="#" class="page-numbers">1</a>
-                            <span class="page-numbers current" aria-current="page">2</span>
-                            <a href="#" class="page-numbers">3</a>
-                            <a href="#" class="page-numbers">4</a>
-                            <a href="#" class="next page-numbers">
-                                <i class='bx bx-chevron-right'></i>
-                            </a>
+                          </div>
+
+                          <div className="blog-content">
+                            <ul className="post-meta">
+                              <li>
+                                <span>Published: </span>
+                                {post.created_at}
+                              </li>
+                              <li>
+                                <span>By: </span>
+                                <a href="#">{post.doctor_id}</a>
+                              </li>
+                            </ul>
+                            <h3>
+                              <a href="blog-details.html">{post.title}</a>
+                            </h3>
+                            <p>{post.body}</p>
+
+                            <div className="blog-btn">
+                              <a href="/NewsDetails" className="default-btn">
+                                Read More
+                              </a>
+                            </div>
+                          </div>
                         </div>
+                      </div>
+                    );
+                  })}
+                  {/* pagination */}
+
+                  {/* <div className="col-lg-12 col-md-12">
+                    <div className="pagination-area">
+                      <a href="#" className="prev page-numbers">
+                        <i className="bx bx-chevron-left"></i>
+                      </a>
+                      <a href="#" className="page-numbers">
+                        1
+                      </a>
+                      <span class="page-numbers current" aria-current="page">
+                        2
+                      </span>
+                      <a href="#" class="page-numbers">
+                        3
+                      </a>
+                      <a href="#" class="page-numbers">
+                        4
+                      </a>
+                      <a href="#" class="next page-numbers">
+                        <i class="bx bx-chevron-right"></i>
+                      </a>
                     </div>
+                  </div> */}
                 </div>
-            </div>
-        </section>
-       
-</>
-);
+              </div>
+            </section>
+          </>
+        );
 };
 export default News;
