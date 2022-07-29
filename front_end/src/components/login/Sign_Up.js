@@ -5,24 +5,24 @@ import axios from "axios";
 
 const Sign_up =()=>{
 
-    const [name, setname] = useState("");
-    const [email, setemail] = useState("");
-    const [password, setpassword] = useState("");
-    const [confirm_password, setconfirm_password] = useState("");
+    // const [name, setname] = useState("");
+    // const [email, setemail] = useState("");
+    // const [password, setpassword] = useState("");
+    // const [confirm_password, setconfirm_password] = useState("");
+    const [user, setUser] = useState({
+        name: "",
+        email:"",
+        pass:"",
+       });
 
 
-    function login(e) {
+    function sign(e) {
         e.preventDefault();
     
-        // const { Email_status, pass__status, check } = Usedata(email, password);
         axios({
           method: "post",
-          url: "https://62c52d60a361f725127c1c74.mockapi.io/users",
-          data: {
-            name: name,
-            email: email,
-            password: password,
-          },
+          url: "http://localhost:8000/api/register",
+          data: user,
         });
       }
 
@@ -51,25 +51,51 @@ const Sign_up =()=>{
                 <div class="login-form">
                     <h2>Sign Up</h2>
 
-                    <form>
+                    <form onSubmit={sign}>
                         <div class="form-group">
                             {/* <label>Username</label> */}
-                            <input type="text" class="form-control" placeholder="Username"/>
+                            <input type="text" class="form-control" placeholder="Username"   
+                            // value={name}
+                            // onChange={(e) => setname(e.target.value)}/>
+
+                            onChange={(e) =>
+                                setUser((prev) => ({ ...prev, name: e.target.value }))
+                              }
+                              />
                         </div>
 
                         <div class="form-group">
                             {/* <label>Email or phone</label> */}
-                            <input type="text" class="form-control" placeholder="Email"/>
+                            <input type="email" class="form-control" placeholder="Email"
+                            //  value={email}
+                            //  onChange={(e) => setemail(e.target.value)}/>
+
+                            onChange={(e) =>
+                                setUser((prev) => ({ ...prev, email: e.target.value }))
+                              }
+                              />
                         </div>
 
                         <div class="form-group">
                             {/* <label>Password</label> */}
-                            <input type="text" class="form-control" placeholder="Password"/>
+                            <input type="password" class="form-control" placeholder="Password"
+                            //   value={password}
+                            //   onChange={(e) => setpassword(e.target.value)}/>
+
+                            onChange={(e) =>
+                                setUser((prev) => ({ ...prev, password: e.target.value }))
+                              }
+                              />
                         </div>
 
                         <div class="form-group">
                             {/* <label>Password</label> */}
-                            <input type="text" class="form-control" placeholder="Confirm Password"/>
+                            <input type="password" class="form-control" placeholder="Confirm Password"
+                            //   value={confirm_password}
+                            //   onChange={(e) => setconfirm_password(e.target.value)}
+                        
+                              
+                              />
                         </div>
 
                         <div class="row align-items-center">
@@ -85,7 +111,7 @@ const Sign_up =()=>{
                             </div>
                         </div>
 
-                        <button type="submit">Login</button>
+                        <button type="submit" onClick={sign}>Login</button>
                     </form>
 
                     <div class="important-text">

@@ -1,9 +1,39 @@
 
-import React from "react";
+import React,{useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Login =()=>{
+
+    const [email, setemail] = useState("");
+    const [password, setpassword] = useState("");
+
+
+    function login(e) {
+        e.preventDefault();
+    
+        // const { Email_status, pass__status, check } = Usedata(email, password);
+        axios({
+          method: "post",
+          url: "http://localhost:8000/api/login",
+          data: {
+            email: email,
+            password: password,
+          },
+        });
+      }
+
+
+
+
+
+
+
+
+
+
+
+
         return(
 
   <>
@@ -16,12 +46,16 @@ const Login =()=>{
 
                         <div class="form-group">
                             {/* <label>Email or phone</label> */}
-                            <input type="text" class="form-control" placeholder="Email"/>
+                            <input type="email" class="form-control" placeholder="Email"
+                             value={email}
+                             onChange={(e) => setemail(e.target.value)}/>
                         </div>
 
                         <div class="form-group">
                             {/* <label>Password</label> */}
-                            <input type="text" class="form-control" placeholder="Password"/>
+                            <input type="password" class="form-control" placeholder="Password"
+                              value={password}
+                              onChange={(e) => setpassword(e.target.value)}/>
                         </div>
 
                         <div class="row align-items-center">

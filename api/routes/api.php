@@ -3,6 +3,8 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +21,13 @@ Route::get('apiposts',[PostController::class , 'PostsAPI']);
 
 Route::get('apicomment/{id}',[CommentController::class , 'CommentAPI']);
 Route::post('addComment',[CommentController::class , 'addComment']);
+
+
+
+//login and register
+Route::post('register', [UserController::class, 'registerAPI']);
+Route::post('login', [UserController::class, 'loginAPI']);
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
