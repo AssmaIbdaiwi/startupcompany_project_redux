@@ -25,10 +25,14 @@ Route::post('addComment',[CommentController::class , 'addComment']);
 
 
 //login and register
-Route::post('register', [UserController::class, 'registerAPI']);
-Route::post('login', [UserController::class, 'loginAPI']);
+Route::put('/register', [UserController::class, 'registerAPI']);
+Route::post('/login', [UserController::class, 'loginAPI']);
 
 
+Route::get('/users',function(){
+    $users = User::get();
+    return response()->json($users);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

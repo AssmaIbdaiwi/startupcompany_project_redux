@@ -16,7 +16,7 @@ class UserController extends Controller
     public function registerAPI(Request $request)
     {
 
-        dd($request);
+        //dd($request);
         // $validator = Validator::make(
         //     $request->all(),
         //     [
@@ -38,7 +38,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('pass'));
         $user->save();
 
-        return response($user, 201);
+       // return response($user, 201);
     }
 
 
