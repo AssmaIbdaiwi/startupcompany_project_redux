@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/userSlice";
 
 const Sign_up = () => {
-
-  const [userData, setUser] = useState({name: "",email: "",password: ""});
+  const [userData, setUser] = useState({ name: "", email: "", password: "" });
   let navigate = useNavigate();
   const user = useSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
@@ -20,11 +18,11 @@ const Sign_up = () => {
     dispatch(signup(userData));
     console.log(userData);
 
-     await axios({
-      method: "get",
-      url: "http://127.0.0.1:8000/api/register",
-      data: user,
-    });
+    // await axios({
+    //   method: "get",
+    //   url: "http://127.0.0.1:8000/api/register",
+    //   data: user,
+    // });
 
     // axios({
     //   method: "get",
@@ -33,20 +31,15 @@ const Sign_up = () => {
     // }).then(function (response) {
     //   console.log(response.data);
     // });
-   }
+  }
 
-   useEffect(() => {
+  useEffect(() => {
     if (user) {
       navigate("/", { replace: true });
-    }else {
+    } else {
       navigate("/Sign_Up", { replace: true });
     }
   }, [user]);
-
-
-
-
-
 
   return (
     <>
@@ -133,9 +126,7 @@ const Sign_up = () => {
                 </div>
               </div>
 
-              <button type="submit" >
-                Sign Up
-              </button>
+              <button type="submit">Sign Up</button>
             </form>
 
             <div class="important-text">
