@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 import Register from "./components/Register";
-import Login from "./components/Login";
+import Login from "./components/login/Login";
+import Sign_UP from "./components/login/Sign_Up";
 import Profile from "./components/Profile";
 import Nav from "./components/layout/Nav";
 import Footer from "./components/layout/Footer";
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Sign_UP" element={<Sign_UP />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/" element={<Index />} />
           <Route path="/News" element={<News />} />
