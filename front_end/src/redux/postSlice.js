@@ -22,11 +22,7 @@ const postSlice = createSlice({
     
     //get item from api
     [getPosts.fulfilled]: (state, action) => {
-<<<<<<< HEAD
-      
-=======
       console.log(action);
->>>>>>> 0e6d8a6e11e41c47117b0128c76820073ca4ff35
       state.status = "success fetch data";
       state.posts = action.payload;
     },
