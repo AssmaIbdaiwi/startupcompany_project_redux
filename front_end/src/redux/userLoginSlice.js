@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 
 
-export const getItems = createAsyncThunk(
+export const getUser = createAsyncThunk(
     'item/getItems',
     async ()=>{
         const api = await fetch('http://127.0.0.1:8000/api/items');
@@ -14,7 +14,7 @@ export const getItems = createAsyncThunk(
     }
 );
 
-export const addItem = createAsyncThunk(
+export const addUser = createAsyncThunk(
     'item/addItem',
     async (item , thunkAPI)=>{
  
@@ -32,7 +32,7 @@ export const addItem = createAsyncThunk(
     }
 );
 
-export const updateItem = createAsyncThunk(
+export const updaUser = createAsyncThunk(
     'item/updateItem',
     async (args)=>{
        
@@ -56,7 +56,7 @@ export const updateItem = createAsyncThunk(
     }
 );
 
-export const deleteItem = createAsyncThunk(
+export const deletUser = createAsyncThunk(
     'item/deleteItem',
     async (id)=>{
         
@@ -79,77 +79,88 @@ export const deleteItem = createAsyncThunk(
     }
 )
 
-const itemSlice = createSlice({
-    name:'item',
-    initialState:{items:[] , status:null},
+const userLoginSlice = createSlice({
+    name:'user',
+    initialState:{users:[] , status:null},
     extraReducers:{
+
+
         //get item from api
-        [getItems.fulfilled]:(state , action)=>{
+
+        [getUser.fulfilled]:(state , action)=>{
             state.status = 'success fetch data';
             state.items = action.payload;
 
         },
-        [getItems.pending]:(state  )=>{
+        [getUser.pending]:(state  )=>{
             state.status = 'pending  fetch data';
             
         },
-        [getItems.rejected]:(state )=>{
+        [getUser.rejected]:(state )=>{
             state.status = 'rejected  fetch data';
         },
 
+
+
         //add item to api
 
-        [addItem.fulfilled]:(state , action)=>{
+        [addUser.fulfilled]:(state , action)=>{
             state.status = 'success send data';
             state.items.push(action.payload);
             
 
         },
-        [addItem.pending]:(state  )=>{
+        [addUser.pending]:(state  )=>{
             state.status = 'pending send data';
             
         },
-        [addItem.rejected]:(state )=>{
+        [addUser.rejected]:(state )=>{
             state.status = 'rejected send data';
         },
 
 
+
+
+
         //update item in api
-        [updateItem.fulfilled]:(state , action)=>{
-            state.status = 'success update data';
-            const {id} = action.payload;
-            const item = state.items.find((item)=>item.id === id);
-            item.name = action.payload.name;
-            item.description = action.payload.description;
-            item.image = action.payload.image;
+
+        // [updateItem.fulfilled]:(state , action)=>{
+        //     state.status = 'success update data';
+        //     const {id} = action.payload;
+        //     const item = state.items.find((item)=>item.id === id);
+        //     item.name = action.payload.name;
+        //     item.description = action.payload.description;
+        //     item.image = action.payload.image;
             
-        },
-        [updateItem.pending]:(state  )=>{
-            state.status = 'pending update data';
+        // },
+        // [updateItem.pending]:(state  )=>{
+        //     state.status = 'pending update data';
             
-        },
-        [updateItem.rejected]:(state )=>{
-            state.status = 'rejected update data';
-        },
+        // },
+        // [updateItem.rejected]:(state )=>{
+        //     state.status = 'rejected update data';
+        // },
+
+
+
 
 
         //delete item in api
-        [deleteItem.fulfilled]:(state , action)=>{
-            state.status = 'success delete data';
-            const {id} = action.payload;
-             state.items = state.items.filter((item)=>item.id !== id);
-            
-        },
-        [deleteItem.pending]:(state  )=>{
-            state.status = 'pending delete data';
-            
-        },
-        [deleteItem.rejected]:(state )=>{
-            state.status = 'rejected delete data';
-        },
 
-        
+        // [deleteItem.fulfilled]:(state , action)=>{
+        //     state.status = 'success delete data';
+        //     const {id} = action.payload;
+        //      state.items = state.items.filter((item)=>item.id !== id);
+            
+        // },
+        // [deleteItem.pending]:(state  )=>{
+        //     state.status = 'pending delete data';
+            
+        // },
+        // [deleteItem.rejected]:(state )=>{
+        //     state.status = 'rejected delete data';
+        // },    
 }
 })
 
-export default itemSlice.reducer;
+export default userLoginSlice.reducer;
