@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/userSlice";
+import { addUser } from "../../redux/userLoginSlice";
+import axios from 'axios'
 
 const Sign_up = () => {
   const [userData, setUser] = useState({ name: "", email: "", password: "" });
@@ -10,27 +11,34 @@ const Sign_up = () => {
   const user = useSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
 
+
+
   async function handelSubmet(e) {
     e.preventDefault();
 
-    console.log(user);
+    // console.log(user);
+    // const name = 1;
+    // dispatch(signup(name));
+    // console.log(userData);
 
-    dispatch(signup(userData));
+    // const formData = new FormData();
+    // formData.append('name', userData.name)
+    // formData.append('email', userData.email)
+    // formData.append('password', userData.password)
+    // dispatch(addUser(formData));
+    
     console.log(userData);
 
-    // await axios({
-    //   method: "get",
-    //   url: "http://127.0.0.1:8000/api/register",
-    //   data: user,
-    // });
 
-    // axios({
-    //   method: "get",
-    //   url: "http://127.0.0.1:8000/api/users",
-    //   responseType: "stream",
-    // }).then(function (response) {
-    //   console.log(response.data);
-    // });
+
+    axios.post(`http://127.0.0.1:8000/api/register`, { ...userData })
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+      console.log("111111111111111111111111");
+
+    })
+
   }
 
   useEffect(() => {

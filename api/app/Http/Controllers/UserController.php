@@ -34,7 +34,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->input('pass'));
+        $user->password = Hash::make($request->input('password'));
 
 
         // $user->name = "a";
@@ -44,7 +44,7 @@ class UserController extends Controller
         
         $user->save();
 
-       return response($user, 201)->json();
+       return response($user, 201);
     }
 
 

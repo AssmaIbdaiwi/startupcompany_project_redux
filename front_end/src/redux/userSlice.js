@@ -10,7 +10,7 @@ const userSlice = createSlice({
     reducers:{
         signup:(state , action)=>{
             
-            if(action.payload.email === 1){
+            if(action.payload.name === 1){
                 Swal.fire({
                     title: "Login Successfull",
                     text: "Welcome to our site we hope you spent great time with us :)",

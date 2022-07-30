@@ -4,107 +4,52 @@ import Swal from 'sweetalert2';
 
 
 
-export const getUser = createAsyncThunk(
-    'item/getItems',
-    async ()=>{
-        const api = await fetch('http://127.0.0.1:8000/api/items');
-        const response = await api.json();
-
-        return response;
-    }
-);
-
-export const addUser = createAsyncThunk(
-    'item/addItem',
+export const check = createAsyncThunk(
     async (item , thunkAPI)=>{
  
-        const response = await axios.post('http://127.0.0.1:8000/api/add_item',item);
-        
+        const response = await axios.post('http://127.0.0.1:8000/api/login',item);
         if(response.status === 200){
-            // Swal.fire({
-            //     title: "Item",
-            //     text: "Has been Added Successfully",
-            //     type: "success"
-            // });
-            alert("item Added Successfully");
+            alert("login Successfully");
         }
         return response.data;
     }
 );
 
-export const updaUser = createAsyncThunk(
-    'item/updateItem',
-    async (args)=>{
-       
-        const id = args.id;
-        const response =await fetch(`http://127.0.0.1:8000/api/update_item/${id}`,{
-            method:'POST',
-            headers:{'Content-Type': 'application/json'},
-            body:JSON.stringify({name:args.name , description:args.description}),
-        })
+
+
+
+export const addUser = createAsyncThunk(
+    async (item , thunkAPI)=>{
+ 
+        // const response = await axios.post('http://127.0.0.1:8000/api/register',item);
         
-        if(response.ok){
-            // Swal.fire({
-            //     title: "Item",
-            //     text: "Has been updated Successfully",
-            //     type: "success"
-            // });
-            alert("item updated Successfully");
-        }
-        const res = response.json();
-        return res;
+        // if(response.status === 200){
+        //     alert("register Successfully");
+        // }
+        // return response.data;
+
+        axios.post(`http://127.0.0.1:8000/api/register`, { item })
+        .then(res => {
+          console.log(res);
+          console.log(res.data);
+          console.log("111111111111111111111111");
+
+        })
     }
 );
 
-export const deletUser = createAsyncThunk(
-    'item/deleteItem',
-    async (id)=>{
-        
-        const response =await fetch(`http://127.0.0.1:8000/api/delete_item/${id}`,{
-            method:'POST',
-            headers:{'Content-Type': 'application/json'},
-            
-        })
-        if(response.ok){
-            // Swal.fire({
-            //     title: "Item",
-            //     text: "Has been deleted Successfully",
-            //     type: "success"
-            // });
-            alert("item deleted Successfully");
-        }
-        const res = response.json();
-        return res;
-        
-    }
-)
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const userLoginSlice = createSlice({
     name:'user',
-    initialState:{users:[] , status:null},
+    initialState:{items:[] , status:null},
     extraReducers:{
 
+         //register user to api
 
-        //get item from api
-
-        [getUser.fulfilled]:(state , action)=>{
-            state.status = 'success fetch data';
-            state.items = action.payload;
-
-        },
-        [getUser.pending]:(state  )=>{
-            state.status = 'pending  fetch data';
-            
-        },
-        [getUser.rejected]:(state )=>{
-            state.status = 'rejected  fetch data';
-        },
-
-
-
-        //add item to api
-
-        [addUser.fulfilled]:(state , action)=>{
+         [addUser.fulfilled]:(state , action)=>{
             state.status = 'success send data';
             state.items.push(action.payload);
             
@@ -122,45 +67,29 @@ const userLoginSlice = createSlice({
 
 
 
-        //update item in api
+        //check user from api
 
-        // [updateItem.fulfilled]:(state , action)=>{
-        //     state.status = 'success update data';
-        //     const {id} = action.payload;
-        //     const item = state.items.find((item)=>item.id === id);
-        //     item.name = action.payload.name;
-        //     item.description = action.payload.description;
-        //     item.image = action.payload.image;
+        [check.fulfilled]:(state , action)=>{
+            state.status = 'success fetch data';
+            state.items.push(action.payload);
+
+        },
+        [check.pending]:(state  )=>{
+            state.status = 'pending  fetch data';
             
-        // },
-        // [updateItem.pending]:(state  )=>{
-        //     state.status = 'pending update data';
-            
-        // },
-        // [updateItem.rejected]:(state )=>{
-        //     state.status = 'rejected update data';
-        // },
+        },
+        [check.rejected]:(state )=>{
+            state.status = 'rejected  fetch data';
+        },
 
 
 
 
 
-        //delete item in api
 
-        // [deleteItem.fulfilled]:(state , action)=>{
-        //     state.status = 'success delete data';
-        //     const {id} = action.payload;
-        //      state.items = state.items.filter((item)=>item.id !== id);
-            
-        // },
-        // [deleteItem.pending]:(state  )=>{
-        //     state.status = 'pending delete data';
-            
-        // },
-        // [deleteItem.rejected]:(state )=>{
-        //     state.status = 'rejected delete data';
-        // },    
-}
+       
+
+    }
 })
 
 export default userLoginSlice.reducer;
