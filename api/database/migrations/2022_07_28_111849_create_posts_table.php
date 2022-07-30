@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('main_image')->nullable();
             $table->string('body')->nullable();
             $table->string('date')->nullable();
-            $table->string('images')->nullable();
+            $table->string('images_post')->nullable();
             $table->foreign('doctor_id')->on('doctors')->references('id')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();
         });

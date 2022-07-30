@@ -1,20 +1,17 @@
-import React, { useState } from "react";
-// import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../redux/postSlice";
 
 const News =()=>{
       const dispatch = useDispatch();
-    // const [data,setData]= useState ({})
      
       useEffect(() => {
         dispatch(getPosts());
-        //  setData(posts)
+        
       }, [dispatch]);
    const posts = useSelector((state) => state.post);
-         console.log(posts);
-//   const posts = useSelector((state) => state.post);
+        //  console.log(posts);
+
 
   
 
@@ -50,7 +47,12 @@ const News =()=>{
                         <div className="single-blog-item">
                           <div className="blog-image">
                             <a href="#">
-                              <img src={ "http://127.0.0.1:8000/api/apiposts/" + post.main_image  }/>
+                              <img
+                                src={
+                                  "http://127.0.0.1:8000/api/apiposts/" +
+                                  post.main_image
+                                }
+                              />
                             </a>
                           </div>
 
@@ -71,7 +73,10 @@ const News =()=>{
                             <p>{post.body}</p>
 
                             <div className="blog-btn">
-                              <a href="/NewsDetails" className="default-btn">
+                              <a
+                                href={`/NewsDetails/${post.id}`}
+                                className="default-btn"
+                              >
                                 Read More
                               </a>
                             </div>
