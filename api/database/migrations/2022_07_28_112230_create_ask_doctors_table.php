@@ -18,8 +18,6 @@ class CreateAskDoctorsTable extends Migration
             $table->unsignedBigInteger('user_id_ask');
             $table->unsignedBigInteger('doctor_id_ask');
             $table->string('question')->nullable();
-        
-
             $table->foreign('user_id_ask')->on('users')->references('id')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('doctor_id_ask')->on('doctors')->references('id')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->timestamps();

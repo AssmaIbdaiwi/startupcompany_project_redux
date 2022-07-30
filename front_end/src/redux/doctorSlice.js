@@ -7,23 +7,36 @@ import Swal from 'sweetalert2';
 export const getDoctors = createAsyncThunk(
     'doctor/getDoctors',
     async () => {
-        const api = await fetch('http://127.0.0.1:8000/api/getDoctors');
+        const api = await fetch('http://127.0.0.1:8000/api/doctors');
         const response = await api.json();
-
+        //console.log(response);
         return response;
     }
 );
 
 export const getDoctorDetail = createAsyncThunk(
     'doctor/getDoctorDetail',
-    async (args) => {
-        const id = args.id;
-        const api = await fetch(`http://127.0.0.1:8000/api/getDoctorDetail${id}`);
+    async (id) => {
+        const api = await fetch(`http://127.0.0.1:8000/api/doctorDetails/${id}`);
         const response = await api.json();
-
+        console.log(response);
         return response;
     }
 );
+
+
+// export const getDoctorDetail = createAsyncThunk(
+//     'doctor/getDoctorDetail',
+//     async (args) => {
+//         const id = 1;
+//         const api = await fetch(`http://127.0.0.1:8000/api/doctorDetails/2`);
+//         const response = await api.json();
+//         console.log(response);
+//         return response;
+        
+//         //.filter(doc => doc.id == id)
+//     }
+// );
 
 export const updateDoctorDetails = createAsyncThunk(
     'doctor/updateDoctorDetails',
@@ -69,29 +82,29 @@ const doctorSlice = createSlice({
 
         },
         [getDoctors.pending]: (state) => {
-            state.status = 'pending  fetch data';
+            state.status = 'pending fetch data';
 
         },
         [getDoctors.rejected]: (state) => {
-            state.status = 'rejected  fetch data';
+            state.status = 'rejected fetch data';
         },
 
-        //get one doctor from api
+       // get one doctor from api
         [getDoctorDetail.fulfilled]: (state, action) => {
-            state.status = 'success send data';
-            state.doctors.push(action.payload);
+            state.status = 'success fetch data';
+            state.doctors= action.payload;
 
         },
         [getDoctorDetail.pending]: (state) => {
-            state.status = 'pending send data';
+            state.status = 'pending fetch data';
 
         },
         [getDoctorDetail.rejected]: (state) => {
-            state.status = 'rejected send data';
+            state.status = 'rejected fetch data';
         },
 
 
-        //update doctor in api
+       // update doctor in api
         [updateDoctorDetails.fulfilled]: (state, action) => {
             state.status = 'success update data';
             const { id } = action.payload;
@@ -119,4 +132,4 @@ const doctorSlice = createSlice({
     }
 })
 
-export default itemSlice.reducer;
+export default doctorSlice.reducer;

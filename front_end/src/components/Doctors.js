@@ -1,77 +1,95 @@
-import React from "react";
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDoctors } from "../redux/doctorSlice";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
-const Doctors =()=>{
-  
+const Doctors = () => {
 
-    
-        return(
+    const dispatch = useDispatch();
 
-  <>
- 
-        <div class="page-banner-area item-bg1">
-            <div class="d-table">
-                <div class="d-table-cell">
-                    <div class="container">
-                        <div class="page-banner-content">
-                            <h2>Doctors</h2>
-                            <ul>
-                                <li>
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li>Doctors</li>
-                            </ul>
+    useEffect(() => {
+        dispatch(getDoctors());
+
+    }, [dispatch]);
+    const doctors = useSelector((state) => state.doctor);
+    console.log(doctors);
+
+
+
+
+
+    return (
+
+        <>
+
+            <div class="page-banner-area item-bg1">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="container">
+                            <div class="page-banner-content">
+                                <h2>Doctors</h2>
+                                <ul>
+                                    <li>
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li>Doctors</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {/* <!-- End Page Banner -->
+            {/* <!-- End Page Banner -->
 
         <!-- Start Teacher Area --> */}
 
 
-    
-        <section class="teacher-area pt-100 pb-70">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-teacher">
-                            <div class="image">
-                                <img src="assets/img/teacher/teacher-1.jpg" alt="image"/>
+            <section class="teacher-area pt-100 pb-70">
+                <div class="container-fluid">
+                    <div class="row">
 
-                                <ul class="social">
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class='bx bxl-facebook'></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class='bx bxl-twitter'></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class='bx bxl-linkedin'></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank">
-                                            <i class='bx bxl-instagram'></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                        {doctors.doctors.map((doctor) => {
+                            return (
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="single-teacher">
+                                        <div class="image">
+                                       <img src="assets/img/teacher/teacher-1.jpg" alt="image" />
 
-                            <div class="content">
-                                <h3>Glims Bond</h3>
-                                <span>Music Teacher</span>
-                            </div>
-                        </div>
-                    </div>
+                                            <ul class="social">
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class='bx bxl-facebook'></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class='bx bxl-twitter'></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class='bx bxl-linkedin'></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" target="_blank">
+                                                        <i class='bx bxl-instagram'></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                    <div class="col-lg-3 col-md-6">
+                                        <div class="content">
+                                       
+                                        <a href={`DoctorDetails/${doctor.id}`}> <h3>{doctor.name}</h3></a>
+                                            <span>{doctor.specialization}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                        {/* <div class="col-lg-3 col-md-6">
                         <div class="single-teacher">
                             <div class="image">
                                 <img src="assets/img/teacher/teacher-2.jpg" alt="image"/>
@@ -177,9 +195,9 @@ const Doctors =()=>{
                                 <span>English Teacher</span>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div class="col-lg-3 col-md-6">
+                        {/* <div class="col-lg-3 col-md-6">
                         <div class="single-teacher">
                             <div class="image">
                                 <img src="assets/img/teacher/teacher-8.jpg" alt="image"/>
@@ -321,11 +339,12 @@ const Doctors =()=>{
                                 <span>English Teacher</span>
                             </div>
                         </div>
+                    </div> */}
                     </div>
                 </div>
-            </div>
-        </section>
-     </>
-        
-);};
-export default Doctors ;
+            </section>
+        </>
+
+    );
+};
+export default Doctors;

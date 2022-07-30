@@ -1,8 +1,4 @@
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
-
-
-
-
 import Register from "./components/Register";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
@@ -17,6 +13,7 @@ import NewsDetails from "./components/NewsDetails";
 import "./App.css";
 import Index from "./components/Index";
 
+
 function App() {
   return (
     <>
@@ -30,7 +27,7 @@ function App() {
           <Route path="/News" element={<News />} />
           <Route path="/NewsDetails" element={<NewsDetails />} />
           <Route path="/Doctors" element={<Doctors />} />
-          <Route path="/DoctorDetails" element={<DoctorDetails />} />
+          <Route path="/DoctorDetails/:id" element={<DoctorDetails />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
         </Routes>
