@@ -15,9 +15,9 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('email')->nullable();
-            $table->string('image')->nullable();
+            $table->string('name_doctor')->nullable();
+            $table->string('email_doctor')->nullable();
+            $table->string('image_doctor')->nullable();
             $table->string('clinic_address')->nullable();
             $table->string('clinic_mobile')->nullable();
             $table->string('experience')->nullable();

@@ -6,6 +6,7 @@ import login from './userLoginSlice';
 
 export const store = configureStore({
   reducer: {
-    post,user,login,
+    post,user,login,post,user,
+
   },
 });

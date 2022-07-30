@@ -7,13 +7,26 @@ export const getPosts = createAsyncThunk("post/getPosts", async () => {
   return response;
 });
 
+export const getSinglePosts = createAsyncThunk("post/getSinglePosts", 
+async (id) => {
+  const api = await fetch(`http://127.0.0.1:8000/api/apiposts/${id}`);
+  const response = await api.json();
+console.log(response);
+  return response;
+});
+
 const postSlice = createSlice({
   name: "post",
   initialState: { posts: [], status: null },
   extraReducers: {
+    
     //get item from api
     [getPosts.fulfilled]: (state, action) => {
+<<<<<<< HEAD
+      
+=======
       console.log(action);
+>>>>>>> 0e6d8a6e11e41c47117b0128c76820073ca4ff35
       state.status = "success fetch data";
       state.posts = action.payload;
     },
@@ -23,7 +36,21 @@ const postSlice = createSlice({
     [getPosts.rejected]: (state) => {
       state.status = "rejected  fetch data";
     },
+
+    // ///single post
+    [getSinglePosts.fulfilled]: (state, action) => {
+      state.status = "success fetch data";
+      state.posts = action.payload;
+    },
+    [getSinglePosts.pending]: (state) => {
+      state.status = "pending  fetch data";
+    },
+    [getSinglePosts.rejected]: (state) => {
+      state.status = "rejected  fetch data";
+    },
   },
 });
+
+
 
 export default postSlice.reducer;

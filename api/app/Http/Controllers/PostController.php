@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Doctor;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -9,13 +9,20 @@ class PostController extends Controller
 {
       public  function PostsAPI()
     {
-        $posts = Post::all();
+        $posts = Post::Join('doctors', 'doctors.id', '=', 'posts.doctor_id')
+        ->get(['*']);
+
+        // $posts = Post::all();
         return $posts;
     }
 
-        public function single_post($id)
+      public function singlePostsAPI($id)
     {
-        $single_post = Post::find($id);
-        return $single_post;
+
+        $singlePost = Post::Join('doctors', 'doctors.id', '=', 'posts.doctor_id')->find($id)
+        ;
+        return $singlePost;
     }
+
+
 }
