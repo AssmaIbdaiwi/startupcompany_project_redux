@@ -34,11 +34,17 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->phone = $request->phone;
         $user->password = Hash::make($request->input('pass'));
+
+
+        // $user->name = "a";
+        // $user->email = "aaa";
+        // $user->password = Hash::make("12345");
+
+        
         $user->save();
 
-       // return response($user, 201);
+       return response($user, 201)->json();
     }
 
 

@@ -25,9 +25,18 @@ Route::post('addComment',[CommentController::class , 'addComment']);
 
 
 //login and register
-Route::put('/register', [UserController::class, 'registerAPI']);
-Route::post('/login', [UserController::class, 'loginAPI']);
+Route::get('/register', [UserController::class, 'registerAPI']);
+// Route::post('/register',function(Request $request){
+//     $user = new User();
+//     $user->name = $request->name;
+//     $user->email = $request->email;
+//     $user->phone = $request->phone;
+//    // $user->password = Hash::make($request->input('pass'));
+//     $user->save();
+//     return response($user, 201)->json();
+// });
 
+Route::post('/login', [UserController::class, 'loginAPI']);
 
 Route::get('/users',function(){
     $users = User::get();

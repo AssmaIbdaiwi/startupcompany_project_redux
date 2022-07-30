@@ -13,23 +13,23 @@ const Sign_up = () => {
     pass: "",
   });
 
-  function sign(e) {
+  async function sign(e) {
     e.preventDefault();
 
     console.log(user);
 
-    //   axios({
-    //   method: "post",
-    //   url: "http://127.0.0.1:8000/api/register",
-    //   data: user,
-    //   responseType: "stream"
-    // });
+     await axios({
+      method: "get",
+      url: "http://127.0.0.1:8000/api/register",
+      data: user,
+      //responseType: "stream",
+    });
 
 
    
-    let data = JSON.stringify({ user });
+    // let data = JSON.stringify({ user });
       
-      const response = axios.put("http://127.0.0.1:8000/api/register",data,{headers:{"Content-Type" : "application/json"}});
+    //   const response = axios.put("http://127.0.0.1:8000/api/register",data,{headers:{"Content-Type" : "application/json"}});
 
 
     // axios({
