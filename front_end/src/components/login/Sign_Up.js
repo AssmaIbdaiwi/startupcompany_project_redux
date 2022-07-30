@@ -1,36 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Sign_up = () => {
-  // const [name, setname] = useState("");
-  // const [email, setemail] = useState("");
-  // const [password, setpassword] = useState("");
-  // const [confirm_password, setconfirm_password] = useState("");
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    pass: "",
-  });
+import { useDispatch, useSelector } from "react-redux";
+import { signup } from "../../redux/userSlice";
 
-  async function sign(e) {
+const Sign_up = () => {
+
+  const [userData, setUser] = useState({name: "",email: "",password: ""});
+  let navigate = useNavigate();
+  const user = useSelector((state) => state.user.isLogged);
+  const dispatch = useDispatch();
+
+  async function handelSubmet(e) {
     e.preventDefault();
 
     console.log(user);
+
+    dispatch(signup(userData));
+    console.log(userData);
 
      await axios({
       method: "get",
       url: "http://127.0.0.1:8000/api/register",
       data: user,
-      //responseType: "stream",
     });
-
-
-   
-    // let data = JSON.stringify({ user });
-      
-    //   const response = axios.put("http://127.0.0.1:8000/api/register",data,{headers:{"Content-Type" : "application/json"}});
-
 
     // axios({
     //   method: "get",
@@ -41,7 +35,13 @@ const Sign_up = () => {
     // });
    }
 
-
+   useEffect(() => {
+    if (user) {
+      navigate("/", { replace: true });
+    }else {
+      navigate("/Sign_Up", { replace: true });
+    }
+  }, [user]);
 
 
 
@@ -55,7 +55,7 @@ const Sign_up = () => {
           <div class="login-form">
             <h2>Sign Up</h2>
 
-            <form onSubmit={sign}>
+            <form onSubmit={handelSubmet}>
               <div class="form-group">
                 {/* <label>Username</label> */}
                 <input
@@ -96,7 +96,7 @@ const Sign_up = () => {
                   //   onChange={(e) => setpassword(e.target.value)}/>
 
                   onChange={(e) =>
-                    setUser((prev) => ({ ...prev, pass: e.target.value }))
+                    setUser((prev) => ({ ...prev, password: e.target.value }))
                   }
                 />
               </div>
@@ -133,7 +133,7 @@ const Sign_up = () => {
                 </div>
               </div>
 
-              <button type="submit" onClick={sign}>
+              <button type="submit" >
                 Sign Up
               </button>
             </form>
