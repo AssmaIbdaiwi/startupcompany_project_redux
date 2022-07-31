@@ -25,7 +25,7 @@ const Login = () => {
       console.log(user);
       console.log(res.data);
       dispatch(login(res.data.name));
-      localStorage.setItem('id',res.data.id )
+      localStorage.setItem('id',res.data.id );
       
 
     })
