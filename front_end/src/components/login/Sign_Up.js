@@ -33,9 +33,11 @@ const Sign_up = () => {
 
     axios.post(`http://127.0.0.1:8000/api/register`, { ...userData })
     .then(res => {
-      console.log(res);
+      console.log(user);
       console.log(res.data);
-      console.log("111111111111111111111111");
+      dispatch(signup(res.data.name));
+      localStorage.setItem('id',res.data.id )
+      
 
     })
 

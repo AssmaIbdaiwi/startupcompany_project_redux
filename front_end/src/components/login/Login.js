@@ -15,8 +15,20 @@ const Login = () => {
   function handelSubmet(e) {
     e.preventDefault();
 
-    dispatch(login(userData));
+
     console.log(userData);
+
+
+
+    axios.post(`http://127.0.0.1:8000/api/login`, { ...userData })
+    .then(res => {
+      console.log(user);
+      console.log(res.data);
+      dispatch(login(res.data.name));
+      localStorage.setItem('id',res.data.id )
+      
+
+    })
   }
 
 
