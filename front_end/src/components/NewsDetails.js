@@ -1,42 +1,40 @@
-
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts,getSinglePosts } from "../redux/postSlice";
-import {useParams} from 'react-router-dom'
-import { addComment } from "../redux/commentSlice";
+import { getPosts, getSinglePosts} from "../redux/postSlice";
+import { useParams } from "react-router-dom";
+import { addComment, getComments } from "../redux/commentSlice";
 
-
-const NewsDetails =()=>{
-
+const NewsDetails = () => {
   const { id } = useParams();
+// ///posts///
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
-  // const posts = useSelector((state) => state.post);
 
-
-
+  const posts = useSelector((state) => state.post);
+// console.log(posts);
   //////single post///////////
+
   useEffect(() => {
     dispatch(getSinglePosts(id));
   }, [dispatch]);
   const singlepost = useSelector((state) => state.post);
 
-  console.log(singlepost.posts.name_doctor);
+  console.log(singlepost);
   ////// end single post ///////
 
+  // //////////Comment //////////
+  useEffect(() => {
+    dispatch(getComments());
+  }, [dispatch]);
+  const comment1 = useSelector((state) => state.comment);
 
+  // console.log(comment1.comments.map(comment=>{});
 
-
-
-
-  //////////Comment //////////
   const [commentData, setCommentData] = useState({
     comment: " ",
-    user_id_comment: "1",
-    post_id_comment: "3",
   });
 
   const handleChange = (e) => {
@@ -58,11 +56,17 @@ const NewsDetails =()=>{
 
     const formData = new FormData();
     formData.append("comment", commentData.comment);
-    //  console.log(commentData);
+     console.log(commentData);
     dispatch(addComment(formData));
-
-    ///// end comment /////
   };
+
+
+  // ///// end comment /////
+
+
+
+
+
 
   return (
     <>
@@ -100,17 +104,17 @@ const NewsDetails =()=>{
                     <ul>
                       <li>
                         <span>Posted On:</span>
-                        <a href="#">September 31, 2022</a>
+                        <a href="#">{singlepost.singlepost.date}</a>
                       </li>
                       <li>
                         <span>Posted By:</span>
-                        <a href="#">{singlepost.posts.name_doctor}</a>
+                        <a href="#">{singlepost.singlepost.name_doctor}</a>
                       </li>
                     </ul>
                   </div>
 
-                  <h3>{singlepost.posts.title}</h3>
-                  <p>{singlepost.posts.body}</p>
+                  <h3>{singlepost.singlepost.title}</h3>
+                  <p>{singlepost.singlepost.body}</p>
 
                   <ul class="wp-block-gallery columns-3">
                     <li class="blocks-gallery-item">
@@ -227,7 +231,7 @@ const NewsDetails =()=>{
                       <p class="comment-form-comment">
                         <label>Comment</label>
                         <textarea
-                          value={commentData.comment}
+                          // value={commentData.comment}
                           onChange={handleChange}
                           name="comment"
                           id="comment"
@@ -265,41 +269,39 @@ const NewsDetails =()=>{
                   <h3 class="comments-title">
                     <br></br>3 Comments:
                   </h3>
-
-                  <ol class="comment-list">
-                    <li class="comment">
-                      <div class="comment-body">
-                        <footer class="comment-meta">
-                          <div class="comment-author vcard">
-                            <img
-                              src="assets/img/client/client-1.jpg"
-                              class="avatar"
-                              alt="image"
-                            />
-                            <b class="fn">John Jones</b>
-                          </div>
-                          <div class="comment-metadata">
-                            <a href="#">
-                              <span>April 24, 2022 at 10:59 am</span>
-                            </a>
-                          </div>
-                        </footer>
-                        <div class="comment-content">
-                          <p>
-                            Lorem Ipsum has been the industry’s standard dummy
-                            text ever since the 1500s, when an unknown printer
-                            took a galley of type and scrambled it to make a
-                            type specimen.
-                          </p>
-                        </div>
-                        <div class="reply">
-                          <a href="#" class="comment-reply-link">
-                            Reply
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                  </ol>
+  {comment1.comments.map((comment)=>{
+     return (
+       <ol class="comment-list">
+         <li class="comment">
+           <div class="comment-body">
+             <footer class="comment-meta">
+               <div class="comment-author vcard">
+                 <img
+                   src="assets/img/client/client-1.jpg"
+                   class="avatar"
+                   alt="image"
+                 />
+                 <b class="fn">{comment.name}</b>
+               </div>
+               <div class="comment-metadata">
+                 <a href="#">
+                   <span>{comment.date}</span>
+                 </a>
+               </div>
+             </footer>
+             <div class="comment-content">
+               <p>{comment.comment}</p>
+             </div>
+             <div class="reply">
+               <a href="#" class="comment-reply-link">
+                 Reply
+               </a>
+             </div>
+           </div>
+         </li>
+       </ol>
+     );
+                  })}
                 </div>
               </div>
             </div>
@@ -324,24 +326,24 @@ const NewsDetails =()=>{
                   </form>
                 </section>
 
-                {/* <section class="widget widget_ketan_posts_thumb">
+                <section class="widget widget_ketan_posts_thumb">
                   <h3 class="widget-title">Popular Posts</h3>
                   {posts.posts.map((post) => {
                     return (
                       <article class="item" key={post.id}>
-                        <a href="#" class="thumb">
+                        <a href={`/NewsDetails/${post.id}`} class="thumb">
                           <img src="" class="fullimage cover bg1" role="img" />
                         </a>
                         <div class="info">
                           <span>{post.date}</span>
                           <h4 class="title usmall">
-                            <a href="#">{post.title}</a>
+                            <a href={`/NewsDetails/${post.id}`}>{post.title}</a>
                           </h4>
                         </div>
                       </article>
                     );
                   })}
-                </section> */}
+                </section>
               </aside>
             </div>
           </div>
