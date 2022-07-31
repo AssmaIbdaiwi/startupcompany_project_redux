@@ -1,17 +1,27 @@
-import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../redux/postSlice";
 
 const News =()=>{
+      const dispatch = useDispatch();
+     
+      useEffect(() => {
+        dispatch(getPosts());
+        
+      }, [dispatch]);
+   const posts = useSelector((state) => state.post);
+        //  console.log(posts);
 
 
+  
 
-    
         return (
           <>
-            <div class="page-banner-area">
-              <div class="d-table">
-                <div class="d-table-cell">
-                  <div class="container">
-                    <div class="page-banner-content">
+            <div className="page-banner-area">
+              <div className="d-table">
+                <div className="d-table-cell">
+                  <div className="container">
+                    <div className="page-banner-content">
                       <h2>Blog</h2>
                       <ul>
                         <li>
@@ -27,55 +37,62 @@ const News =()=>{
             {/* <!-- End Page Banner -->
 
         <!-- Start Blog Area --> */}
-            <section class="blog-area pt-100 pb-100">
-              <div class="container">
-                <div class="row">
-                  <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-item">
-                      <div class="blog-image">
-                        <a href="#">
-                          <img src="assets/img/blog/blog-1.jpg" alt="image" />
-                        </a>
-                      </div>
+            <section className="blog-area pt-100 pb-100">
+              <div className="container">
+                <div className="row">
+                  { posts.posts.map((post) => {
+                    
+                    return (
+                      <div className="col-lg-4 col-md-6" key={post.id}>
+                        <div className="single-blog-item">
+                          <div className="blog-image">
+                            <a href="#">
+                              <img
+                                src={
+                                  "http://127.0.0.1:8000/api/apiposts/" +
+                                  post.main_image
+                                }
+                              />
+                            </a>
+                          </div>
 
-                      <div class="blog-content">
-                        <ul class="post-meta">
-                          <li>
-                            <span>Published: </span>
-                            25 Dec 2022
-                          </li>
-                          <li>
-                            <span>By: </span>
-                            <a href="#">Jack Johnx</a>
-                          </li>
-                        </ul>
-                        <h3>
-                          <a href="blog-details.html">
-                            Red Green Color Blindness
-                          </a>
-                        </h3>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua.
-                        </p>
+                          <div className="blog-content">
+                            <ul className="post-meta">
+                              <li>
+                                <span>Published: </span>
+                                {post.created_at}
+                              </li>
+                              <li>
+                                <span>By: </span>
+                                <a href="#">{post.doctor_id}</a>
+                              </li>
+                            </ul>
+                            <h3>
+                              <a href="blog-details.html">{post.title}</a>
+                            </h3>
+                            <p>{post.body}</p>
 
-                        <div class="blog-btn">
-                          <a href="/NewsDetails" class="default-btn">
-                            Read More
-                          </a>
+                            <div className="blog-btn">
+                              <a
+                                href={`/NewsDetails/${post.id}`}
+                                className="default-btn"
+                              >
+                                Read More
+                              </a>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                   {/* pagination */}
 
-                  <div class="col-lg-12 col-md-12">
-                    <div class="pagination-area">
-                      <a href="#" class="prev page-numbers">
-                        <i class="bx bx-chevron-left"></i>
+                  {/* <div className="col-lg-12 col-md-12">
+                    <div className="pagination-area">
+                      <a href="#" className="prev page-numbers">
+                        <i className="bx bx-chevron-left"></i>
                       </a>
-                      <a href="#" class="page-numbers">
+                      <a href="#" className="page-numbers">
                         1
                       </a>
                       <span class="page-numbers current" aria-current="page">
@@ -91,7 +108,7 @@ const News =()=>{
                         <i class="bx bx-chevron-right"></i>
                       </a>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </section>

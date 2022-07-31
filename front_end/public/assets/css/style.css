@@ -119,8 +119,8 @@ img {
 }
 
 .ptb-100 {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .pt-100 {
@@ -4064,8 +4064,8 @@ Login Area CSS
   padding: 40px 45px;
   border-radius: 5px;
   background-color: #ffffff;
-  -webkit-box-shadow: 0 0 10px rgba(51, 51, 51, 0.1);
-          box-shadow: 0 0 10px rgba(51, 51, 51, 0.1);
+  -webkit-box-shadow: 0 0 10px rgba(51, 51, 51, 1);
+          box-shadow: 0 0 10px rgba(51, 51, 51, 1);
   max-width: 650px;
   margin: auto;
 }
@@ -4095,7 +4095,7 @@ Login Area CSS
   line-height: initial;
   color: #1b0238;
   background-color: transparent !important;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #232323;
   border-radius: 5px;
   -webkit-box-shadow: unset !important;
           box-shadow: unset !important;
