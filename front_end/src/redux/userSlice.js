@@ -3,12 +3,14 @@ import Swal from "sweetalert2";
 
 
 
+
 const userSlice = createSlice({
     name:'user',
-    initialState:{email:"aiman@mail.com" , password:"12345" , isLogged:false},
+    initialState:{isLogged:false},
     reducers:{
         signup:(state , action)=>{
-            if(action.payload.email === state.email && action.payload.password === state.password){
+            
+            if(action.payload.name === 1){
                 Swal.fire({
                     title: "Login Successfull",
                     text: "Welcome to our site we hope you spent great time with us :)",
@@ -25,7 +27,7 @@ const userSlice = createSlice({
             }
         },
         login:(state , action)=>{
-            if(action.payload.email === state.email &&action.payload.password === state.password){
+            if(action.payload.email === 1){
                 Swal.fire({
                     title: "Login Successfull",
                     text: "Welcome to our site we hope you spent great time with us :)",

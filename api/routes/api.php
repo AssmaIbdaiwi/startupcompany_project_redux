@@ -41,17 +41,7 @@ Route::post('addContact',[ContactController::class , 'addContact']);
 
 
 //login and register
-Route::get('/register', [UserController::class, 'registerAPI']);
-// Route::post('/register',function(Request $request){
-//     $user = new User();
-//     $user->name = $request->name;
-//     $user->email = $request->email;
-//     $user->phone = $request->phone;
-//    // $user->password = Hash::make($request->input('pass'));
-//     $user->save();
-//     return response($user, 201)->json();
-// });
-
+Route::post('/register', [UserController::class, 'registerAPI']);
 Route::post('/login', [UserController::class, 'loginAPI']);
 
 Route::get('/users',function(){

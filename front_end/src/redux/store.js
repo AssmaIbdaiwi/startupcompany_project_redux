@@ -5,14 +5,16 @@ import post from './postSlice';
 import comment from "./postSlice";
 import user from './userSlice';
     
+import login from './userLoginSlice';
 
 
 export const store = configureStore({
   reducer: {
     doctor,
-    post,
+   
     comment,
     post,user,
+   login,
 
   },
 });
