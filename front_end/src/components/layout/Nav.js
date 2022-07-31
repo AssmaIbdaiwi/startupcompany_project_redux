@@ -331,7 +331,7 @@ const Nav = () => {
 
                     {status && (
                     <div class="option-item">
-                      <Link to="/Profile" onClick={handleLogout}>
+                      <Link to="/Profile" >
                         <a href="#" class="default-btn">
                         Profile
                         </a>

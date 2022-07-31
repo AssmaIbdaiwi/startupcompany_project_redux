@@ -122,4 +122,17 @@ class UserController extends Controller
         $user = User::find($id);
         return $user;
     }
+
+
+
+public function updateAPI(Request $request )
+{
+    
+
+}
+
+
+
+
+
 }
