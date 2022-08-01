@@ -6,6 +6,7 @@ import axios from 'axios'
 
 const Profile =()=>{
 
+    const [userData, setUser] = useState({ name: "", email: "", password: "", mobile: "" , age: ""});
 
     let id = localStorage.getItem('id');
 
@@ -40,7 +41,36 @@ const Profile =()=>{
 
 
 
+            async function handelSubmet(e) {
+                e.preventDefault();
+            
+                // console.log(user);
+                // const name = 1;
+                // dispatch(signup(name));
+                // console.log(userData);
+            
+                // const formData = new FormData();
+                // formData.append('name', userData.name)
+                // formData.append('email', userData.email)
+                // formData.append('password', userData.password)
+                // dispatch(addUser(formData));
+                
+                console.log(userData);
+            
+            
+            
+                axios.post(`http://127.0.0.1:8000/api/update`+id, { ...userData })
+                .then(res => {
 
+                  
+                  console.log(res.data);
+                  
+                  localStorage.setItem('id',res.data.id )
+                  
+            
+                })
+            
+              }
 
 
         return(
@@ -86,20 +116,20 @@ const Profile =()=>{
 
                             <form>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Full Name"   value={data.name}/>
+                                    <input type="text" class="form-control" placeholder="Full Name"   value={data.name} onChange={(e) => setUser((prev) => ({ ...prev, name: e.target.value }))}/>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email" value={data.email}/>
+                                    <input type="text" class="form-control" placeholder="Email" value={data.email} onChange={(e) => setUser((prev) => ({ ...prev, email: e.target.value }))}/>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone Number" value={data.mobile}/>
+                                    <input type="text" class="form-control" placeholder="Phone Number" value={data.mobile} onChange={(e) => setUser((prev) => ({ ...prev, mobile: e.target.value }))}/>
                                 </div>
 
                                 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="password" value={data.password}/>
+                                    <input type="text" class="form-control" placeholder="password" value={data.password} onChange={(e) => setUser((prev) => ({ ...prev, password: e.target.value }))}/>
                                 </div>
                                 
                                 <button type="submit" class="default-btn">

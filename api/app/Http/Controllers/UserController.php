@@ -92,7 +92,7 @@ class UserController extends Controller
         return $data;
     }
 
-    public function update(Request $request, $id)
+    public function updateAPI(Request $request, $id)
     {
 
 
@@ -109,7 +109,8 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->age = $request->age;
-        $user->address = $request->address;
+        $user->age = $request->password;
+        // $user->address = $request->address;
         $user->phone = $request->phone;
 
         $user->save();
@@ -125,11 +126,6 @@ class UserController extends Controller
 
 
 
-public function updateAPI(Request $request )
-{
-    
-
-}
 
 
 
