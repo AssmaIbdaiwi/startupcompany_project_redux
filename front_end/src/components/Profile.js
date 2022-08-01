@@ -1,7 +1,83 @@
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios'
 
-import React from "react";
+
 
 const Profile =()=>{
+
+    
+
+    let id = localStorage.getItem('id');
+
+
+        const [data, setData] = useState({});
+        
+        function fech()
+        {
+             const fetchProfile = async () => {
+            const response = await fetch(`http://127.0.0.1:8000/api/get/${id}`)
+            const myProfile = await response.json();
+    
+            setData(myProfile);
+    
+        }
+        }
+       
+
+        console.log(data)
+        // let name = data.name;
+
+       
+        
+       // setUser({name:data.name,email:"aa",password:"aa",mobile:"aa"});
+
+        // setUser((prev) => ({ ...prev, name: name }));
+        // setUser((prev) => ({ ...prev, email: data.email }));
+        // setUser((prev) => ({ ...prev, mobile: data.mobile }));
+        // setUser((prev) => ({ ...prev, password: data.password }));
+
+       // console.log(userData);
+
+        useEffect(() => {
+            fech();
+        }
+            , [fech]);
+
+
+
+             function handelSubmet(e) {
+                e.preventDefault();
+            
+                // console.log(user);
+                // const name = 1;
+                // dispatch(signup(name));
+                // console.log(userData);
+            
+                // const formData = new FormData();
+                // formData.append('name', userData.name)
+                // formData.append('email', userData.email)
+                // formData.append('password', userData.password)
+                // dispatch(addUser(formData));
+                
+               // console.log(userData);
+            
+            
+            
+                axios.post(`http://127.0.0.1:8000/api/update/`+id, { ...data })
+                .then(res => {
+
+                  
+                  console.log(res.data);
+                  
+                  localStorage.setItem('id',res.data.id )
+                  
+            
+                })
+            
+              }
+
+
         return(
 
   <>
@@ -13,13 +89,13 @@ const Profile =()=>{
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-banner-content">
-                            <h2>How to Apply</h2>
+                            {/* <h2>How to Apply</h2>
                             <ul>
                                 <li>
                                     <a href="index.html">Home</a>
                                 </li>
                                 <li>How to Apply</li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>
@@ -29,57 +105,56 @@ const Profile =()=>{
 
         <!-- Start Apply Area --> */}
         <section class="apply-area ptb-100">
+        
             <div class="container">
-                <div class="apply-form">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="content">
-                                    <h3>Parent Details</h3>
-                                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="quote-image"></div>
+                    </div>
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name"/>
-                                </div>
-        
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email Address"/>
-                                </div>
-        
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone Number"/>
-                                </div>
+                    <div class="col-lg-6">
+                        <div class="quote-item">
+                            <div class="content">
+                                <span>You are welcome</span>
+                                {/* <h3>Online Class Registration</h3> */}
                             </div>
 
-                            <div class="col-lg-6 col-md-6">
-                                <div class="content">
-                                    <h3>Child Details</h3>
+                            <form onSubmit={handelSubmet}>
+                                <div class="form-group">
+                                <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="Full Name"   defaultValue={data.name} onChange={(e) => setData((prev) => ({ ...prev, name: e.target.value }))}  />
                                 </div>
+                                <br/>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name"/>
+                                <label>Email</label>
+                                    <input type="text" class="form-control" placeholder="Email" defaultValue={data.email} onChange={(e) => setData((prev) => ({ ...prev, email: e.target.value }))}/>
                                 </div>
-        
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email Address"/>
-                                </div>
+                                <br/>
+
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Age"/>
+                                <label>Phone Number</label>
+                                    <input type="text" class="form-control" placeholder="Phone Number" defaultValue={data.mobile} onChange={(e) => setData((prev) => ({ ...prev, mobile: e.target.value }))}/>
                                 </div>
-                            </div>
+                                <br/>
+                                
+                                <div class="form-group">
+                                <label>Password</label>
+                                    <input type="password" class="form-control" placeholder="password" defaultValue={data.password} onChange={(e) => setData((prev) => ({ ...prev, password: e.target.value }))}/>
+                                </div>
+                                <br/>
+
+
+                                <button type="submit" class="default-btn">
+                                    UPDATE
+                                </button>
+                            </form>
                         </div>
-
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Write Something"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="default-btn">
-                            Submit Now
-                        </button>
-                    </form>
+                    </div>
                 </div>
             </div>
+     
         </section>
        </>
        );

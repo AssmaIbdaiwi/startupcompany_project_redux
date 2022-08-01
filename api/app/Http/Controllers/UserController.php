@@ -92,7 +92,7 @@ class UserController extends Controller
         return $data;
     }
 
-    public function update(Request $request, $id)
+    public function updateAPI(Request $request, $id)
     {
 
 
@@ -108,11 +108,12 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->age = $request->age;
-        $user->address = $request->address;
-        $user->phone = $request->phone;
+        // $user->age = $request->age;
+        $user->password = $request->password;
+        // $user->address = $request->address;
+        $user->mobile = $request->mobile;
 
-        $user->save();
+        $user->update();
     }
 
     
@@ -122,4 +123,12 @@ class UserController extends Controller
         $user = User::find($id);
         return $user;
     }
+
+
+
+
+
+
+
+
 }
