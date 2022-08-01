@@ -11,43 +11,38 @@ const Profile =()=>{
     let id = localStorage.getItem('id');
 
 
-
-        //view user info
         const [data, setData] = useState({});
-
-
-
-
-        const fetchProfile = async () => {
-
-            
+        
+        function fech()
+        {
+             const fetchProfile = async () => {
             const response = await fetch(`http://127.0.0.1:8000/api/get/${id}`)
             const myProfile = await response.json();
     
             setData(myProfile);
-
-         
-            // console.log(myProfile)
     
         }
+        }
+       
 
-
+        console.log(data)
         // let name = data.name;
 
-        const [userData, setUser] = useState(() => data);
+       
         
+       // setUser({name:data.name,email:"aa",password:"aa",mobile:"aa"});
 
         // setUser((prev) => ({ ...prev, name: name }));
         // setUser((prev) => ({ ...prev, email: data.email }));
         // setUser((prev) => ({ ...prev, mobile: data.mobile }));
         // setUser((prev) => ({ ...prev, password: data.password }));
 
-        console.log(userData);
+       // console.log(userData);
 
         useEffect(() => {
-            fetchProfile();
+            fech();
         }
-            , []);
+            , [fech]);
 
 
 
@@ -65,11 +60,11 @@ const Profile =()=>{
                 // formData.append('password', userData.password)
                 // dispatch(addUser(formData));
                 
-                console.log(userData);
+               // console.log(userData);
             
             
             
-                axios.post(`http://127.0.0.1:8000/api/update/`+id, { ...userData })
+                axios.post(`http://127.0.0.1:8000/api/update/`+id, { ...data })
                 .then(res => {
 
                   
@@ -127,26 +122,26 @@ const Profile =()=>{
                             <form onSubmit={handelSubmet}>
                                 <div class="form-group">
                                 <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="Full Name"   defaultValue={data.name} onChange={(e) => setUser((prev) => ({ ...prev, name: e.target.value }))}  />
+                                    <input type="text" class="form-control" placeholder="Full Name"   defaultValue={data.name} onChange={(e) => setData((prev) => ({ ...prev, name: e.target.value }))}  />
                                 </div>
                                 <br/>
 
                                 <div class="form-group">
                                 <label>Email</label>
-                                    <input type="text" class="form-control" placeholder="Email" defaultValue={data.email} onChange={(e) => setUser((prev) => ({ ...prev, email: e.target.value }))}/>
+                                    <input type="text" class="form-control" placeholder="Email" defaultValue={data.email} onChange={(e) => setData((prev) => ({ ...prev, email: e.target.value }))}/>
                                 </div>
                                 <br/>
 
 
                                 <div class="form-group">
                                 <label>Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="Phone Number" defaultValue={data.mobile} onChange={(e) => setUser((prev) => ({ ...prev, mobile: e.target.value }))}/>
+                                    <input type="text" class="form-control" placeholder="Phone Number" defaultValue={data.mobile} onChange={(e) => setData((prev) => ({ ...prev, mobile: e.target.value }))}/>
                                 </div>
                                 <br/>
                                 
                                 <div class="form-group">
                                 <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="password" defaultValue={data.password} onChange={(e) => setUser((prev) => ({ ...prev, password: e.target.value }))}/>
+                                    <input type="password" class="form-control" placeholder="password" defaultValue={data.password} onChange={(e) => setData((prev) => ({ ...prev, password: e.target.value }))}/>
                                 </div>
                                 <br/>
 
