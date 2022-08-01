@@ -84,6 +84,17 @@ const Sign_up = () => {
 
     } else {
 
+
+    axios.post(`http://127.0.0.1:8000/api/register`, { ...userData })
+    .then(res => {
+      console.log(user);
+      console.log(res.data);
+      dispatch(signup(res.data.name));
+      localStorage.setItem("id", res.data.id);
+      
+
+    })
+
       setall(<h5 style={{color: "red",textAlign: "center"}}> *** you have to fill all fields ***</h5>);
     }
   }

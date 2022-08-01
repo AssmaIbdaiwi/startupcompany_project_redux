@@ -9,7 +9,7 @@ class PostController extends Controller
 {
       public  function PostsAPI()
     {
-        $posts = Post::Join('doctors', 'doctors.id', '=', 'posts.doctor_id')
+        $posts = Doctor::Join('posts', 'posts.doctor_id', '=', 'doctors.id')
         ->get(['*']);
 
         // $posts = Post::all();
@@ -19,8 +19,7 @@ class PostController extends Controller
       public function singlePostsAPI($id)
     {
 
-        $singlePost = Post::Join('doctors', 'doctors.id', '=', 'posts.doctor_id')->find($id)
-        ;
+        $singlePost = Post::Join('doctors', 'doctors.id', '=', 'posts.doctor_id')->find($id);
         return $singlePost;
     }
 
