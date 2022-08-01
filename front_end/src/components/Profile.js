@@ -6,41 +6,76 @@ import axios from 'axios'
 
 const Profile =()=>{
 
+    
 
     let id = localStorage.getItem('id');
 
 
-
-        //view user info
         const [data, setData] = useState({});
-
-
-
-
-        const fetchProfile = async () => {
-
-            
+        
+        function fech()
+        {
+             const fetchProfile = async () => {
             const response = await fetch(`http://127.0.0.1:8000/api/get/${id}`)
             const myProfile = await response.json();
     
             setData(myProfile);
-
-            // console.log("#############################")
-            console.log(myProfile)
     
         }
+        }
+       
 
-        console.log("*************************************");
-        console.log(data);
+        console.log(data)
+        // let name = data.name;
+
+       
+        
+       // setUser({name:data.name,email:"aa",password:"aa",mobile:"aa"});
+
+        // setUser((prev) => ({ ...prev, name: name }));
+        // setUser((prev) => ({ ...prev, email: data.email }));
+        // setUser((prev) => ({ ...prev, mobile: data.mobile }));
+        // setUser((prev) => ({ ...prev, password: data.password }));
+
+       // console.log(userData);
 
         useEffect(() => {
-            fetchProfile();
+            fech();
         }
-            , []);
+            , [fech]);
 
 
 
+             function handelSubmet(e) {
+                e.preventDefault();
+            
+                // console.log(user);
+                // const name = 1;
+                // dispatch(signup(name));
+                // console.log(userData);
+            
+                // const formData = new FormData();
+                // formData.append('name', userData.name)
+                // formData.append('email', userData.email)
+                // formData.append('password', userData.password)
+                // dispatch(addUser(formData));
+                
+               // console.log(userData);
+            
+            
+            
+                axios.post(`http://127.0.0.1:8000/api/update/`+id, { ...data })
+                .then(res => {
 
+                  
+                  console.log(res.data);
+                  
+                  localStorage.setItem('id',res.data.id )
+                  
+            
+                })
+            
+              }
 
 
         return(
@@ -80,28 +115,37 @@ const Profile =()=>{
                     <div class="col-lg-6">
                         <div class="quote-item">
                             <div class="content">
-                                <span>Get a Quote</span>
-                                <h3>Online Class Registration</h3>
+                                <span>You are welcome</span>
+                                {/* <h3>Online Class Registration</h3> */}
                             </div>
 
-                            <form>
+                            <form onSubmit={handelSubmet}>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Full Name"   value={data.name}/>
+                                <label>Name</label>
+                                    <input type="text" class="form-control" placeholder="Full Name"   defaultValue={data.name} onChange={(e) => setData((prev) => ({ ...prev, name: e.target.value }))}  />
                                 </div>
+                                <br/>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email" value={data.email}/>
+                                <label>Email</label>
+                                    <input type="text" class="form-control" placeholder="Email" defaultValue={data.email} onChange={(e) => setData((prev) => ({ ...prev, email: e.target.value }))}/>
                                 </div>
+                                <br/>
+
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone Number" value={data.mobile}/>
+                                <label>Phone Number</label>
+                                    <input type="text" class="form-control" placeholder="Phone Number" defaultValue={data.mobile} onChange={(e) => setData((prev) => ({ ...prev, mobile: e.target.value }))}/>
                                 </div>
-
+                                <br/>
                                 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="password" value={data.password}/>
+                                <label>Password</label>
+                                    <input type="password" class="form-control" placeholder="password" defaultValue={data.password} onChange={(e) => setData((prev) => ({ ...prev, password: e.target.value }))}/>
                                 </div>
-                                
+                                <br/>
+
+
                                 <button type="submit" class="default-btn">
                                     UPDATE
                                 </button>
