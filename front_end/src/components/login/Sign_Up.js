@@ -15,6 +15,8 @@ const Sign_up = () => {
   const [conferm2, setconferm2] = useState("");
 
   const [all, setall] = useState("");
+  const [done, setdone] = useState(false);
+
 
   let navigate = useNavigate();
   const user = useSelector((state) => state.user.isLogged);
@@ -22,24 +24,54 @@ const Sign_up = () => {
 
   const passPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
   const namePattern = /^[a-z ]+$/gi;
-  const emailPattern =
-    /^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/i;
+  const emailPattern =/^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/i;
 
   console.log(userData.name);
+  console.log(namePattern.test(userData.name));
 
   async function handelSubmet(e) {
     e.preventDefault();
-    setname("");setemail("");setpass("");setconferm2("");
+    setname("");setemail("");setpass("");setconferm2("");setall("");setdone(false);
 
-    if (
-      userData.name != "" &&userData.email != "" &&userData.password != "" &&conferm != "" ) 
+    //console.log(namePattern.test(userData.name));
+
+    if (userData.name != "" &&userData.email != "" &&userData.password != "" &&conferm != "" ) 
       {
-      // if (!namePattern.test(userData.name)) {
-      //   setname(<h6>name has to be :</h6>)
-      // } else {
-      // }
 
-      axios
+      if (namePattern.test(userData.name)) {
+        setdone(true);
+      } else {
+        setdone(false);
+        setname(<h6 style={{color: "red",textAlign: "center"}} >** undefind name</h6>)
+      }
+
+      if (emailPattern.test(userData.email)) {
+        setdone(true);
+      } else {
+        setdone(false);
+        setemail(<h6 style={{color: "red",textAlign: "center"}} >** undefind email</h6>)
+      }
+
+      if (passPattern.test(userData.password)) {
+        setdone(true);
+      } else {
+        setdone(false);
+        setpass(<h6 style={{color: "red",textAlign: "center"}} >** password mush be : <br></br>1- more than 8 character
+        <br></br> 2- contain at least one number,character,special character </h6>)
+      }
+
+      if (pass == conferm2) {
+        setdone(true);
+      } else {
+        setdone(false);
+        setconferm2(<h6 style={{color: "red",textAlign: "center"}} >conferm password mush match password</h6>)
+      }
+
+
+
+      if(done)
+      {
+        axios
         .post(`http://127.0.0.1:8000/api/register`, { ...userData })
         .then((res) => {
           console.log(user);
@@ -47,6 +79,8 @@ const Sign_up = () => {
           dispatch(signup(res.data.name));
           localStorage.setItem("id", res.data.id);
         });
+      }
+      
 
     } else {
 
@@ -84,6 +118,7 @@ const Sign_up = () => {
                   }
                 />
               </div>
+              {name}
 
               <div class="form-group">
                 {/* <label>Email or phone</label> */}
@@ -99,7 +134,7 @@ const Sign_up = () => {
                   }
                 />
               </div>
-
+          {email}
               <div class="form-group">
                 {/* <label>Password</label> */}
                 <input
@@ -114,7 +149,7 @@ const Sign_up = () => {
                   }
                 />
               </div>
-
+             {pass}
               <div class="form-group">
                 {/* <label>Password</label> */}
                 <input
@@ -125,6 +160,7 @@ const Sign_up = () => {
                   onChange={(e) => setconferm(e.target.value)}
                 />
               </div>
+              {conferm2}
               {all}
               <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-sm-6">

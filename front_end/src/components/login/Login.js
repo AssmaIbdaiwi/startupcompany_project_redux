@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/userSlice";
@@ -22,10 +23,21 @@ const Login = () => {
 
     axios.post(`http://127.0.0.1:8000/api/login`, { ...userData })
     .then(res => {
-      console.log(user);
-      console.log(res.data);
+     // console.log(user);
+     // console.log(res.data);
+     if(res.ok)
+     {
       dispatch(login(res.data.name));
       localStorage.setItem('id',res.data.id );
+      
+     }
+     else{
+      Swal.fire({
+        title: "Login Faild",
+        text: "Email or Password are unvalid ",
+        //type: "success"
+    })
+     }
       
 
     })
