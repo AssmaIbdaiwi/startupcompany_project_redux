@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const Profile =()=>{
 
-    const [userData, setUser] = useState({ name: "", email: "", password: "", mobile: "" , age: ""});
+    
 
     let id = localStorage.getItem('id');
 
@@ -27,12 +27,22 @@ const Profile =()=>{
             setData(myProfile);
 
          
-            console.log(myProfile)
+            // console.log(myProfile)
     
         }
 
-        console.log("*************************************");
-        console.log(data);
+
+        // let name = data.name;
+
+        const [userData, setUser] = useState(() => data);
+        
+
+        // setUser((prev) => ({ ...prev, name: name }));
+        // setUser((prev) => ({ ...prev, email: data.email }));
+        // setUser((prev) => ({ ...prev, mobile: data.mobile }));
+        // setUser((prev) => ({ ...prev, password: data.password }));
+
+        console.log(userData);
 
         useEffect(() => {
             fetchProfile();
@@ -41,7 +51,7 @@ const Profile =()=>{
 
 
 
-            async function handelSubmet(e) {
+             function handelSubmet(e) {
                 e.preventDefault();
             
                 // console.log(user);
@@ -59,7 +69,7 @@ const Profile =()=>{
             
             
             
-                axios.post(`http://127.0.0.1:8000/api/update`+id, { ...userData })
+                axios.post(`http://127.0.0.1:8000/api/update/`+id, { ...userData })
                 .then(res => {
 
                   
@@ -114,29 +124,29 @@ const Profile =()=>{
                                 {/* <h3>Online Class Registration</h3> */}
                             </div>
 
-                            <form>
+                            <form onSubmit={handelSubmet}>
                                 <div class="form-group">
                                 <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="Full Name"   value={data.name} onChange={(e) => setUser((prev) => ({ ...prev, name: e.target.value }))}/>
+                                    <input type="text" class="form-control" placeholder="Full Name"   defaultValue={data.name} onChange={(e) => setUser((prev) => ({ ...prev, name: e.target.value }))}  />
                                 </div>
                                 <br/>
 
                                 <div class="form-group">
                                 <label>Email</label>
-                                    <input type="text" class="form-control" placeholder="Email" value={data.email} onChange={(e) => setUser((prev) => ({ ...prev, email: e.target.value }))}/>
+                                    <input type="text" class="form-control" placeholder="Email" defaultValue={data.email} onChange={(e) => setUser((prev) => ({ ...prev, email: e.target.value }))}/>
                                 </div>
                                 <br/>
 
 
                                 <div class="form-group">
                                 <label>Phone Number</label>
-                                    <input type="text" class="form-control" placeholder="Phone Number" value={data.mobile} onChange={(e) => setUser((prev) => ({ ...prev, mobile: e.target.value }))}/>
+                                    <input type="text" class="form-control" placeholder="Phone Number" defaultValue={data.mobile} onChange={(e) => setUser((prev) => ({ ...prev, mobile: e.target.value }))}/>
                                 </div>
                                 <br/>
                                 
                                 <div class="form-group">
                                 <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="password" value={data.password} onChange={(e) => setUser((prev) => ({ ...prev, password: e.target.value }))}/>
+                                    <input type="password" class="form-control" placeholder="password" defaultValue={data.password} onChange={(e) => setUser((prev) => ({ ...prev, password: e.target.value }))}/>
                                 </div>
                                 <br/>
 

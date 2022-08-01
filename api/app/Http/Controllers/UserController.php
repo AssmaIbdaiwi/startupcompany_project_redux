@@ -108,12 +108,12 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->age = $request->age;
-        $user->age = $request->password;
+        // $user->age = $request->age;
+        $user->password = $request->password;
         // $user->address = $request->address;
-        $user->phone = $request->phone;
+        $user->mobile = $request->mobile;
 
-        $user->save();
+        $user->update();
     }
 
     
