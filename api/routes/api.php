@@ -21,25 +21,17 @@ use App\Http\Controllers\UserController;
 Route::get('apiposts',[PostController::class , 'PostsAPI']);
 Route::get('apiposts/{id}',[PostController::class , 'singlePostsAPI']);
 
-Route::get('apicomment',[CommentController::class , 'CommentAPI']);
+Route::get('apicomment/{id}',[CommentController::class , 'CommentAPI']);
 Route::post('addComment',[CommentController::class , 'addComment']);
+Route::post('deleteComment/{id}',[CommentController::class , 'deleteComment']);
+Route::post('updateComment/{id}',[CommentController::class , 'updateComment']);
 
 Route::get('apicontact',[ContactController::class , 'ContactAPI']);
 Route::post('addContact',[ContactController::class , 'addContact']);
 
 
 //login and register
-Route::get('/register', [UserController::class, 'registerAPI']);
-// Route::post('/register',function(Request $request){
-//     $user = new User();
-//     $user->name = $request->name;
-//     $user->email = $request->email;
-//     $user->phone = $request->phone;
-//    // $user->password = Hash::make($request->input('pass'));
-//     $user->save();
-//     return response($user, 201)->json();
-// });
-
+Route::post('/register', [UserController::class, 'registerAPI']);
 Route::post('/login', [UserController::class, 'loginAPI']);
 
 Route::get('/users',function(){

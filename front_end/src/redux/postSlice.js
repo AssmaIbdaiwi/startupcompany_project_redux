@@ -16,13 +16,6 @@ async (id) => {
 });
 
 
-// export const getComments = createAsyncThunk("post/getComments", async () => {
-//   const api = await fetch("http://127.0.0.1:8000/api/apicomment");
-//   const response = await api.json();
-//   console.log(response);
-//   return response;
-// });
-
 
 const postSlice = createSlice({
   name: "post",
@@ -30,7 +23,6 @@ const postSlice = createSlice({
   extraReducers: {
     //get item from api
     [getPosts.fulfilled]: (state, action) => {
-      // console.log(action);
       state.status = "success fetch data";
       state.posts = action.payload;
     },
@@ -53,18 +45,7 @@ const postSlice = createSlice({
       state.status = "rejected  fetch data";
     },
 
-    // // /get comment
-    // [getComments.fulfilled]: (state, action) => {
-    //   // console.log(action);
-    //   state.status = "success fetch data";
-    //   state.comments = action.payload;
-    // },
-    // [getComments.pending]: (state) => {
-    //   state.status = "pending  fetch data";
-    // },
-    // [getComments.rejected]: (state) => {
-    //   state.status = "rejected  fetch data";
-    // },
+
   },
 });
 

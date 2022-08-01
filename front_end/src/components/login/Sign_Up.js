@@ -1,52 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/userSlice";
+import { addUser } from "../../redux/userLoginSlice";
+import axios from 'axios'
 
 const Sign_up = () => {
-
-  const [userData, setUser] = useState({name: "",email: "",password: ""});
+  const [userData, setUser] = useState({ name: "", email: "", password: "" });
   let navigate = useNavigate();
   const user = useSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
 
+
+
   async function handelSubmet(e) {
     e.preventDefault();
 
-    console.log(user);
+    // console.log(user);
+    // const name = 1;
+    // dispatch(signup(name));
+    // console.log(userData);
 
-    dispatch(signup(userData));
+    // const formData = new FormData();
+    // formData.append('name', userData.name)
+    // formData.append('email', userData.email)
+    // formData.append('password', userData.password)
+    // dispatch(addUser(formData));
+    
     console.log(userData);
 
-     await axios({
-      method: "get",
-      url: "http://127.0.0.1:8000/api/register",
-      data: user,
-    });
 
-    // axios({
-    //   method: "get",
-    //   url: "http://127.0.0.1:8000/api/users",
-    //   responseType: "stream",
-    // }).then(function (response) {
-    //   console.log(response.data);
-    // });
-   }
 
-   useEffect(() => {
+    axios.post(`http://127.0.0.1:8000/api/register`, { ...userData })
+    .then(res => {
+      console.log(user);
+      console.log(res.data);
+      dispatch(signup(res.data.name));
+      localStorage.setItem("id", res.data.id);
+      
+
+    })
+
+  }
+
+  useEffect(() => {
     if (user) {
       navigate("/", { replace: true });
-    }else {
+    } else {
       navigate("/Sign_Up", { replace: true });
     }
   }, [user]);
-
-
-
-
-
 
   return (
     <>
@@ -133,9 +136,7 @@ const Sign_up = () => {
                 </div>
               </div>
 
-              <button type="submit" >
-                Sign Up
-              </button>
+              <button type="submit">Sign Up</button>
             </form>
 
             <div class="important-text">

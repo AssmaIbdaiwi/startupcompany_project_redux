@@ -8,6 +8,7 @@ import { login } from "../../redux/userSlice";
 const Login = () => {
     let navigate = useNavigate();
     const user = useSelector((state) => state.user.isLogged);
+    
   const [userData, setUser] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
 
@@ -15,8 +16,21 @@ const Login = () => {
   function handelSubmet(e) {
     e.preventDefault();
 
-    dispatch(login(userData));
+
     console.log(userData);
+
+
+
+    axios.post(`http://127.0.0.1:8000/api/login`, { ...userData })
+    .then(res => {
+      console.log(user);
+      console.log(res.data);
+      dispatch(login(res.data.name));
+      localStorage.setItem("id", res.data.id);
+      
+ 
+    })
+
   }
 
 

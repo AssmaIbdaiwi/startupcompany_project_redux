@@ -329,6 +329,16 @@ const Nav = () => {
                     </div>
                   )}
 
+                    {status && (
+                    <div class="option-item">
+                      <Link to="/Profile" onClick={handleLogout}>
+                        <a href="#" class="default-btn">
+                        Profile
+                        </a>
+                      </Link>
+                    </div>
+                  )}  
+
                   {status && (
                     <div class="option-item">
                       <Link to="/" onClick={handleLogout}>
@@ -338,6 +348,8 @@ const Nav = () => {
                       </Link>
                     </div>
                   )}
+
+                 
 
 
 

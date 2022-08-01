@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts, getSinglePosts} from "../redux/postSlice";
 import { useParams } from "react-router-dom";
-import { addComment, getComments } from "../redux/commentSlice";
-
+import { addComment, getComments,deleteComment,updateComment } from "../redux/commentSlice";
+import Swal from "sweetalert2";
 const NewsDetails = () => {
+
   const { id } = useParams();
 // ///posts///
   const dispatch = useDispatch();
@@ -22,21 +24,21 @@ const NewsDetails = () => {
   }, [dispatch]);
   const singlepost = useSelector((state) => state.post);
 
-  console.log(singlepost);
+  // console.log(singlepost);
   ////// end single post ///////
 
   // //////////Comment //////////
   useEffect(() => {
-    dispatch(getComments());
+    dispatch(getComments(id));
   }, [dispatch]);
   const comment1 = useSelector((state) => state.comment);
-
-  // console.log(comment1.comments.map(comment=>{});
-
   const [commentData, setCommentData] = useState({
+    commentId:id,
     comment: " ",
+    user_id_comment: localStorage.id,
+    post_id_comment: id,
   });
-
+// console.log(id)
   const handleChange = (e) => {
     e.preventDefault();
 
@@ -49,22 +51,23 @@ const NewsDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const value = e.target.value;
-    setCommentData({
-      ...commentData,
-    });
 
-    const formData = new FormData();
-    formData.append("comment", commentData.comment);
-     console.log(commentData);
-    dispatch(addComment(formData));
+    dispatch(addComment(commentData));
   };
+/////////start edit////////
+ const [showEdit, setShowEdit] = useState(false);
 
+const isEdit=(e)=>{
+  setShowEdit(true)
+}
+//////
+const handleSubmitEdit = (e) => {
+  e.preventDefault();
+setShowEdit(false);
+  dispatch(updateComment(commentData));
 
-  // ///// end comment /////
-
-
-
+  console.log(commentData);
+};
 
 
 
@@ -218,7 +221,7 @@ const NewsDetails = () => {
                 <div class="comments-area">
                   <div class="comment-respond">
                     <h3 class="comment-reply-title">Leave a Reply</h3>
-
+                    {/* comment start */}
                     <form class="comment-form" onSubmit={handleSubmit}>
                       <p class="comment-notes">
                         <span id="email-notes">
@@ -230,11 +233,10 @@ const NewsDetails = () => {
 
                       <p class="comment-form-comment">
                         <label>Comment</label>
+
                         <textarea
-                          // value={commentData.comment}
                           onChange={handleChange}
                           name="comment"
-                          id="comment"
                           cols="45"
                           placeholder="Your Comment..."
                           rows="5"
@@ -269,42 +271,105 @@ const NewsDetails = () => {
                   <h3 class="comments-title">
                     <br></br>3 Comments:
                   </h3>
-  {comment1.comments.map((comment)=>{
-     return (
-       <ol class="comment-list">
-         <li class="comment">
-           <div class="comment-body">
-             <footer class="comment-meta">
-               <div class="comment-author vcard">
-                 <img
-                   src="assets/img/client/client-1.jpg"
-                   class="avatar"
-                   alt="image"
-                 />
-                 <b class="fn">{comment.name}</b>
-               </div>
-               <div class="comment-metadata">
-                 <a href="#">
-                   <span>{comment.date}</span>
-                 </a>
-               </div>
-             </footer>
-             <div class="comment-content">
-               <p>{comment.comment}</p>
-             </div>
-             <div class="reply">
-               <a href="#" class="comment-reply-link">
-                 Reply
-               </a>
-             </div>
-           </div>
-         </li>
-       </ol>
-     );
+                  {comment1.comments.map((comment) => {
+                    return (
+                      <ol class="comment-list">
+                        <li class="comment">
+                          <div class="comment-body">
+                            <footer class="comment-meta">
+                              <div class="comment-author vcard">
+                                <img
+                                  src="assets/img/client/client-1.jpg"
+                                  class="avatar"
+                                  alt="image"
+                                />
+                                <b class="fn">{comment.name}</b>
+                              </div>
+                              <div class="comment-metadata">
+                                <a href="#">
+                                  <span>{comment.created_at}</span>
+                                </a>
+                              </div>
+                            </footer>
+                            <div class="comment-content">
+                              <p>{comment.comment}</p>
+
+                              <button
+                                onClick={isEdit}
+                                style={{
+                                  background: "none",
+                                  color: "inherit",
+                                  border: "none",
+                                  padding: 0,
+                                  font: "inherit",
+                                  outline: "inherit",
+                                }}
+                              >
+                                <a class="comment-reply-link">
+                                  <Icon
+                                    icon="fa6-regular:pen-to-square"
+                                    style={{ fontSize: "24px" }}
+                                  />
+                                </a>
+                              </button>
+                              <button
+                                style={{
+                                  background: "none",
+                                  color: "inherit",
+                                  border: "none",
+                                  padding: " 10px",
+                                  font: "inherit",
+                                  outline: "inherit",
+                                }}
+                                onClick={() => {
+                                  dispatch(deleteComment(comment.id));
+                                }}
+                              >
+                                <a class="comment-reply-link">
+                                  <Icon
+                                    icon="material-symbols:cancel-rounded"
+                                    style={{ fontSize: "24px" }}
+                                  />
+                                </a>
+                              </button>
+                            </div>
+                          </div>
+                        </li>
+                      </ol>
+                    );
                   })}
                 </div>
               </div>
             </div>
+
+            {/*edit comment */}
+            {showEdit && (
+              <form onSubmit={handleSubmitEdit}>
+                <div className="form-group">
+                  <p class="comment-form-comment">
+                    <textarea
+                      onChange={handleChange}
+                      name="comment"
+                      cols="45"
+                      placeholder="Your Comment..."
+                      rows="5"
+                      maxlength="65525"
+                      required="required"
+                    ></textarea>
+                  </p>
+                </div>
+                <div className="form-group" style={{ width: "10%" }}>
+                  <button
+                    className="form-control  btn btn-primary"
+                    type="submit"
+                  >
+                    update
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {/*edit comment end  */}
 
             <div class="col-lg-4 col-md-12">
               <aside class="widget-area">

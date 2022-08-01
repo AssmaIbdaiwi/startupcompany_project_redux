@@ -34,7 +34,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->input('pass'));
+        $user->password = Hash::make($request->input('password'));
 
 
         // $user->name = "a";
@@ -44,7 +44,7 @@ class UserController extends Controller
         
         $user->save();
 
-       return response($user, 201)->json();
+       return response($user, 201);
     }
 
 
@@ -71,7 +71,7 @@ class UserController extends Controller
 
         $user = User::where('email', $request->input('email'))->first();
 
-        if (!$user || !Hash::check($request->input('pass'), $user->password)) {
+        if (!$user || !Hash::check($request->input('password'), $user->password)) {
             return response()->json([
                 'errors' => ['Email or Password is incorrect']
             ]);
