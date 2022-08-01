@@ -44,6 +44,11 @@ Route::post('addContact',[ContactController::class , 'addContact']);
 Route::post('/register', [UserController::class, 'registerAPI']);
 Route::post('/login', [UserController::class, 'loginAPI']);
 
+
+Route::get('get/{id}', [UserController::class, 'getUser']);
+Route::post('update/{id}', [UserController::class, 'updateAPI']);
+
+
 Route::get('/users',function(){
     $users = User::get();
     return response()->json($users);

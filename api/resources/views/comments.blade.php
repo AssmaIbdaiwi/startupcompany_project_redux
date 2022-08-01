@@ -36,6 +36,9 @@
                 <th >
                  Date
                 </th>
+                <th>
+
+Status                </th>
                 <th >
                   Action
                 </th>
@@ -62,9 +65,13 @@
                   <td >
                     {{$comment->created_at;}}
                   </td>
+                  <td >
+                    {{-- {{$comment->status;}} --}}
+                     pending
+                  </td>
                   <td>
                     <form action=" {{ route('comment.destroy',$comment->id) }}" method="POST"> 
-                     
+                        <a class="btn btn-info" href="{{ route('comment.edit' ,$comment->id) }}">Edit</a>
                       @csrf
                       @method('DELETE')
                       

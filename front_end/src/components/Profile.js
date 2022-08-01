@@ -1,7 +1,48 @@
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios'
 
-import React from "react";
+
 
 const Profile =()=>{
+
+
+    let id = localStorage.getItem('id');
+
+
+
+        //view user info
+        const [data, setData] = useState({});
+
+
+
+
+        const fetchProfile = async () => {
+
+            
+            const response = await fetch(`http://127.0.0.1:8000/api/get/${id}`)
+            const myProfile = await response.json();
+    
+            setData(myProfile);
+
+            // console.log("#############################")
+            console.log(myProfile)
+    
+        }
+
+        console.log("*************************************");
+        console.log(data);
+
+        useEffect(() => {
+            fetchProfile();
+        }
+            , []);
+
+
+
+
+
+
         return(
 
   <>
@@ -13,13 +54,13 @@ const Profile =()=>{
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="page-banner-content">
-                            <h2>How to Apply</h2>
+                            {/* <h2>How to Apply</h2>
                             <ul>
                                 <li>
                                     <a href="index.html">Home</a>
                                 </li>
                                 <li>How to Apply</li>
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>
@@ -29,57 +70,47 @@ const Profile =()=>{
 
         <!-- Start Apply Area --> */}
         <section class="apply-area ptb-100">
+        
             <div class="container">
-                <div class="apply-form">
-                    <form>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="content">
-                                    <h3>Parent Details</h3>
-                                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="quote-image"></div>
+                    </div>
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name"/>
-                                </div>
-        
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email Address"/>
-                                </div>
-        
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Phone Number"/>
-                                </div>
+                    <div class="col-lg-6">
+                        <div class="quote-item">
+                            <div class="content">
+                                <span>Get a Quote</span>
+                                <h3>Online Class Registration</h3>
                             </div>
 
-                            <div class="col-lg-6 col-md-6">
-                                <div class="content">
-                                    <h3>Child Details</h3>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Full Name"   value={data.name}/>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name"/>
-                                </div>
-        
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email Address"/>
+                                    <input type="text" class="form-control" placeholder="Email" value={data.email}/>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Age"/>
+                                    <input type="text" class="form-control" placeholder="Phone Number" value={data.mobile}/>
                                 </div>
-                            </div>
+
+                                
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="password" value={data.password}/>
+                                </div>
+                                
+                                <button type="submit" class="default-btn">
+                                    UPDATE
+                                </button>
+                            </form>
                         </div>
-
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Write Something"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="default-btn">
-                            Submit Now
-                        </button>
-                    </form>
+                    </div>
                 </div>
             </div>
+     
         </section>
        </>
        );

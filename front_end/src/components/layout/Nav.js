@@ -12,6 +12,8 @@ const Nav = () => {
     navigate("/home", { replace: true });
   };
 
+  let id = localStorage.getItem('id');
+
   return (
     <>
       <div class="navbar-area">
@@ -309,7 +311,7 @@ const Nav = () => {
                                     </div>
                                 </div> */}
 
-                  {!status && (
+                  {!id && (
                     <div class="option-item">
                       <Link to="/login">
                         {" "}
@@ -319,7 +321,7 @@ const Nav = () => {
                       </Link>
                     </div>
                   )}
-                  {!status && (
+                  {!id && (
                     <div class="option-item">
                       <Link to="/sign_up">
                         <a href="#" class="default-btn">
@@ -329,9 +331,9 @@ const Nav = () => {
                     </div>
                   )}
 
-                    {status && (
+                    {id && (
                     <div class="option-item">
-                      <Link to="/Profile" onClick={handleLogout}>
+                      <Link to="/Profile" >
                         <a href="#" class="default-btn">
                         Profile
                         </a>
@@ -339,7 +341,7 @@ const Nav = () => {
                     </div>
                   )}  
 
-                  {status && (
+                  {id && (
                     <div class="option-item">
                       <Link to="/" onClick={handleLogout}>
                         <a href="#" class="default-btn">
