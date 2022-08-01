@@ -26,7 +26,7 @@ const Profile =()=>{
     
             setData(myProfile);
 
-            // console.log("#############################")
+         
             console.log(myProfile)
     
         }
@@ -110,28 +110,37 @@ const Profile =()=>{
                     <div class="col-lg-6">
                         <div class="quote-item">
                             <div class="content">
-                                <span>Get a Quote</span>
-                                <h3>Online Class Registration</h3>
+                                <span>You are welcome</span>
+                                {/* <h3>Online Class Registration</h3> */}
                             </div>
 
                             <form>
                                 <div class="form-group">
+                                <label>Name</label>
                                     <input type="text" class="form-control" placeholder="Full Name"   value={data.name} onChange={(e) => setUser((prev) => ({ ...prev, name: e.target.value }))}/>
                                 </div>
+                                <br/>
 
                                 <div class="form-group">
+                                <label>Email</label>
                                     <input type="text" class="form-control" placeholder="Email" value={data.email} onChange={(e) => setUser((prev) => ({ ...prev, email: e.target.value }))}/>
                                 </div>
+                                <br/>
+
 
                                 <div class="form-group">
+                                <label>Phone Number</label>
                                     <input type="text" class="form-control" placeholder="Phone Number" value={data.mobile} onChange={(e) => setUser((prev) => ({ ...prev, mobile: e.target.value }))}/>
                                 </div>
-
+                                <br/>
                                 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="password" value={data.password} onChange={(e) => setUser((prev) => ({ ...prev, password: e.target.value }))}/>
+                                <label>Password</label>
+                                    <input type="password" class="form-control" placeholder="password" value={data.password} onChange={(e) => setUser((prev) => ({ ...prev, password: e.target.value }))}/>
                                 </div>
-                                
+                                <br/>
+
+
                                 <button type="submit" class="default-btn">
                                     UPDATE
                                 </button>
