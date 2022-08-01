@@ -3,44 +3,55 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/userSlice";
 import { addUser } from "../../redux/userLoginSlice";
-import axios from 'axios'
+import axios from "axios";
 
 const Sign_up = () => {
   const [userData, setUser] = useState({ name: "", email: "", password: "" });
+  const [conferm, setconferm] = useState("");
+
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [pass, setpass] = useState("");
+  const [conferm2, setconferm2] = useState("");
+
+  const [all, setall] = useState("");
+
   let navigate = useNavigate();
   const user = useSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
 
+  const passPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
+  const namePattern = /^[a-z ]+$/gi;
+  const emailPattern =
+    /^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/i;
 
+  console.log(userData.name);
 
   async function handelSubmet(e) {
     e.preventDefault();
+    setname("");setemail("");setpass("");setconferm2("");
 
-    // console.log(user);
-    // const name = 1;
-    // dispatch(signup(name));
-    // console.log(userData);
+    if (
+      userData.name != "" &&userData.email != "" &&userData.password != "" &&conferm != "" ) 
+      {
+      // if (!namePattern.test(userData.name)) {
+      //   setname(<h6>name has to be :</h6>)
+      // } else {
+      // }
 
-    // const formData = new FormData();
-    // formData.append('name', userData.name)
-    // formData.append('email', userData.email)
-    // formData.append('password', userData.password)
-    // dispatch(addUser(formData));
-    
-    console.log(userData);
+      axios
+        .post(`http://127.0.0.1:8000/api/register`, { ...userData })
+        .then((res) => {
+          console.log(user);
+          console.log(res.data);
+          dispatch(signup(res.data.name));
+          localStorage.setItem("id", res.data.id);
+        });
 
+    } else {
 
-
-    axios.post(`http://127.0.0.1:8000/api/register`, { ...userData })
-    .then(res => {
-      console.log(user);
-      console.log(res.data);
-      dispatch(signup(res.data.name));
-      localStorage.setItem('id',res.data.id )
-      
-
-    })
-
+      setall(<h5 style={{color: "red",textAlign: "center"}}> *** you have to fill all fields ***</h5>);
+    }
   }
 
   useEffect(() => {
@@ -111,10 +122,10 @@ const Sign_up = () => {
                   class="form-control"
                   placeholder="Confirm Password"
                   //   value={confirm_password}
-                  //   onChange={(e) => setconfirm_password(e.target.value)}
+                  onChange={(e) => setconferm(e.target.value)}
                 />
               </div>
-
+              {all}
               <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="form-check">
