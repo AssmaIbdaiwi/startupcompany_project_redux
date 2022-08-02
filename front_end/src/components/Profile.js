@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
+import swal from 'sweetalert';
 
 
 
@@ -11,71 +11,47 @@ const Profile =()=>{
     let id = localStorage.getItem('id');
 
 
-        const [data, setData] = useState({});
-        
-        function fech()
-        {
-             const fetchProfile = async () => {
-            const response = await fetch(`http://127.0.0.1:8000/api/get/${id}`)
-            const myProfile = await response.json();
-    
-            setData(myProfile);
-    
-        }
-        }
+        const [data, setData] = useState([]);
+
+
+        useEffect(() => {
+            const fetchProfile = async () => {
+                const api = await fetch(`http://127.0.0.1:8000/api/get/${id}`);
+                const myProfile = await api.json();
+                setData(myProfile);
+                console.log(myProfile);
+            }
+            fetchProfile();
+        }, [])
        
 
         console.log(data)
-        // let name = data.name;
-
-       
-        
-       // setUser({name:data.name,email:"aa",password:"aa",mobile:"aa"});
-
-        // setUser((prev) => ({ ...prev, name: name }));
-        // setUser((prev) => ({ ...prev, email: data.email }));
-        // setUser((prev) => ({ ...prev, mobile: data.mobile }));
-        // setUser((prev) => ({ ...prev, password: data.password }));
-
-       // console.log(userData);
-
-        useEffect(() => {
-            fech();
-        }
-            , [fech]);
-
 
 
              function handelSubmet(e) {
                 e.preventDefault();
             
-                // console.log(user);
-                // const name = 1;
-                // dispatch(signup(name));
-                // console.log(userData);
-            
-                // const formData = new FormData();
-                // formData.append('name', userData.name)
-                // formData.append('email', userData.email)
-                // formData.append('password', userData.password)
-                // dispatch(addUser(formData));
-                
-               // console.log(userData);
-            
-            
-            
                 axios.post(`http://127.0.0.1:8000/api/update/`+id, { ...data })
                 .then(res => {
 
-                  
+  
+
                   console.log(res.data);
                   
-                  localStorage.setItem('id',res.data.id )
+                  localStorage.setItem('id',res.data.id );
+
+                  swal({
+                    title: "Good job!",
+                    text: " Profile updated successfully!",
+                    icon: "success",
+                    button: "ok!",
+                  })
                   
             
                 })
             
               }
+
 
 
         return(
@@ -147,7 +123,7 @@ const Profile =()=>{
 
 
                                 <button type="submit" class="default-btn">
-                                    UPDATE
+                                    UPDATE 
                                 </button>
                             </form>
                         </div>
