@@ -106,7 +106,7 @@ class AdminUController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            // 'password' => 'required',
             'mobile' => 'required',
             //'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
             
@@ -115,7 +115,7 @@ class AdminUController extends Controller
         User::where('id', $id)->update([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            // 'password' => $request->password,
             'mobile' => $request->mobile,
           
         ]);

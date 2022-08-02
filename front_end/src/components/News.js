@@ -22,12 +22,12 @@ const News =()=>{
                 <div className="d-table-cell">
                   <div className="container">
                     <div className="page-banner-content">
-                      <h2>Blog</h2>
+                      <h2>Post</h2>
                       <ul>
                         <li>
                           <a href="index.html">Home</a>
                         </li>
-                        <li>Blog</li>
+                        <li>Post</li>
                       </ul>
                     </div>
                   </div>
@@ -48,10 +48,7 @@ const News =()=>{
                           <div className="blog-image">
                             <a href="#">
                               <img
-                                src={
-                                  "http://127.0.0.1:8000/api/apiposts/" +
-                                  post.main_image
-                                }
+                               src={ "http://localhost:8000/upload/" + post.main_image}
                               />
                             </a>
                           </div>

@@ -85,7 +85,9 @@ const Profile =()=>{
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="quote-image"></div>
+                        <div class="quote-image">
+
+                        <img src={ "http://localhost:8000/upload/" + data.image_doctor } alt="image" /></div>
                     </div>
 
                     <div class="col-lg-6">
