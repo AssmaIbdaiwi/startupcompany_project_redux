@@ -41,10 +41,10 @@ const Profile =()=>{
                   localStorage.setItem('id',res.data.id );
 
                   swal({
-                    title: "Good job!",
-                    text: " Profile updated successfully!",
+                    title: " Profile updated successfully!",
+                    // text: " Profile updated successfully!",
                     icon: "success",
-                    button: "ok!",
+                    button: "OK",
                   })
                   
             
