@@ -8,6 +8,7 @@ import { login } from "../../redux/userSlice";
 const Login = () => {
     let navigate = useNavigate();
     const user = useSelector((state) => state.user.isLogged);
+    
   const [userData, setUser] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
 
@@ -25,10 +26,11 @@ const Login = () => {
       console.log(user);
       console.log(res.data);
       dispatch(login(res.data.name));
-      localStorage.setItem('id',res.data.id );
+      localStorage.setItem("id", res.data.id);
       
-
+ 
     })
+
   }
 
 

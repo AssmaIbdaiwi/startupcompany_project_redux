@@ -24,8 +24,10 @@ use App\Http\Controllers\UserController;
 Route::get('apiposts',[PostController::class , 'PostsAPI']);
 Route::get('apiposts/{id}',[PostController::class , 'singlePostsAPI']);
 
-Route::get('apicomment',[CommentController::class , 'CommentAPI']);
+Route::get('apicomment/{id}',[CommentController::class , 'CommentAPI']);
 Route::post('addComment',[CommentController::class , 'addComment']);
+Route::post('deleteComment/{id}',[CommentController::class , 'deleteComment']);
+Route::post('updateComment/{id}',[CommentController::class , 'updateComment']);
 
 Route::get('doctors', [DoctorController::class, 'getDoctors']);
 Route::get('doctorDetails/{id}', [DoctorController::class, 'getDoctorDetail']);

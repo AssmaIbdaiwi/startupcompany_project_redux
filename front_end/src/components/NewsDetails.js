@@ -1,44 +1,44 @@
-
 import { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts,getSinglePosts } from "../redux/postSlice";
-import {useParams} from 'react-router-dom'
-import { addComment } from "../redux/commentSlice";
-
-
-const NewsDetails =()=>{
+import { getPosts, getSinglePosts} from "../redux/postSlice";
+import { useParams } from "react-router-dom";
+import { addComment, getComments,deleteComment,updateComment } from "../redux/commentSlice";
+import Swal from "sweetalert2";
+const NewsDetails = () => {
 
   const { id } = useParams();
+// ///posts///
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
-  // const posts = useSelector((state) => state.post);
 
-
-
+  const posts = useSelector((state) => state.post);
+// console.log(posts);
   //////single post///////////
+
   useEffect(() => {
     dispatch(getSinglePosts(id));
   }, [dispatch]);
   const singlepost = useSelector((state) => state.post);
 
-  console.log(singlepost.posts.name_doctor);
+  // console.log(singlepost);
   ////// end single post ///////
 
-
-
-
-
-
-  //////////Comment //////////
+  // //////////Comment //////////
+  useEffect(() => {
+    dispatch(getComments(id));
+  }, [dispatch]);
+  const comment1 = useSelector((state) => state.comment);
   const [commentData, setCommentData] = useState({
+    commentId:id,
     comment: " ",
-    user_id_comment: "1",
-    post_id_comment: "3",
+    user_id_comment: localStorage.id,
+    post_id_comment: id,
   });
-
+// console.log(id)
   const handleChange = (e) => {
     e.preventDefault();
 
@@ -51,18 +51,25 @@ const NewsDetails =()=>{
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const value = e.target.value;
-    setCommentData({
-      ...commentData,
-    });
 
-    const formData = new FormData();
-    formData.append("comment", commentData.comment);
-    //  console.log(commentData);
-    dispatch(addComment(formData));
-
-    ///// end comment /////
+    dispatch(addComment(commentData));
   };
+/////////start edit////////
+ const [showEdit, setShowEdit] = useState(false);
+
+const isEdit=(e)=>{
+  setShowEdit(true)
+}
+//////
+const handleSubmitEdit = (e) => {
+  e.preventDefault();
+setShowEdit(false);
+  dispatch(updateComment(commentData));
+
+  console.log(commentData);
+};
+
+
 
   return (
     <>
@@ -100,17 +107,17 @@ const NewsDetails =()=>{
                     <ul>
                       <li>
                         <span>Posted On:</span>
-                        <a href="#">September 31, 2022</a>
+                        <a href="#">{singlepost.singlepost.date}</a>
                       </li>
                       <li>
                         <span>Posted By:</span>
-                        <a href="#">{singlepost.posts.name_doctor}</a>
+                        <a href="#">{singlepost.singlepost.name_doctor}</a>
                       </li>
                     </ul>
                   </div>
 
-                  <h3>{singlepost.posts.title}</h3>
-                  <p>{singlepost.posts.body}</p>
+                  <h3>{singlepost.singlepost.title}</h3>
+                  <p>{singlepost.singlepost.body}</p>
 
                   <ul class="wp-block-gallery columns-3">
                     <li class="blocks-gallery-item">
@@ -214,7 +221,7 @@ const NewsDetails =()=>{
                 <div class="comments-area">
                   <div class="comment-respond">
                     <h3 class="comment-reply-title">Leave a Reply</h3>
-
+                    {/* comment start */}
                     <form class="comment-form" onSubmit={handleSubmit}>
                       <p class="comment-notes">
                         <span id="email-notes">
@@ -226,11 +233,10 @@ const NewsDetails =()=>{
 
                       <p class="comment-form-comment">
                         <label>Comment</label>
+
                         <textarea
-                          value={commentData.comment}
                           onChange={handleChange}
                           name="comment"
-                          id="comment"
                           cols="45"
                           placeholder="Your Comment..."
                           rows="5"
@@ -265,44 +271,105 @@ const NewsDetails =()=>{
                   <h3 class="comments-title">
                     <br></br>3 Comments:
                   </h3>
+                  {comment1.comments.map((comment) => {
+                    return (
+                      <ol class="comment-list">
+                        <li class="comment">
+                          <div class="comment-body">
+                            <footer class="comment-meta">
+                              <div class="comment-author vcard">
+                                <img
+                                  src="assets/img/client/client-1.jpg"
+                                  class="avatar"
+                                  alt="image"
+                                />
+                                <b class="fn">{comment.name}</b>
+                              </div>
+                              <div class="comment-metadata">
+                                <a href="#">
+                                  <span>{comment.created_at}</span>
+                                </a>
+                              </div>
+                            </footer>
+                            <div class="comment-content">
+                              <p>{comment.comment}</p>
 
-                  <ol class="comment-list">
-                    <li class="comment">
-                      <div class="comment-body">
-                        <footer class="comment-meta">
-                          <div class="comment-author vcard">
-                            <img
-                              src="assets/img/client/client-1.jpg"
-                              class="avatar"
-                              alt="image"
-                            />
-                            <b class="fn">John Jones</b>
+                              <button
+                                onClick={isEdit}
+                                style={{
+                                  background: "none",
+                                  color: "inherit",
+                                  border: "none",
+                                  padding: 0,
+                                  font: "inherit",
+                                  outline: "inherit",
+                                }}
+                              >
+                                <a class="comment-reply-link">
+                                  <Icon
+                                    icon="fa6-regular:pen-to-square"
+                                    style={{ fontSize: "24px" }}
+                                  />
+                                </a>
+                              </button>
+                              <button
+                                style={{
+                                  background: "none",
+                                  color: "inherit",
+                                  border: "none",
+                                  padding: " 10px",
+                                  font: "inherit",
+                                  outline: "inherit",
+                                }}
+                                onClick={() => {
+                                  dispatch(deleteComment(comment.id));
+                                }}
+                              >
+                                <a class="comment-reply-link">
+                                  <Icon
+                                    icon="material-symbols:cancel-rounded"
+                                    style={{ fontSize: "24px" }}
+                                  />
+                                </a>
+                              </button>
+                            </div>
                           </div>
-                          <div class="comment-metadata">
-                            <a href="#">
-                              <span>April 24, 2022 at 10:59 am</span>
-                            </a>
-                          </div>
-                        </footer>
-                        <div class="comment-content">
-                          <p>
-                            Lorem Ipsum has been the industry’s standard dummy
-                            text ever since the 1500s, when an unknown printer
-                            took a galley of type and scrambled it to make a
-                            type specimen.
-                          </p>
-                        </div>
-                        <div class="reply">
-                          <a href="#" class="comment-reply-link">
-                            Reply
-                          </a>
-                        </div>
-                      </div>
-                    </li>
-                  </ol>
+                        </li>
+                      </ol>
+                    );
+                  })}
                 </div>
               </div>
             </div>
+
+            {/*edit comment */}
+            {showEdit && (
+              <form onSubmit={handleSubmitEdit}>
+                <div className="form-group">
+                  <p class="comment-form-comment">
+                    <textarea
+                      onChange={handleChange}
+                      name="comment"
+                      cols="45"
+                      placeholder="Your Comment..."
+                      rows="5"
+                      maxlength="65525"
+                      required="required"
+                    ></textarea>
+                  </p>
+                </div>
+                <div className="form-group" style={{ width: "10%" }}>
+                  <button
+                    className="form-control  btn btn-primary"
+                    type="submit"
+                  >
+                    update
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {/*edit comment end  */}
 
             <div class="col-lg-4 col-md-12">
               <aside class="widget-area">
@@ -324,24 +391,24 @@ const NewsDetails =()=>{
                   </form>
                 </section>
 
-                {/* <section class="widget widget_ketan_posts_thumb">
+                <section class="widget widget_ketan_posts_thumb">
                   <h3 class="widget-title">Popular Posts</h3>
                   {posts.posts.map((post) => {
                     return (
                       <article class="item" key={post.id}>
-                        <a href="#" class="thumb">
+                        <a href={`/NewsDetails/${post.id}`} class="thumb">
                           <img src="" class="fullimage cover bg1" role="img" />
                         </a>
                         <div class="info">
                           <span>{post.date}</span>
                           <h4 class="title usmall">
-                            <a href="#">{post.title}</a>
+                            <a href={`/NewsDetails/${post.id}`}>{post.title}</a>
                           </h4>
                         </div>
                       </article>
                     );
                   })}
-                </section> */}
+                </section>
               </aside>
             </div>
           </div>

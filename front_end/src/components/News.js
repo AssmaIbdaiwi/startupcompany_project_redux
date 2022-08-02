@@ -64,7 +64,7 @@ const News =()=>{
                               </li>
                               <li>
                                 <span>By: </span>
-                                <a href="#">{post.doctor_id}</a>
+                                <a href="#">{post.name_doctor}</a>
                               </li>
                             </ul>
                             <h3>
