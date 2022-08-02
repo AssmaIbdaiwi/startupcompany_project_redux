@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\AskDoctorController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactController;
@@ -26,6 +29,15 @@ Route::post('addComment',[CommentController::class , 'addComment']);
 Route::post('deleteComment/{id}',[CommentController::class , 'deleteComment']);
 Route::post('updateComment/{id}',[CommentController::class , 'updateComment']);
 
+Route::get('doctors', [DoctorController::class, 'getDoctors']);
+Route::get('doctorDetails/{id}', [DoctorController::class, 'getDoctorDetail']);
+Route::post('updateDoctorDetails/{id}', [DoctorController::class, 'updateDoctorDetails']);
+Route::post('askDoctor', [AskDoctorController::class, 'addAsk']);
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+
+});
 Route::get('apicontact',[ContactController::class , 'ContactAPI']);
 Route::post('addContact',[ContactController::class , 'addContact']);
 

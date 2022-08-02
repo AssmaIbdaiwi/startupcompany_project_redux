@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminCController;
+use App\Http\Controllers\AdminDController;
+use App\Http\Controllers\AdminMController;
+use App\Http\Controllers\AdminPController;
+use App\Http\Controllers\AdminUController;
+use App\Http\Controllers\DoctorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -15,7 +21,11 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
-
+ Route::resource('doctor', AdminDController::class);
+ Route::resource('user', AdminUController::class);
+ Route::resource('post', AdminPController::class);
+ Route::resource('message', AdminMController::class);
+ Route::resource('comment', AdminCController::class);
 //Route::get('/', [UserController::class, 'registerAPI']);
