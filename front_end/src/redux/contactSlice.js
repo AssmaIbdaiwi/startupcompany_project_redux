@@ -19,6 +19,7 @@ export const addContact = createAsyncThunk(
         title: "Contact Has been sent Successfully",
         showConfirmButton: false,
         timer: 1500,
+        confirmButtonColor: "#ea512e"
       });
     }
   }

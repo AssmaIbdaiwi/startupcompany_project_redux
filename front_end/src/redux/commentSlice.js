@@ -26,6 +26,7 @@ export const addComment = createAsyncThunk(
         title: "comment",
         text: "Has been Added Successfully",
         type: "success",
+        confirmButtonColor: "#ea512e"
       });
     }
     return response.data;
@@ -93,6 +94,7 @@ export const deleteComment = createAsyncThunk(
         title: "comment",
         text: "Has been deleted Successfully",
         type: "success",
+        confirmButtonColor: "#ea512e"
       });
     }
     const res = response.json();

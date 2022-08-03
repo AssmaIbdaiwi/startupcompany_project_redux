@@ -12,7 +12,7 @@ const Footer =()=>{
                         <div class="single-footer-widget">
                             <div class="logo">
                                 <h2>
-                                    <a href="index.html">Ketan</a>
+                                    <a href="index.html">Hello Baby</a>
                                 </h2>
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -166,7 +166,7 @@ const Footer =()=>{
             </div>
         </section>
 
-        <div class="copyright-area">
+        {/* <div class="copyright-area">
             <div class="container">
                 <div class="copyright-area-content">
                     <p>
@@ -177,7 +177,7 @@ const Footer =()=>{
                     </p>
                 </div>
             </div>
-        </div>
+        </div> */}
    
         <div class="go-top">
             <i class='bx bx-up-arrow-alt'></i>

@@ -16,6 +16,7 @@ import Index from "./components/Index";
 import Comunity from "./components/Comunity";
 import SingleComunity from "./components/SingleComunity";
 
+
 function App() {
 
 
@@ -34,9 +35,9 @@ function App() {
           <Route path="/News" element={<News />} />
           <Route path="/NewsDetails/:id" element={<NewsDetails />} />
           <Route path="/Doctors" element={<Doctors />} />
-          <Route path="/DoctorDetails" element={<DoctorDetails />} />
           <Route path="/Comunity" element={<Comunity />} />
           <Route path="/SingleComunity/:id" element={<SingleComunity />} />
+          <Route path="/DoctorDetails/:id" element={<DoctorDetails />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
         </Routes>

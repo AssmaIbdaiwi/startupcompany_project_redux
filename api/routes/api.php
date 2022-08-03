@@ -1,4 +1,7 @@
 <?php
+
+use App\Http\Controllers\AskDoctorController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ComunityPostController;
@@ -47,6 +50,15 @@ Route::post('updateComunityComment/{id}',[ComunityCommentController::class , 'up
 
 
 
+Route::get('doctors', [DoctorController::class, 'getDoctors']);
+Route::get('doctorDetails/{id}', [DoctorController::class, 'getDoctorDetail']);
+Route::post('updateDoctorDetails/{id}', [DoctorController::class, 'updateDoctorDetails']);
+Route::post('askDoctor', [AskDoctorController::class, 'addAsk']);
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+
+// });
 Route::get('apicontact',[ContactController::class , 'ContactAPI']);
 Route::post('addContact',[ContactController::class , 'addContact']);
 
