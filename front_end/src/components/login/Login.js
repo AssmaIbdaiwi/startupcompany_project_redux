@@ -13,45 +13,53 @@ const Login = () => {
   const [userData, setUser] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
 
+  const [all, setall] = useState("");
+
   function handelSubmet(e) {
     e.preventDefault();
+    setall("");
 
-    console.log(userData);
-
-    axios
-      .post(`http://127.0.0.1:8000/api/login`, { ...userData })
-      .then(res => {
-       
-        
-        localStorage.setItem("id", res.data.id);
-        console.log(res.status);
-        console.log(res.data);
-        console.log(res.data.id);
+    if (userData.email != "" && userData.password != "") {
+      axios
+        .post(`http://127.0.0.1:8000/api/login`, { ...userData })
+        .then((res) => {
+          localStorage.setItem("id", res.data.id);
+          console.log(res.status);
+          console.log(res.data);
+          console.log(res.data.id);
 
 
-         
-         localStorage.setItem("id", res.data.id);
-         if(res.data.id >0 && res.data.id <100)
-         {
+          localStorage.setItem("id", res.data.id);
+          if (res.data.id > 0 && res.data.id < 100) {
             dispatch(login(userData));
-         }
-  
-      })
-        // console.log(user);
-        
-         
-        // } else {
-        //   Swal.fire({
-        //     title: "Login Faild",
-        //     text: "Email or Password are unvalid ",
-        //     //type: "success"
-        //   });
-        // }
+          }
+          else{
+            Swal.fire({
+              title: "Login Faild",
+              text: "incorrect Email or Password",
+              type: "Faild",
+              confirmButtonColor: "#ea512e",
+            });
+          }
+        });
+    } else {
+      setall(
+        <h5 style={{ color: "red", textAlign: "center" }}>
+          {" "}
+          *** you have to fill all fields ***
+        </h5>
+      );
+    }
 
+    // console.log(user);
 
-      
-    
-      
+    // } else {
+    //   Swal.fire({
+    //     title: "Login Faild",
+    //     text: "Email or Password are unvalid ",
+    //     //type: "success"
+    //   });
+    // }
   }
 
   useEffect(() => {
@@ -93,7 +101,7 @@ const Login = () => {
                   }
                 />
               </div>
-
+              {all}
               <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                   <div class="form-check">
