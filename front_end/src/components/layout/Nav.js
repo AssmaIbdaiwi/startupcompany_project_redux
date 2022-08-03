@@ -116,7 +116,7 @@ const Nav = () => {
                                     </div>
                                 </div> */}
 
-                  {!id && (
+                  {id && (
                     <div class="option-item">
                       <Link to="/login">
                         {" "}
@@ -126,7 +126,7 @@ const Nav = () => {
                       </Link>
                     </div>
                   )}
-                  {!id && (
+                  {id && (
                     <div class="option-item">
                       <Link to="/sign_up">
                         <a href="#" class="default-btn">
@@ -136,7 +136,7 @@ const Nav = () => {
                     </div>
                   )}
 
-                  {id && (
+                  {id>0 && (
                     <div class="option-item">
                       <Link to="/Profile">
                         <a href="#" class="default-btn">
@@ -146,7 +146,7 @@ const Nav = () => {
                     </div>
                   )}
 
-                  {id && (
+                  {id>0 && (
                     <div class="option-item">
                       <Link to="/" onClick={handleLogout}>
                         <a href="#" class="default-btn">
