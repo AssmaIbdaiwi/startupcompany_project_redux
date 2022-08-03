@@ -103,6 +103,9 @@ const Index = () => {
         {/* <!-- End Who We Are Area -->
         
         <!-- Start Fun Facts Area --> */}
+
+     
+
         <section class="fun-facts-area pt-100 pb-70">
             <div class="container">
                 <div class="row">
@@ -137,6 +140,7 @@ const Index = () => {
                 </div>
             </div>
         </section>
+
         {/* <!-- End Fun Facts Area -->
 
         <!-- Start Choose Area --> */}
@@ -648,35 +652,15 @@ const Index = () => {
                             <div >
                                  <h2 style={{fontSize:"25px",margin : "10px"}}>The first month is completely free, and the subscription starts from the second month</h2>
                             </div>
-                           
+                             </div>
+                    </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
-                        <form class="newsletter-form">
-                            <input type="email" class="input-newsletter" placeholder="Enter Email Address" name="EMAIL" required autocomplete="off"/>
-
-                            <button type="submit">Subscribe Now</button>
-                            
-                            <div id="validator-newsletter" class="form-result"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="newsletter-shape">
-                <div class="shape-1">
-                    <img src="assets/img/newsletter/newsletter-shape-1.png" alt="image"/>
-                </div>
-                <div class="shape-2">
-                    <img src="assets/img/newsletter/newsletter-shape-2.png" alt="image"/>
-                </div>
-            </div>
-        </div> */}
         {/* <!-- End Newsletter Area -->
 
         <!-- Start Partner Area --> */}
-        <div class="partner-area ptb-100">
+        {/* <div class="partner-area ptb-100">
             <div class="container">
                 <div class="partner-slider owl-carousel owl-theme">
                     <div class="partner-item">
@@ -700,8 +684,10 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
 
+  {/* </div> */}
+        
 
  
         </>

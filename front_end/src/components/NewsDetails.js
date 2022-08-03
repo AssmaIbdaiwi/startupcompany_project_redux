@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const NewsDetails = () => {
 
   const { id } = useParams();
+
 // ///posts///
   const dispatch = useDispatch();
 
@@ -32,8 +33,23 @@ const NewsDetails = () => {
     dispatch(getComments(id));
   }, [dispatch]);
   const comment1 = useSelector((state) => state.comment);
-  const [commentData, setCommentData] = useState({
-    commentId:id,
+/////
+let currentTimestamp = Date.now();
+let date = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+}).format(currentTimestamp);
+console.log(date)
+
+
+////
+  
+  const [commentData, setCommentData] = useState({ 
+    date:date,
     comment: " ",
     user_id_comment: localStorage.id,
     post_id_comment: id,
@@ -44,6 +60,7 @@ const NewsDetails = () => {
 
     const value = e.target.value;
     setCommentData({
+
       ...commentData,
       [e.target.name]: value,
     });
@@ -61,15 +78,19 @@ const isEdit=(e)=>{
   setShowEdit(true)
 }
 //////
+// const commentId= comment1.comments.id;
+// console.log(commentId)
 const handleSubmitEdit = (e) => {
   e.preventDefault();
-setShowEdit(false);
+   setShowEdit(false);
+
   dispatch(updateComment(commentData));
 
   console.log(commentData);
 };
 
 
+/////end edit/////
 
   return (
     <>
@@ -276,7 +297,7 @@ setShowEdit(false);
                               </div>
                               <div class="comment-metadata">
                                 <a href="#">
-                                  <span>{comment.created_at}</span>
+                                  <span>{comment.date}</span>
                                 </a>
                               </div>
                             </footer>
@@ -284,7 +305,10 @@ setShowEdit(false);
                               <p>{comment.comment}</p>
 
                               <button
-                                onClick={isEdit}
+                                onClick={() => {
+                                  setCommentData(comment);
+                                  isEdit();
+                                }}
                                 style={{
                                   background: "none",
                                   color: "inherit",
@@ -295,6 +319,7 @@ setShowEdit(false);
                                 }}
                               >
                                 <a class="comment-reply-link">
+                             
                                   <Icon
                                     icon="fa6-regular:pen-to-square"
                                     style={{ fontSize: "24px" }}
@@ -314,6 +339,7 @@ setShowEdit(false);
                                   dispatch(deleteComment(comment.id));
                                 }}
                               >
+                              
                                 <a class="comment-reply-link">
                                   <Icon
                                     icon="material-symbols:cancel-rounded"
@@ -330,7 +356,6 @@ setShowEdit(false);
                 </div>
               </div>
             </div>
-
             {/*edit comment */}
             {showEdit && (
               <form onSubmit={handleSubmitEdit}>
@@ -342,9 +367,11 @@ setShowEdit(false);
                       cols="45"
                       placeholder="Your Comment..."
                       rows="5"
+                      value={commentData.comment}
                       maxlength="65525"
+
+
                       required="required"
-                      
                     ></textarea>
                   </p>
                 </div>
