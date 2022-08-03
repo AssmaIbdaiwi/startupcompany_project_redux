@@ -72,6 +72,12 @@ const Nav = () => {
                   News
                     </NavLink>
                   </li>
+
+                  <li class="nav-item">
+                    <a href="/Comunity" class="nav-link ">
+                      Community
+                    </a>
+                  </li>
                   <li class="nav-item">
                   <NavLink exact to ="/About"  class="nav-link " ActiveClassName="active-link">
                   About us
