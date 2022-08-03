@@ -572,7 +572,7 @@ Navbar Area CSS
   margin-right: 15px;
 }
 
-.main-navbar .navbar .navbar-nav .nav-item a {
+.main-navbar .navbar .navbar-nav .nav-item  {
   color: #1b0238;
   font-size: 16px;
   font-weight: 600;

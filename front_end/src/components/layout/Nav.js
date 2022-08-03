@@ -57,30 +57,32 @@ const Nav = () => {
               >
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a href="/" class="nav-link active">
-                      Home
-                    </a>
+                    <NavLink exact to ="/"  class="nav-link " ActiveClassName="active-link">
+                    Home
+                    </NavLink>
                   </li>
                   <li class="nav-item">
-                    <a href="/Doctors" class="nav-link ">
-                      Doctors
-                    </a>
+                  <NavLink exact to ="/Doctors"  class="nav-link " ActiveClassName="active-link">
+                  Doctors
+                    </NavLink>
                   </li>
 
                   <li class="nav-item">
-                    <a href="/News" class="nav-link ">
-                      News
-                    </a>
+                  <NavLink exact to ="/News"  class="nav-link " ActiveClassName="active-link">
+                  News
+                    </NavLink>
                   </li>
                   <li class="nav-item">
-                    <a href="/About" class="nav-link ">
-                      About us
-                    </a>
+                  <NavLink exact to ="/About"  class="nav-link " ActiveClassName="active-link">
+                  About us
+                    </NavLink>
+                    
                   </li>
                   <li class="nav-item">
-                    <a href="/Contact" class="nav-link ">
-                      Contact
-                    </a>
+                  <NavLink exact to ="/Contact"  class="nav-link " ActiveClassName="active-link">
+                  Contact
+                    </NavLink>
+                   
                   </li>
                 </ul>
 
