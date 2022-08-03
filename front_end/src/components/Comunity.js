@@ -127,7 +127,7 @@ const Comunity = () => {
         <section class="class-area bg-fdf6ed pt-100 pb-70">
           <div class="container">
             <div class="section-title">
-              <span>Classes</span>
+              <h5>YOU MUST LOGIN TO BE A PART OF OUR FAMILY</h5>
               <h2>Popular Classes</h2>
             </div>
 
