@@ -17,7 +17,7 @@ const Index = () => {
                             <div class="main-banner-content">
                                 <span>Play, Learn and Grow</span>
                                 <h1>We are a Childcare Professional</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p>Get advice from the best experts in the area.</p>
 
                                 <div class="banner-btn">
                                     <a href="#" class="default-btn">
@@ -65,8 +65,8 @@ const Index = () => {
                         <div class="who-we-are-content">
                             <span>Who We Are</span>
                             <h3>Learn About Children Health Care</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>I am also interested in the health of children and also interested in the educational level and their method of education, so we provide the latest and best methods of education for children under the age of ten years under the supervision of the best experts and specialists.</p>
+                            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> */}
 
                             <ul class="who-we-are-list">
                                 <li>
@@ -79,7 +79,7 @@ const Index = () => {
                                 </li>
                                 <li>
                                     <span>3</span>
-                                    Safety and Security
+                                    Health Care
                                 </li>
                                 <li>
                                     <span>4</span>
@@ -109,7 +109,7 @@ const Index = () => {
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer" data-count="1200">10</span>
+                                <span class="odometer" data-count="1200">10+</span>
                             </h3>
                             <p>Doctors</p>
                         </div>
@@ -118,7 +118,7 @@ const Index = () => {
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact bg-1">
                             <h3>
-                                <span class="odometer" data-count="305">7</span>
+                                <span class="odometer" data-count="305">75+</span>
                             </h3>
                             <p>Posts</p>
                         </div>
@@ -127,9 +127,9 @@ const Index = () => {
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact bg-2">
                             <h3>
-                                <span class="odometer" data-count="48">20</span>
+                                <span class="odometer" data-count="48">15+</span>
                             </h3>
-                            <p>Comments</p>
+                            <p>Team</p>
                         </div>
                     </div>
 
@@ -486,12 +486,12 @@ const Index = () => {
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>Infants</h3>
+                            <h3>Three Month</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-1.png" alt="image"/>
                             </div>
-                            <span>3-8 Months  8:00 am -11:00  am</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            {/* <span>3-8 Months  8:00 am -11:00  am</span> */}
+                            <p style={{color:"green",fontSize:"20px"}}>10 $</p>
                         </div>
                     </div>
 
@@ -501,30 +501,31 @@ const Index = () => {
                             <div class="image">
                                 <img src="assets/img/tour/tour-2.png" alt="image"/>
                             </div>
-                            <span>3-8 Months  8:00 am -11:00  am</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            {/* <span>3-8 Months  8:00 am -11:00  am</span> */}
+                            <p style={{color:"green",fontSize:"20px"}}>20 $</p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>Toddler</h3>
+                            <h3>six Month</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-3.png" alt="image"/>
                             </div>
-                            <span>3-8 Months  8:00 am -11:00  am</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            {/* <span>3-8 Months  8:00 am -11:00  am</span> */}
+                            <p style={{color:"green",fontSize:"20px"}}>45 $</p>
+
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>Flexcare</h3>
+                            <h3>Year</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-4.png" alt="image"/>
                             </div>
-                            <span>3-8 Months  8:00 am -11:00  am</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            {/* <span>3-8 Months  8:00 am -11:00  am</span> */}
+                            <p style={{color:"green",fontSize:"20px"}}>90 $</p>
                         </div>
                     </div>
                 </div>
@@ -644,7 +645,10 @@ const Index = () => {
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="newsletter-content">
-                            <h2>Do You Want To Know Get Update What’s Upcoming</h2>
+                            <div >
+                                 <h2 style={{fontSize:"25px",margin : "10px"}}>The first month is completely free, and the subscription starts from the second month</h2>
+                            </div>
+                           
                         </div>
                     </div>
 
