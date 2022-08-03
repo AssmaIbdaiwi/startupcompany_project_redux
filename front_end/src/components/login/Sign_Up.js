@@ -6,7 +6,7 @@ import { addUser } from "../../redux/userLoginSlice";
 import axios from "axios";
 import "./style.css";
 
-import { SignInWithGoogle } from "../firebase/config";
+import { SignInWithGoogle , SignInWithFacebook} from "../firebase/config";
 
 const Sign_up = () => {
   const [userData, setUser] = useState({ name: "", email: "", password: "" });
@@ -193,7 +193,7 @@ const Sign_up = () => {
                 Sign in with Google
               </button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button type="button" class="login-with-facebook-btn" >
+              <button type="button" class="login-with-facebook-btn" onClick={SignInWithFacebook}>
                 Sign in with Facebook
               </button>
 

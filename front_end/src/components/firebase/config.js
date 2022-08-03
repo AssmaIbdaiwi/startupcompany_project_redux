@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
-const provider2 = new GoogleAuthProvider();
+const provider2 = new FacebookAuthProvider();
 
 
 export const SignInWithGoogle = () => {
@@ -39,11 +39,11 @@ export const SignInWithGoogle = () => {
 export const SignInWithFacebook = () => {
  
 
-  signInWithPopup(auth, provider)
+  signInWithPopup(auth, provider2)
     .then((res) => {
-      //console.log(userData);
-      localStorage.setItem("name",res.user.displayName);
-      localStorage.setItem("email",res.user.email);
+      console.log(res);
+      // localStorage.setItem("name",res.user.displayName);
+      // localStorage.setItem("email",res.user.email);
     })
     .catch((error) => {
       console.log(error);
