@@ -7,46 +7,52 @@ import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/userSlice";
 
 const Login = () => {
-    let navigate = useNavigate();
-    const user = useSelector((state) => state.user.isLogged);
-    
+  let navigate = useNavigate();
+  const user = useSelector((state) => state.user.isLogged);
+
   const [userData, setUser] = useState({ email: "", password: "" });
   const dispatch = useDispatch();
-
 
   function handelSubmet(e) {
     e.preventDefault();
 
-
     console.log(userData);
 
+    axios
+      .post(`http://127.0.0.1:8000/api/login`, { ...userData })
+      .then(res => {
+       
+        
+        localStorage.setItem("id", res.data.id);
+        console.log(res.status);
+        console.log(res.data);
+        console.log(res.data.id);
 
 
-    axios.post(`http://127.0.0.1:8000/api/login`, { ...userData })
-    .then(res => {
-     // console.log(user);
-     // console.log(res.data);
-     if(res.ok)
-     {
-      dispatch(login(res.data.name));
-      localStorage.setItem("id", res.data.id);
+         
+         localStorage.setItem("id", res.data.id);
+         if(res.data.id >0 && res.data.id <100)
+         {
+            dispatch(login(userData));
+         }
+  
+      })
+        // console.log(user);
+        
+         
+        // } else {
+        //   Swal.fire({
+        //     title: "Login Faild",
+        //     text: "Email or Password are unvalid ",
+        //     //type: "success"
+        //   });
+        // }
+
+
       
-     }
-     else{
-      Swal.fire({
-        title: "Login Faild",
-        text: "Email or Password are unvalid ",
-        confirmButtonColor: "#ea512e"
-        //type: "success"
-    })
-     }
+    
       
-
-    })
-
   }
-
-
 
   useEffect(() => {
     if (user) {
@@ -55,9 +61,6 @@ const Login = () => {
       navigate("/login", { replace: true });
     }
   }, [user]);
-
-
-
 
   return (
     <>

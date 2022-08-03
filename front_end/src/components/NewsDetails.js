@@ -168,7 +168,7 @@ setShowEdit(false);
                     magnam aliquam quaerat voluptatem.
                   </p>
                 </div>
-
+{/* 
                 <div class="article-footer">
                   <div class="article-tags">
                     <span>
@@ -199,7 +199,7 @@ setShowEdit(false);
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> */}
 
                 {/* <div class="post-navigation">
                   <div class="navigation-links">

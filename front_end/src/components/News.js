@@ -22,12 +22,12 @@ const News =()=>{
                 <div className="d-table-cell">
                   <div className="container">
                     <div className="page-banner-content">
-                      <h2>Post</h2>
+                      <h2>News</h2>
                       <ul>
                         <li>
                           <a href="index.html">Home</a>
                         </li>
-                        <li>Post</li>
+                        <li>News</li>
                       </ul>
                     </div>
                   </div>

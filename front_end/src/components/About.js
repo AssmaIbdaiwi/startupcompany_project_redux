@@ -34,8 +34,8 @@ const About =()=>{
                         <div class="who-we-are-content">
                             <span>About</span>
                             <h3>Learn About Our Work and Cultural Activities</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>I am also interested in the health of children and also interested in the educational level and their method of education, so we provide the latest and best methods of education for children under the age of ten years under the supervision of the best experts and specialists.</p>
+                            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> */}
 
                             <ul class="who-we-are-list">
                                 <li>
@@ -72,13 +72,13 @@ const About =()=>{
         {/* <!-- End Who We Are Area -->
 
         <!-- Start Fun Facts Area --> */}
-        <section class="fun-facts-area pt-100 pb-70">
+       <section class="fun-facts-area pt-100 pb-70">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer" data-count="1200">10</span>
+                                <span class="odometer" data-count="1200">10+</span>
                             </h3>
                             <p>Doctors</p>
                         </div>
@@ -87,7 +87,7 @@ const About =()=>{
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact bg-1">
                             <h3>
-                                <span class="odometer" data-count="305">7</span>
+                                <span class="odometer" data-count="305">75+</span>
                             </h3>
                             <p>Posts</p>
                         </div>
@@ -96,9 +96,9 @@ const About =()=>{
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact bg-2">
                             <h3>
-                                <span class="odometer" data-count="48">20</span>
+                                <span class="odometer" data-count="48">15+</span>
                             </h3>
-                            <p>Comments</p>
+                            <p>Team</p>
                         </div>
                     </div>
 

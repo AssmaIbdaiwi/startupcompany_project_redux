@@ -21,7 +21,7 @@ const Nav = () => {
           <div class="container">
             <div class="main-responsive-menu">
               <div class="logo">
-                <a href="index.html">
+                <a href="/">
                   <img
                     src="assets/img/logo.png"
                     class="black-logo"
@@ -41,12 +41,13 @@ const Nav = () => {
         <div class="main-navbar">
           <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
-              <a class="navbar-brand" href="index.html">
-                <img src="assets/img/logo.png" class="black-logo" alt="image" />
+              <a class="navbar-brand" href="/">
+                <img src="assets/img/logo2.png" class="black-logo" alt="image" style={{width:"88px"}} />
                 <img
                   src="assets/img/logo-2.png"
                   class="white-logo"
                   alt="image"
+                  href="/"
                 />
               </a>
 
