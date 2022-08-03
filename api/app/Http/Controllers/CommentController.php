@@ -46,6 +46,7 @@ class CommentController extends Controller
         $comment = Comment::find($id);
         $comment->comment = $request->comment;
         $comment->date = $request->date;
+        // $comment->create_at->format('d/m/Y') ;
         $comment->user_id_comment = $request->user_id_comment;
         $comment->post_id_comment = $request->post_id_comment;
 

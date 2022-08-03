@@ -71,6 +71,12 @@ const Nav = () => {
                       News
                     </a>
                   </li>
+
+                  <li class="nav-item">
+                    <a href="/Comunity" class="nav-link ">
+                      Community
+                    </a>
+                  </li>
                   <li class="nav-item">
                     <a href="/About" class="nav-link ">
                       About us

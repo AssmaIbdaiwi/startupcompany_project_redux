@@ -34,32 +34,46 @@ export const addComment = createAsyncThunk(
  
 );
 ///////update
-export const updateComment = createAsyncThunk("comment/updateComment", async (args) => {
-  const id = args.commentId;
-  console.log(args,id)
-  const response = await fetch(
-    `http://127.0.0.1:8000/api/updateComment/${id}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment: args.comment, user_id_comment:args.user_id_comment,post_id_comment: args.post_id_comment}),
+export const updateComment = createAsyncThunk(
+  "comment/updateComment",
+  async (comment, thunkAPI) => {
+    // const id = args.id;
+    // console.log(args, id);
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/updateComment/${comment.id}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment),
+      }
+    );
+      
+    if (response.ok) {
+      Swal.fire({
+        title: "comment",
+        text: "Has been updated Successfully",
+        type: "success",
+      });
     }
-
-  );
-
-
-  if (response.ok) {
-    Swal.fire({
-      title: "comment",
-      text: "Has been updated Successfully",
-      type: "success",
-    });
+    const res = await response.json();
+     console.log(res);
+    thunkAPI.dispatch(getComments(res.post_id_comment));
+   
+    return res;
   }
-  const res = response.json();
-  
-  return res;
+);
 
-});
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -13,9 +13,8 @@ import News from "./components/News";
 import NewsDetails from "./components/NewsDetails";
 import "./App.css";
 import Index from "./components/Index";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from './redux/postSlice';
+import Comunity from "./components/Comunity";
+import SingleComunity from "./components/SingleComunity";
 
 function App() {
 
@@ -29,7 +28,6 @@ function App() {
         <Routes>
           <Route path="/Register" element={<Register />} />
           <Route path="/Login" element={<Login />} />
-          
           <Route path="/Sign_UP" element={<Sign_UP />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/" element={<Index />} />
@@ -37,6 +35,8 @@ function App() {
           <Route path="/NewsDetails/:id" element={<NewsDetails />} />
           <Route path="/Doctors" element={<Doctors />} />
           <Route path="/DoctorDetails" element={<DoctorDetails />} />
+          <Route path="/Comunity" element={<Comunity />} />
+          <Route path="/SingleComunity/:id" element={<SingleComunity />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
         </Routes>

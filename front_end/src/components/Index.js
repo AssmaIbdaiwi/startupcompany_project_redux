@@ -103,47 +103,7 @@ const Index = () => {
         {/* <!-- End Who We Are Area -->
         
         <!-- Start Fun Facts Area --> */}
-        <section class="fun-facts-area pt-100 pb-70">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-fun-fact">
-                            <h3>
-                                <span class="odometer" data-count="1200">00</span>
-                            </h3>
-                            <p>Students</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-fun-fact bg-1">
-                            <h3>
-                                <span class="odometer" data-count="305">00</span>
-                            </h3>
-                            <p>Teachers</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-fun-fact bg-2">
-                            <h3>
-                                <span class="odometer" data-count="48">00</span>
-                            </h3>
-                            <p>Classroom</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-fun-fact bg-3">
-                            <h3>
-                                <span class="odometer" data-count="50">00</span>
-                            </h3>
-                            <p>Bus</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+     
         {/* <!-- End Fun Facts Area -->
 
         <!-- Start Choose Area --> */}
@@ -365,122 +325,6 @@ const Index = () => {
             </div>
         </section>
         {/* <!-- End Class Area -->
-        
-        <!-- Start Gallery Area --> */}
-        <div class="gallery-area pt-100 pb-70">
-            <div class="container">
-                <div class="section-title">
-                    <span>Gallery</span>
-                    <h2>Our Activities Gallery</h2>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-gallery-box">
-                            <img src="assets/img/gallery/gallery-1.jpg" alt="image"/>
-    
-                            <a href="assets/img/gallery/gallery-1.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
-                                <i class='bx bx-search-alt'></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-gallery-box">
-                            <img src="assets/img/gallery/gallery-2.jpg" alt="image"/>
-    
-                            <a href="assets/img/gallery/gallery-2.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
-                                <i class='bx bx-search-alt'></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-gallery-box">
-                            <img src="assets/img/gallery/gallery-3.jpg" alt="image"/>
-    
-                            <a href="assets/img/gallery/gallery-3.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
-                                <i class='bx bx-search-alt'></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-gallery-box">
-                            <img src="assets/img/gallery/gallery-4.jpg" alt="image"/>
-    
-                            <a href="assets/img/gallery/gallery-4.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
-                                <i class='bx bx-search-alt'></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-gallery-box">
-                            <img src="assets/img/gallery/gallery-5.jpg" alt="image"/>
-    
-                            <a href="assets/img/gallery/gallery-5.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
-                                <i class='bx bx-search-alt'></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-gallery-box">
-                            <img src="assets/img/gallery/gallery-6.jpg" alt="image"/>
-    
-                            <a href="assets/img/gallery/gallery-6.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
-                                <i class='bx bx-search-alt'></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {/* <!-- End Gallery Area -->
-
-        <!-- Start Quote Area --> */}
-        <section class="quote-area pb-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="quote-image"></div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="quote-item">
-                            <div class="content">
-                                <span>Get a Quote</span>
-                                <h3>Online Class Registration</h3>
-                            </div>
-
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email Address"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Studying Class"/>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Type Your Requirements"/>
-                                </div>
-                                
-                                <button type="submit" class="default-btn">
-                                    Submit Now
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        {/* <!-- End Quote Area -->
 
         <!-- Start Tour Area --> */}
         <section class="tour-area pb-70">
@@ -646,36 +490,7 @@ const Index = () => {
         {/* <!-- End Blog Area -->
 
         <!-- Start Newsletter Area --> */}
-        <div class="newsletter-area ptb-100">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="newsletter-content">
-                            <h2>Do You Want To Know Get Update What’s Upcoming</h2>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-6">
-                        <form class="newsletter-form">
-                            <input type="email" class="input-newsletter" placeholder="Enter Email Address" name="EMAIL" required autocomplete="off"/>
-
-                            <button type="submit">Subscribe Now</button>
-                            
-                            <div id="validator-newsletter" class="form-result"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="newsletter-shape">
-                <div class="shape-1">
-                    <img src="assets/img/newsletter/newsletter-shape-1.png" alt="image"/>
-                </div>
-                <div class="shape-2">
-                    <img src="assets/img/newsletter/newsletter-shape-2.png" alt="image"/>
-                </div>
-            </div>
-        </div>
         {/* <!-- End Newsletter Area -->
 
         <!-- Start Partner Area --> */}
