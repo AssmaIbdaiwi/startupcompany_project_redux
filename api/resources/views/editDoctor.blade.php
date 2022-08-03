@@ -89,12 +89,12 @@
    
 </div>
         <div class="row">
-            {{-- <div class="col-md-6 pr-1">
+            <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Image</label>
                 <input type="file" class="form-control"  name='image'>
               </div>
-            </div> --}}
+            </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-left" style="padding-left: 40px">
             <button type="submit" class="btn btn-primary">Submit</button>
     </div>

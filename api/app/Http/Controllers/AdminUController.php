@@ -39,24 +39,24 @@ class AdminUController extends Controller
      */
     public function store(Request $request)
     {
-          //validate the input 
-          $request->validate([
+        //validate the input 
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
             'mobile' => 'required|regex:/[07]{2,3}[7-9]{1,2}[0-9]{7,8}/|min:10',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048'
-           
+
         ]);
 
 
         $user = new User();
-   
+
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request['password']);
         $user->mobile = $request->input('mobile');
-      
+
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $extention = $file->getClientOriginalExtension();
@@ -65,7 +65,7 @@ class AdminUController extends Controller
             $user->image = $filename;
         }
 
-      
+
         $user->save();
 
         return redirect()->route('user.index')->with('success', 'User added successfully.');
@@ -109,7 +109,7 @@ class AdminUController extends Controller
             // 'password' => 'required',
             'mobile' => 'required',
             //'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
-            
+
         ]);
         $user = new User();
         if ($request->hasfile('image')) {
@@ -124,11 +124,11 @@ class AdminUController extends Controller
             'email' => $request->email,
             // 'password' => $request->password,
             'mobile' => $request->mobile,
-          'image'=>$user->image
+            'image' => $user->image
         ]);
 
-       
-        
+
+
 
         return redirect()->route('user.index')
             ->with('success', 'User updated successfully');

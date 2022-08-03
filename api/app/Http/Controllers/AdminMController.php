@@ -16,7 +16,7 @@ class AdminMController extends Controller
     public function index()
     {
         $messages = Contact::latest()->paginate(10);
-        return view('messages',compact('messages'))
+        return view('messages', compact('messages'))
             ->with(request()->input('page'));
     }
 
@@ -86,6 +86,6 @@ class AdminMController extends Controller
         $delete = Contact::find($id);
         $delete->delete();
         return redirect()->route('message.index')
-                        ->with('success','Message deleted successfully');
+            ->with('success', 'Message deleted successfully');
     }
 }

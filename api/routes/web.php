@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminCController;
 use App\Http\Controllers\AdminDController;
+use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminMController;
 use App\Http\Controllers\AdminPController;
 use App\Http\Controllers\AdminUController;
@@ -28,4 +29,5 @@ Route::get('/', function () {
  Route::resource('post', AdminPController::class);
  Route::resource('message', AdminMController::class);
  Route::resource('comment', AdminCController::class);
+ Route::resource('login', AdminLoginController::class);
 //Route::get('/', [UserController::class, 'registerAPI']);

@@ -16,12 +16,12 @@ class AdminCController extends Controller
      */
     public function index()
     {
-        $comments= User::Join('comments' ,'comments.user_id_comment','=','users.id')
-        ->Join('posts','posts.id' ,'=','comments.post_id_comment')
-        ->get(['users.name' ,'posts.title', 'comments.comment','comments.id','comments.created_at']);
+        $comments = User::Join('comments', 'comments.user_id_comment', '=', 'users.id')
+            ->Join('posts', 'posts.id', '=', 'comments.post_id_comment')
+            ->get(['users.name', 'posts.title', 'comments.comment', 'comments.id', 'comments.created_at']);
 
 
-       // $comments = User::latest()->paginate(20);
+        // $comments = User::latest()->paginate(20);
         return view('comments', compact('comments'))
             ->with(request()->input('page'));
     }

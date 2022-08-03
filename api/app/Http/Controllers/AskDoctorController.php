@@ -15,7 +15,7 @@ class AskDoctorController extends Controller
         $ask->user_id_ask = $request->user_id_ask;
         $ask->doctor_id_ask = $request->doctor_id_ask;
         $ask->question = $request->question;
-       
+
         $ask->save();
     }
     // /**

@@ -84,7 +84,7 @@
                     {{$doctor->specialization;}}
                   </td>
                   <td >
-                    {{$doctor->description;}}
+                    {{Str::limit($doctor->description,100);}}
                   </td>
                   <td>
                     <form action=" {{ route('doctor.destroy',$doctor->id) }}" method="POST"> 
