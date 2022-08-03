@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider,FacebookAuthProvider , signInWithPopup } from "firebase/auth";
 import { useState } from "react";
 // import { googleprovider } from "./mediaAuth";
 
@@ -17,6 +17,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
+const provider2 = new FacebookAuthProvider();
 
 
 export const SignInWithGoogle = () => {
@@ -32,3 +33,23 @@ export const SignInWithGoogle = () => {
       console.log(error);
     });
 };
+
+
+
+export const SignInWithFacebook = () => {
+ 
+
+  signInWithPopup(auth, provider2)
+    .then((res) => {
+      console.log(res);
+      // localStorage.setItem("name",res.user.displayName);
+      // localStorage.setItem("email",res.user.email);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+
+
+

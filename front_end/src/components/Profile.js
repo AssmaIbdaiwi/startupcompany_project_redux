@@ -121,7 +121,7 @@ const Profile = () => {
                   </div>
                   <br />
 
-                  <div class="form-group">
+                  {/* <div class="form-group">
                     <label>Password</label>
                     <input
                       type="password"
@@ -135,7 +135,7 @@ const Profile = () => {
                         }))
                       }
                     />
-                  </div>
+                  </div> */}
                   <br />
 
                   <button type="submit" class="default-btn">

@@ -74,9 +74,10 @@ const Nav = () => {
                   </li>
 
                   <li class="nav-item">
-                    <a href="/Comunity" class="nav-link ">
-                      Community
-                    </a>
+                  <NavLink exact to ="/Comunity"  class="nav-link " ActiveClassName="active-link">
+                  Community
+                    </NavLink>
+                   
                   </li>
                   <li class="nav-item">
                   <NavLink exact to ="/About"  class="nav-link " ActiveClassName="active-link">

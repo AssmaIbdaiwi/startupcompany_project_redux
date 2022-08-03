@@ -34,8 +34,8 @@ class ComunityPostController extends Controller
         $comment->subject = $request->get('subject');    
         $comment->user_id_ComunityPost = $request->get('user_id_ComunityPost');   
         
-        // if($request->has('image')) {
-        //         $image= $request->file('image');
+        // if($request->has('image_comunity_posts')) {
+        //         $image= $request->file('image_comunity_posts');
         //         $filename =time().'.'.$image->getClientOriginalExtension();
         //         $image->move('upload/', $filename);
         //         $comment->image_comunity_posts = $filename;
@@ -44,10 +44,11 @@ class ComunityPostController extends Controller
         
         if ($request->hasfile('image_comunity_posts')) { 
             $file = $request->file('image_comunity_posts');
+            dd($file);
             $extention = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extention;
             $file->move('upload/', $filename);
-            dd($filename);
+            
             $comment->image_comunity_posts = $filename;
         }
 

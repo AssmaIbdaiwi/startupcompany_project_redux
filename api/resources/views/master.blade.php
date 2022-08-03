@@ -58,13 +58,19 @@
           <li>
             <a href="/post">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Posts</p>
+              <p>News</p>
             </a>
           </li>
           <li>
             <a href="/comment">
               <i class="now-ui-icons education_paper"></i>
-              <p>Comments</p>
+              <p>News-Comments</p>
+            </a>
+          </li>
+          <li>
+            <a href="/comunityPost">
+              <i class="now-ui-icons design_bullet-list-67"></i>
+              <p>Community Posts</p>
             </a>
           </li>
           {{-- <li>

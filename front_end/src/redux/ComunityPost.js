@@ -38,6 +38,7 @@ export const addComunityPosts = createAsyncThunk(
         title: "Post",
         text: "Has been Added Successfully",
         type: "success",
+        confirmButtonColor: "#ea512e"
       });
     }
     return response.data;
@@ -62,6 +63,7 @@ export const deleteComunityPost = createAsyncThunk(
         title: "Post",
         text: "Has been deleted Successfully",
         type: "success",
+        confirmButtonColor: "#ea512e"
       });
     }
     const res = response.json();
@@ -96,6 +98,7 @@ export const addComunityComment = createAsyncThunk(
         title: "Post",
         text: "Has been Added Successfully",
         type: "success",
+        confirmButtonColor: "#ea512e"
       });
     }
     return response.data;

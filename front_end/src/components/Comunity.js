@@ -21,7 +21,7 @@ const Comunity = () => {
     comment_comunity_posts: " ",
     subject: " ",
     user_id_ComunityPost: localStorage.id,
-    image_comunity_posts:''
+    image_comunity_posts:null
   });
   // console.log(id)
   const handleChange = (e) => {
@@ -72,17 +72,18 @@ const Comunity = () => {
             <div class="comment-respond">
               <h3 class="comment-reply-title">Post your questions</h3>
               {/* comment start */}
-              <form class="comment-form" onSubmit={handleSubmit}>
+              <form class="comment-form" onSubmit={handleSubmit}  enctype="multipart/form-data">
                 <p class="comment-notes">
                   <span id="email-notes"></span>
 
                   <span class="required"></span>
                 </p>
                 <h5>Image</h5>
-                <input type="file" class="form-control"  name='image_comunity_posts'
+                <input type="file"  name='image_comunity_posts'
                   // type="file"
                   onChange={handleChange}
                   // name="image"
+                  multiple
                 
                 />
                 <h5>Subject</h5>
@@ -101,7 +102,7 @@ const Comunity = () => {
                     onChange={handleChange}
                     name="comment_comunity_posts"
                     cols="45"
-                    placeholder="Your Comment..."
+                    placeholder="Your Post..."
                     rows="5"
                     maxlength="65525"
                     required="required"
@@ -114,7 +115,7 @@ const Comunity = () => {
                     name="submit"
                     id="submit"
                     class="submit"
-                    value="Post A Comment"
+                    value="Post "
                   />
                 </p>
               </form>
