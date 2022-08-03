@@ -42,9 +42,8 @@ class ComunityPostController extends Controller
         // }
 
         
-        if ($request->hasfile('image')) {
-            
-            $file = $request->file('image');
+        if ($request->hasfile('image_comunity_posts')) { 
+            $file = $request->file('image_comunity_posts');
             $extention = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extention;
             $file->move('upload/', $filename);

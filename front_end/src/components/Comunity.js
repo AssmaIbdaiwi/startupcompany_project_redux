@@ -21,6 +21,7 @@ const Comunity = () => {
     comment_comunity_posts: " ",
     subject: " ",
     user_id_ComunityPost: localStorage.id,
+    image_comunity_posts:''
   });
   // console.log(id)
   const handleChange = (e) => {
@@ -78,10 +79,10 @@ const Comunity = () => {
                   <span class="required"></span>
                 </p>
                 <h5>Image</h5>
-                <input
-                  type="file"
-                  // onChange={handleChange}
-                  name="image"
+                <input type="file" class="form-control"  name='image_comunity_posts'
+                  // type="file"
+                  onChange={handleChange}
+                  // name="image"
                 
                 />
                 <h5>Subject</h5>

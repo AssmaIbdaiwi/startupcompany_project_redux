@@ -124,7 +124,7 @@ const Nav = () => {
                                     </div>
                                 </div> */}
 
-                  {id && (
+                  {!id && (
                     <div class="option-item">
                       <Link to="/login">
                         {" "}
@@ -134,7 +134,7 @@ const Nav = () => {
                       </Link>
                     </div>
                   )}
-                  {id && (
+                  {!id && (
                     <div class="option-item">
                       <Link to="/sign_up">
                         <a href="#" class="default-btn">
