@@ -18,6 +18,7 @@ class CreateComunityPostsTable extends Migration
               $table->unsignedBigInteger('user_id_ComunityPost');
             $table->string('comment_comunity_posts')->nullable();
             $table->string('subject')->nullable();
+              $table->string('state')->nullable();
              $table->string('image_comunity_posts')->nullable();
             $table->foreign('user_id_ComunityPost')->on('users')->references('id')->onDelete('CASCADE')->onUpdate('CASCADE');
            

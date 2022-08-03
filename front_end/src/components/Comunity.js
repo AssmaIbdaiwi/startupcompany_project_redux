@@ -19,6 +19,7 @@ const Comunity = () => {
 
   const [comunityData, setComunityData] = useState({
     comment_comunity_posts: " ",
+    state: false,
     subject: " ",
     user_id_ComunityPost: localStorage.id,
   });
@@ -39,7 +40,7 @@ const Comunity = () => {
   };
 
 
-
+  let check = localStorage.getItem("id");
  
 
   return (
@@ -67,132 +68,158 @@ const Comunity = () => {
 
       <section class="blog-details-area ptb-100">
         <div class="container">
-          <div class="comments-area">
-            <div class="comment-respond">
-              <h3 class="comment-reply-title">Post your questions</h3>
-              {/* comment start */}
-              <form class="comment-form" onSubmit={handleSubmit}>
-                <p class="comment-notes">
-                  <span id="email-notes"></span>
+          {check && (
+            <>
+              <div class="comments-area">
+                <div class="comment-respond">
+                  <h3 class="comment-reply-title">Post your questions</h3>
+                  {/* comment start */}
+                  <form class="comment-form" onSubmit={handleSubmit}>
+                    <p class="comment-notes">
+                      <span id="email-notes"></span>
 
-                  <span class="required"></span>
-                </p>
-                <h5>Image</h5>
-                <input
-                  type="file"
-                  // onChange={handleChange}
-                  name="image"
-                
-                />
-                <h5>Subject</h5>
-                <input
-                  type="text"
-                  onChange={handleChange}
-                  name="subject"
-                  required
-                />
+                      <span class="required"></span>
+                    </p>
+                    <h5>Image</h5>
+                    <input
+                      type="file"
+                      // onChange={handleChange}
+                      name="image"
+                    />
+                    <h5>Subject</h5>
+                    <input
+                      type="text"
+                      onChange={handleChange}
+                      name="subject"
+                      required
+                    />
 
-                <h5>Post</h5>
-                <p class="comment-form-comment">
-                  <label>Comment</label>
+                    <h5>Post</h5>
+                    <p class="comment-form-comment">
+                      <label>Comment</label>
 
-                  <textarea
-                    onChange={handleChange}
-                    name="comment_comunity_posts"
-                    cols="45"
-                    placeholder="Your Comment..."
-                    rows="5"
-                    maxlength="65525"
-                    required="required"
-                  ></textarea>
-                </p>
+                      <textarea
+                        onChange={handleChange}
+                        name="comment_comunity_posts"
+                        cols="45"
+                        placeholder="Your Comment..."
+                        rows="5"
+                        maxlength="65525"
+                        required="required"
+                      ></textarea>
+                    </p>
 
-                <p class="form-submit">
-                  <input
-                    type="submit"
-                    name="submit"
-                    id="submit"
-                    class="submit"
-                    value="Post A Comment"
-                  />
-                </p>
-              </form>
-            </div>
-          </div>
+                    <p class="form-submit">
+                      <input
+                        type="submit"
+                        name="submit"
+                        id="submit"
+                        class="submit"
+                        value="Post A Comment"
+                      />
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </>
+          )}
         </div>
+     {!check && (    <div class="section-title">
+          <h5 className="text-danger">
+            YOU MUST LOGIN TO BE A PART OF OUR FAMILY
+          </h5>
+        </div>)}
         <section class="class-area bg-fdf6ed pt-100 pb-70">
           <div class="container">
             <div class="section-title">
-              <span>Classes</span>
               <h2>Popular Classes</h2>
             </div>
 
             <div class="row">
               {comunityposts.comunityposts.map((post) => {
-                return (
-                  <div class="col-lg-4 col-md-6" key={post.id}>
-                    <div class="single-class">
-                      <div class="class-image">
-                        <a href="#">
-                          <img src="assets/img/class/class-1.jpg" alt="image" />
-                        </a>
-                      </div>
+                 if (post.state != false) {
+                   return (
+                     <div class="col-lg-4 col-md-6" key={post.id}>
+                       <div class="single-class">
+                         <div class="class-image">
+                           <a href="#">
+                             <img
+                               src="assets/img/class/class-1.jpg"
+                               alt="image"
+                             />
+                           </a>
+                         </div>
 
-                      <div class="class-content">
-                        <h6>
-                          Post by:
-                          <span style={{ color: "#6b6b84" }}> {post.name}</span> {post.created_at}
-                        </h6>
-                        <div class="price">
-                          {" "}
-                          <button
-                            style={{
-                              background: "none",
-                              color: "inherit",
-                              border: "none",
-                              padding: " 10px",
-                              font: "inherit",
-                              outline: "inherit",
-                            }}
-                            onClick={() => {
-                              dispatch(deleteComunityPost(post.id));
-                            }}
-                          >
-                            <a class="comment-reply-link">
-                              <Icon
-                                icon="material-symbols:cancel-rounded"
-                                style={{ fontSize: "24px", color: "white" }}
-                              />
-                            </a>
-                          </button>
-                        </div>
+                         <div class="class-content">
+                           <h6>
+                             Post by:
+                             <span style={{ color: "#6b6b84" }}>
+                               {" "}
+                               {post.name}
+                             </span>{" "}
+                             {post.created_at}
+                           </h6>
+                           <div class="price">
+                             {" "}
+                             {check && (
+                               <button
+                                 style={{
+                                   background: "none",
+                                   color: "inherit",
+                                   border: "none",
+                                   padding: " 10px",
+                                   font: "inherit",
+                                   outline: "inherit",
+                                 }}
+                                 onClick={() => {
+                                   dispatch(deleteComunityPost(post.id));
+                                 }}
+                               >
+                                 <a class="comment-reply-link">
+                                   <Icon
+                                     icon="material-symbols:cancel-rounded"
+                                     style={{
+                                       fontSize: "24px",
+                                       color: "white",
+                                     }}
+                                   />
+                                 </a>
+                               </button>
+                             )}
+                           </div>
 
-                        <h3>
-                          <a href="#">{post.subject}</a>
-                        </h3>
-                        <p>{post.comment_comunity_posts}</p>
+                           <h3>
+                             <a href="#">{post.subject}</a>
+                           </h3>
+                           <p>{post.comment_comunity_posts}</p>
 
-                        <ul class=""></ul>
-                        <button
-                          style={{
-                            background: "none",
-                            color: "inherit",
-                            border: "none",
-                            padding: " 10px",
-                            font: "inherit",
-                            outline: "inherit",
-                          }}
-                        >
-                          <div class="class-btn">
-                            <a href={`/SingleComunity/${post.id}`} class="default-btn">
-                              Join conversation
-                            </a>
-                          </div>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                );
+                           <ul class=""></ul>
+                           <button
+                             style={{
+                               background: "none",
+                               color: "inherit",
+                               border: "none",
+                               padding: " 10px",
+                               font: "inherit",
+                               outline: "inherit",
+                             }}
+                           >
+                             {check && (
+                               <div class="class-btn">
+                                 <a
+                                   href={`/SingleComunity/${post.id}`}
+                                   class="default-btn"
+                                 >
+                                   Join conversation
+                                 </a>
+                               </div>
+                             )}
+                           </button>
+                         </div>
+                       </div>
+                     </div>
+                   );
+                 }
               })}
             </div>
           </div>

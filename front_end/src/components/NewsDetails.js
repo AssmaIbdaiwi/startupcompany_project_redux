@@ -33,6 +33,7 @@ const NewsDetails = () => {
     dispatch(getComments(id));
   }, [dispatch]);
   const comment1 = useSelector((state) => state.comment);
+  console.log(comment1.comments);
 /////
 let currentTimestamp = Date.now();
 let date = new Intl.DateTimeFormat("en-US", {
@@ -50,6 +51,7 @@ console.log(date)
   
   const [commentData, setCommentData] = useState({ 
     date:date,
+    state:false,
     comment: " ",
     user_id_comment: localStorage.id,
     post_id_comment: id,
@@ -66,11 +68,13 @@ console.log(date)
     });
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     dispatch(addComment(commentData));
-  };
+  
+  console.log(commentData);}
 /////////start edit////////
  const [showEdit, setShowEdit] = useState(false);
 
@@ -89,7 +93,7 @@ const handleSubmitEdit = (e) => {
   console.log(commentData);
 };
 
-
+  let check = localStorage.getItem("id");
 /////end edit/////
 
   return (
@@ -121,7 +125,13 @@ const handleSubmitEdit = (e) => {
             <div class="col-lg-8 col-md-12">
               <div class="blog-details-desc">
                 <div class="article-image">
-                  <img  src={ "http://localhost:8000/upload/" +singlepost.singlepost.main_image} alt="image" />
+                  <img
+                    src={
+                      "http://localhost:8000/upload/" +
+                      singlepost.singlepost.main_image
+                    }
+                    alt="image"
+                  />
                 </div>
                 <div class="article-content">
                   <div class="entry-meta">
@@ -143,19 +153,37 @@ const handleSubmitEdit = (e) => {
                   <ul class="wp-block-gallery columns-3">
                     <li class="blocks-gallery-item">
                       <figure>
-                        <img src={ "http://localhost:8000/upload/" +singlepost.singlepost.main_image} alt="image" />
+                        <img
+                          src={
+                            "http://localhost:8000/upload/" +
+                            singlepost.singlepost.main_image
+                          }
+                          alt="image"
+                        />
                       </figure>
                     </li>
 
                     <li class="blocks-gallery-item">
                       <figure>
-                        <img src={ "http://localhost:8000/upload/" +singlepost.singlepost.main_image} alt="image" />
+                        <img
+                          src={
+                            "http://localhost:8000/upload/" +
+                            singlepost.singlepost.main_image
+                          }
+                          alt="image"
+                        />
                       </figure>
                     </li>
 
                     <li class="blocks-gallery-item">
                       <figure>
-                        <img src={ "http://localhost:8000/upload/" +singlepost.singlepost.main_image} alt="image" />
+                        <img
+                          src={
+                            "http://localhost:8000/upload/" +
+                            singlepost.singlepost.main_image
+                          }
+                          alt="image"
+                        />
                       </figure>
                     </li>
                   </ul>
@@ -238,122 +266,121 @@ const handleSubmitEdit = (e) => {
                     </div>
                   </div>
                 </div> */}
+                {check && (
+                  <>
+                    <div class="comments-area">
+                      <div class="comment-respond">
+                        <h3 class="comment-reply-title">Leave a Comment</h3>
 
-                <div class="comments-area">
-                  <div class="comment-respond">
-                    <h3 class="comment-reply-title">Leave a Comment</h3>
-                    {/* comment start */}
-                    <form class="comment-form" onSubmit={handleSubmit}>
-                      <p class="comment-notes">
-                        
-                      </p>
+                        <form class="comment-form" onSubmit={handleSubmit}>
+                          <p class="comment-notes"></p>
 
-                      <p class="comment-form-comment">
-                        <label>Comment</label>
+                          <p class="comment-form-comment">
+                            <label>Comment</label>
 
-                        <textarea 
+                            <textarea
+                              onChange={handleChange}
+                              name="comment"
+                              cols="45"
+                              placeholder="Your Comment..."
+                              rows="5"
+                              maxlength="65525"
+                              required="required"
+                            ></textarea>
+                          </p>
+                          <p class="comment-form-cookies-consent"></p>
+                          <p class="form-submit">
+                            <input
+                              type="submit"
+                              name="submit"
+                              id="submit"
+                              class="submit"
+                              value="Post A Comment"
+                            />
+                          </p>
+                        </form>
+                      </div>
+                      <h3 class="comments-title">
+                        <br></br> Comments:
+                      </h3>
                       
-                          onChange={handleChange}
-                          name="comment"
-                          cols="45"
-                          placeholder="Your Comment..."
-                          rows="5"
-                          maxlength="65525"
-                          required="required"
-                        ></textarea>
-                      </p>
-                      <p class="comment-form-cookies-consent">
-                        
-                        
-                      </p>
-                      <p class="form-submit">
-                        <input
-                          type="submit"
-                          name="submit"
-                          id="submit"
-                          class="submit"
-                          value="Post A Comment"
-                        />
-                      </p>
-                    </form>
-                  </div>
+                      {comment1.comments.map((comment) => {
+                        if (comment.state != false) {
+                          return (
+                            <ol class="comment-list">
+                              <li class="comment">
+                                <div class="comment-body">
+                                  <footer class="comment-meta">
+                                    <div class="comment-author vcard">
+                                      <img
+                                        src={
+                                          "http://localhost:8000/upload/user.jfif"
+                                        }
+                                        class="avatar"
+                                        alt="image"
+                                      />
+                                      <b class="fn">{comment.name}</b>
+                                    </div>
+                                    <div class="comment-metadata">
+                                      <a href="#">
+                                        <span>{comment.date}</span>
+                                      </a>
+                                    </div>
+                                  </footer>
+                                  <div class="comment-content">
+                                    <p>{comment.comment}</p>
 
-                  <h3 class="comments-title">
-                    <br></br> Comments:
-                  </h3>
-                  {comment1.comments.map((comment) => {
-                    return (
-                      <ol class="comment-list">
-                        <li class="comment">
-                          <div class="comment-body">
-                            <footer class="comment-meta">
-                              <div class="comment-author vcard">
-                                <img
-                                  src={ "http://localhost:8000/upload/user.jfif"  } 
-                                  class="avatar"
-                                  alt="image"
-                                />
-                                <b class="fn">{comment.name}</b>
-                              </div>
-                              <div class="comment-metadata">
-                                <a href="#">
-                                  <span>{comment.date}</span>
-                                </a>
-                              </div>
-                            </footer>
-                            <div class="comment-content">
-                              <p>{comment.comment}</p>
-
-                              <button
-                                onClick={() => {
-                                  setCommentData(comment);
-                                  isEdit();
-                                }}
-                                style={{
-                                  background: "none",
-                                  color: "inherit",
-                                  border: "none",
-                                  padding: 0,
-                                  font: "inherit",
-                                  outline: "inherit",
-                                }}
-                              >
-                                <a class="comment-reply-link">
-                             
-                                  <Icon
-                                    icon="fa6-regular:pen-to-square"
-                                    style={{ fontSize: "24px" }}
-                                  />
-                                </a>
-                              </button>
-                              <button
-                                style={{
-                                  background: "none",
-                                  color: "inherit",
-                                  border: "none",
-                                  padding: " 10px",
-                                  font: "inherit",
-                                  outline: "inherit",
-                                }}
-                                onClick={() => {
-                                  dispatch(deleteComment(comment.id));
-                                }}
-                              >
-                              
-                                <a class="comment-reply-link">
-                                  <Icon
-                                    icon="material-symbols:cancel-rounded"
-                                    style={{ fontSize: "24px" }}
-                                  />
-                                </a>
-                              </button>
-                            </div>
-                          </div>
-                        </li>
-                      </ol>
-                    );
-                  })}
-                </div>
+                                    <button
+                                      onClick={() => {
+                                        setCommentData(comment);
+                                        isEdit();
+                                      }}
+                                      style={{
+                                        background: "none",
+                                        color: "inherit",
+                                        border: "none",
+                                        padding: 0,
+                                        font: "inherit",
+                                        outline: "inherit",
+                                      }}
+                                    >
+                                      <a class="comment-reply-link">
+                                        <Icon
+                                          icon="fa6-regular:pen-to-square"
+                                          style={{ fontSize: "24px" }}
+                                        />
+                                      </a>
+                                    </button>
+                                    <button
+                                      style={{
+                                        background: "none",
+                                        color: "inherit",
+                                        border: "none",
+                                        padding: " 10px",
+                                        font: "inherit",
+                                        outline: "inherit",
+                                      }}
+                                      onClick={() => {
+                                        dispatch(deleteComment(comment.id));
+                                      }}
+                                    >
+                                      <a class="comment-reply-link">
+                                        <Icon
+                                          icon="material-symbols:cancel-rounded"
+                                          style={{ fontSize: "24px" }}
+                                        />
+                                      </a>
+                                    </button>
+                                  </div>
+                                </div>
+                              </li>
+                            </ol>
+                          );
+                        }
+                      })}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             {/*edit comment */}
@@ -369,8 +396,6 @@ const handleSubmitEdit = (e) => {
                       rows="5"
                       value={commentData.comment}
                       maxlength="65525"
-
-
                       required="required"
                     ></textarea>
                   </p>
@@ -414,7 +439,13 @@ const handleSubmitEdit = (e) => {
                     return (
                       <article class="item" key={post.id}>
                         <a href={`/NewsDetails/${post.id}`} class="thumb">
-                          <img  src={ "http://localhost:8000/upload/" + post.main_image} class="fullimage cover bg1" role="img" />
+                          <img
+                            src={
+                              "http://localhost:8000/upload/" + post.main_image
+                            }
+                            class="fullimage cover bg1"
+                            role="img"
+                          />
                         </a>
                         <div class="info">
                           <span>{post.date}</span>
