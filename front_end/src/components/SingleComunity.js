@@ -32,6 +32,7 @@ console.log(comment1);
 
   const [commentData, setCommentData] = useState({
     comment_comunity_comments: " ",
+    state: false,
     user_id_ComunityComment: localStorage.id,
     post_id_ComunityComment: id,
   });
@@ -135,6 +136,7 @@ console.log(comment1);
                               <div class="card text-dark">
                                 {/* /////{" "} */}
                                 {comment1.comcomments.map((comment) => {
+                                   if (comment.state != false) {
                                   return (
                                     <>
                                       <div class="card-body p-4">
@@ -170,6 +172,7 @@ console.log(comment1);
                                       <hr class="my-0" />
                                     </>
                                   );
+                                }
                                 })}
                               </div>
                             </div>

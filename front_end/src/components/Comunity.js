@@ -19,6 +19,7 @@ const Comunity = () => {
 
   const [comunityData, setComunityData] = useState({
     comment_comunity_posts: " ",
+    state: false,
     subject: " ",
     user_id_ComunityPost: localStorage.id,
   });
@@ -123,87 +124,102 @@ const Comunity = () => {
             </>
           )}
         </div>
-
+     {!check && (    <div class="section-title">
+          <h5 className="text-danger">
+            YOU MUST LOGIN TO BE A PART OF OUR FAMILY
+          </h5>
+        </div>)}
         <section class="class-area bg-fdf6ed pt-100 pb-70">
           <div class="container">
             <div class="section-title">
-              <h5>YOU MUST LOGIN TO BE A PART OF OUR FAMILY</h5>
               <h2>Popular Classes</h2>
             </div>
 
             <div class="row">
               {comunityposts.comunityposts.map((post) => {
-                return (
-                  <div class="col-lg-4 col-md-6" key={post.id}>
-                    <div class="single-class">
-                      <div class="class-image">
-                        <a href="#">
-                          <img src="assets/img/class/class-1.jpg" alt="image" />
-                        </a>
-                      </div>
+                 if (post.state != false) {
+                   return (
+                     <div class="col-lg-4 col-md-6" key={post.id}>
+                       <div class="single-class">
+                         <div class="class-image">
+                           <a href="#">
+                             <img
+                               src="assets/img/class/class-1.jpg"
+                               alt="image"
+                             />
+                           </a>
+                         </div>
 
-                      <div class="class-content">
-                        <h6>
-                          Post by:
-                          <span style={{ color: "#6b6b84" }}>
-                            {" "}
-                            {post.name}
-                          </span>{" "}
-                          {post.created_at}
-                        </h6>
-                        <div class="price">
-                          {" "}
-                       {check &&(    <button
-                            style={{
-                              background: "none",
-                              color: "inherit",
-                              border: "none",
-                              padding: " 10px",
-                              font: "inherit",
-                              outline: "inherit",
-                            }}
-                            onClick={() => {
-                              dispatch(deleteComunityPost(post.id));
-                            }}
-                          >
-                            <a class="comment-reply-link">
-                              <Icon
-                                icon="material-symbols:cancel-rounded"
-                                style={{ fontSize: "24px", color: "white" }}
-                              />
-                            </a>
-                          </button>)}
-                        </div>
+                         <div class="class-content">
+                           <h6>
+                             Post by:
+                             <span style={{ color: "#6b6b84" }}>
+                               {" "}
+                               {post.name}
+                             </span>{" "}
+                             {post.created_at}
+                           </h6>
+                           <div class="price">
+                             {" "}
+                             {check && (
+                               <button
+                                 style={{
+                                   background: "none",
+                                   color: "inherit",
+                                   border: "none",
+                                   padding: " 10px",
+                                   font: "inherit",
+                                   outline: "inherit",
+                                 }}
+                                 onClick={() => {
+                                   dispatch(deleteComunityPost(post.id));
+                                 }}
+                               >
+                                 <a class="comment-reply-link">
+                                   <Icon
+                                     icon="material-symbols:cancel-rounded"
+                                     style={{
+                                       fontSize: "24px",
+                                       color: "white",
+                                     }}
+                                   />
+                                 </a>
+                               </button>
+                             )}
+                           </div>
 
-                        <h3>
-                          <a href="#">{post.subject}</a>
-                        </h3>
-                        <p>{post.comment_comunity_posts}</p>
+                           <h3>
+                             <a href="#">{post.subject}</a>
+                           </h3>
+                           <p>{post.comment_comunity_posts}</p>
 
-                        <ul class=""></ul>
-                        <button
-                          style={{
-                            background: "none",
-                            color: "inherit",
-                            border: "none",
-                            padding: " 10px",
-                            font: "inherit",
-                            outline: "inherit",
-                          }}
-                        >
-                        {check &&(<div class="class-btn">
-                            <a
-                              href={`/SingleComunity/${post.id}`}
-                              class="default-btn"
-                            >
-                              Join conversation
-                            </a>
-                          </div>)}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                );
+                           <ul class=""></ul>
+                           <button
+                             style={{
+                               background: "none",
+                               color: "inherit",
+                               border: "none",
+                               padding: " 10px",
+                               font: "inherit",
+                               outline: "inherit",
+                             }}
+                           >
+                             {check && (
+                               <div class="class-btn">
+                                 <a
+                                   href={`/SingleComunity/${post.id}`}
+                                   class="default-btn"
+                                 >
+                                   Join conversation
+                                 </a>
+                               </div>
+                             )}
+                           </button>
+                         </div>
+                       </div>
+                     </div>
+                   );
+                 }
               })}
             </div>
           </div>

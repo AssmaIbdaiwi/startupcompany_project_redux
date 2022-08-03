@@ -32,7 +32,7 @@ class ComunityPostController extends Controller
         $comment = new ComunityPost();
         $comment->comment_comunity_posts = $request->get('comment_comunity_posts');    
         $comment->subject = $request->get('subject');  
-        $comment->state = 0;     
+        $comment->state = false;     
         $comment->user_id_ComunityPost = $request->get('user_id_ComunityPost');   
         
         // if($request->has('image')) {

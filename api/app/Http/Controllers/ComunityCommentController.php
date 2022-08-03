@@ -27,7 +27,7 @@ class ComunityCommentController extends Controller
    $comment = new ComunityComment();
    $comment->comment_comunity_comments = $request->get('comment_comunity_comments');    
    $comment->date = $request->get('date');  
-   $comment->state = 0;     
+   $comment->state = false;     
    $comment->user_id_ComunityComment = $request->get('user_id_ComunityComment');      
    $comment->post_id_ComunityComment = $request->get('post_id_ComunityComment');       
    $comment->save();      
