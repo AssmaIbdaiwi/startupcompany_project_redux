@@ -38,7 +38,7 @@
                 </th>
                 <th>
 
-Status                </th>
+ State                </th>
                 <th >
                   Action
                 </th>
@@ -66,8 +66,8 @@ Status                </th>
                     {{$comment->created_at;}}
                   </td>
                   <td >
-                    {{-- {{$comment->status;}} --}}
-                     pending
+                    {{$comment->state;}}
+                    
                   </td>
                   <td>
                     <form action=" {{ route('comment.destroy',$comment->id) }}" method="POST"> 

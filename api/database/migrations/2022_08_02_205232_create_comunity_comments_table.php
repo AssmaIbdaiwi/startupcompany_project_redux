@@ -17,6 +17,7 @@ class CreateComunityCommentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id_ComunityComment');
             $table->unsignedBigInteger('post_id_ComunityComment');
+              $table->string('state')->nullable();
             $table->string('comment_comunity_comments')->nullable();
             $table->string('date')->nullable();
             $table->foreign('user_id_ComunityComment')->on('users')->references('id')->onDelete('CASCADE')->onUpdate('CASCADE');

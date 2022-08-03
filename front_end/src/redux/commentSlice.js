@@ -19,6 +19,7 @@ export const addComment = createAsyncThunk(
       "http://127.0.0.1:8000/api/addComment",
       data
     );
+    
 // const add = await response.data;
 // console.log('add',add)
     if (response.status == 200) {

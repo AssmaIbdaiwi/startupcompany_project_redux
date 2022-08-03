@@ -39,6 +39,9 @@
                 <th>
                     Date
                   </th>
+                  <th>
+                    State
+                  </th>
                 <th >
                   Action
                 </th>
@@ -68,6 +71,9 @@
                   
                   <td >
                     {{$post->created_at;}}
+                  </td>
+                  <td >
+                    {{$post->state;}}
                   </td>
                   <td>
                     <form action=" {{ route('post.destroy',$post->id) }}" method="POST"> 
