@@ -193,3 +193,77 @@ const Footer =()=>{
     );
 };
 export default Footer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="footer-area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer-widget">
+                               <ul class="social">
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-facebook'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-twitter'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-pinterest-alt'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class='bx bxl-linkedin'></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    
+                   
+                </div>
+            </div>
+        </section>
