@@ -42,8 +42,8 @@ export const SignInWithFacebook = () => {
   signInWithPopup(auth, provider2)
     .then((res) => {
       console.log(res);
-      // localStorage.setItem("name",res.user.displayName);
-      // localStorage.setItem("email",res.user.email);
+       localStorage.setItem("name",res.user.displayName);
+       localStorage.setItem("email",res.user.email);
     })
     .catch((error) => {
       console.log(error);

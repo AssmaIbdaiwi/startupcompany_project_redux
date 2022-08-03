@@ -6,12 +6,11 @@ import { addUser } from "../../redux/userLoginSlice";
 import axios from "axios";
 import "./style.css";
 
-import { SignInWithGoogle , SignInWithFacebook} from "../firebase/config";
+import { SignInWithGoogle, SignInWithFacebook } from "../firebase/config";
 
 const Sign_up = () => {
   const [userData, setUser] = useState({ name: "", email: "", password: "" });
   const [goData, setgo] = useState({});
-
 
   // setUser({...userData, name : });
   // setUser({...userData, email : });
@@ -35,7 +34,8 @@ const Sign_up = () => {
 
   const passPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
   const namePattern = /(^[a-zA-Z][a-zA-Z\s]{2,20}[a-zA-Z]$)/;
-  const emailPattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const emailPattern =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   //console.log(userData.name);
   //console.log(namePattern.test(userData.name));
@@ -144,28 +144,39 @@ const Sign_up = () => {
 
 
 
-  const GoogleAuth = () => {
 
+  const GoogleAuth = () => {
     SignInWithGoogle();
-   setTimeout(function(){ go() }, 10000);
+    setTimeout(function () {
+      go();
+    }, 7000);
   };
 
- function go()
-{
-  const godata = {name:localStorage.getItem("name") , email :localStorage.getItem("email"), password:"12345"};
-   // console.log("************************");
-   // console.log(godata);
+  const FacebookAuth = () => {
+    SignInWithFacebook();
+    setTimeout(function () {
+      go();
+    }, 7000);
+  };
+
+  function go() {
+    const godata = {
+      name: localStorage.getItem("name"),
+      email: localStorage.getItem("email"),
+      password: "12345",
+    };
+    // console.log("************************");
+    // console.log(godata);
 
     axios
-    .post(`http://127.0.0.1:8000/api/register`, { ...godata })
-    .then((res) => {
-      console.log(user);
-      console.log(res.data);
-      dispatch(signup(res.data.name));
-      localStorage.setItem("id", res.data.id);
-    });
-
-}
+      .post(`http://127.0.0.1:8000/api/register`, { ...godata })
+      .then((res) => {
+        console.log(user);
+        console.log(res.data);
+        dispatch(signup(res.data.name));
+        localStorage.setItem("id", res.data.id);
+      });
+  }
 
   useEffect(() => {
     if (user) {
@@ -183,24 +194,23 @@ const Sign_up = () => {
             <h2>Sign Up</h2>
 
             <form onSubmit={handelSubmet}>
-
               <div className="goo">
-              <button
-                type="button"
-                class="login-with-google-btn"
-                onClick={GoogleAuth}
-              >
-                Sign in with Google
-              </button>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button type="button" class="login-with-facebook-btn" onClick={SignInWithFacebook}>
-                Sign in with Facebook
-              </button>
-
-              
+                <button
+                  type="button"
+                  class="login-with-google-btn"
+                  onClick={GoogleAuth}
+                >
+                  Sign in with Google
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button
+                  type="button"
+                  class="login-with-facebook-btn"
+                  onClick={FacebookAuth}
+                >
+                  Sign in with Facebook
+                </button>
               </div>
-              
-              
               <br></br> <h5 style={{ textAlign: "center" }}>OR</h5> <br></br>
               <div class="form-group">
                 {/* <label>Username</label> */}
