@@ -29,6 +29,7 @@ class CommentController extends Controller
         $comment = new Comment();
         $comment->comment = $request->get('comment');    
          $comment->date = $request->get('date');    
+            // $comment->state = false;   
              $comment->user_id_comment = $request->get('user_id_comment');      
                 $comment->post_id_comment = $request->get('post_id_comment');       
                   $comment->save();      

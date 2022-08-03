@@ -39,7 +39,7 @@ const Comunity = () => {
   };
 
 
-
+  let check = localStorage.getItem("id");
  
 
   return (
@@ -67,59 +67,63 @@ const Comunity = () => {
 
       <section class="blog-details-area ptb-100">
         <div class="container">
-          <div class="comments-area">
-            <div class="comment-respond">
-              <h3 class="comment-reply-title">Post your questions</h3>
-              {/* comment start */}
-              <form class="comment-form" onSubmit={handleSubmit}>
-                <p class="comment-notes">
-                  <span id="email-notes"></span>
+          {check && (
+            <>
+              <div class="comments-area">
+                <div class="comment-respond">
+                  <h3 class="comment-reply-title">Post your questions</h3>
+                  {/* comment start */}
+                  <form class="comment-form" onSubmit={handleSubmit}>
+                    <p class="comment-notes">
+                      <span id="email-notes"></span>
 
-                  <span class="required"></span>
-                </p>
-                <h5>Image</h5>
-                <input
-                  type="file"
-                  // onChange={handleChange}
-                  name="image"
-                
-                />
-                <h5>Subject</h5>
-                <input
-                  type="text"
-                  onChange={handleChange}
-                  name="subject"
-                  required
-                />
+                      <span class="required"></span>
+                    </p>
+                    <h5>Image</h5>
+                    <input
+                      type="file"
+                      // onChange={handleChange}
+                      name="image"
+                    />
+                    <h5>Subject</h5>
+                    <input
+                      type="text"
+                      onChange={handleChange}
+                      name="subject"
+                      required
+                    />
 
-                <h5>Post</h5>
-                <p class="comment-form-comment">
-                  <label>Comment</label>
+                    <h5>Post</h5>
+                    <p class="comment-form-comment">
+                      <label>Comment</label>
 
-                  <textarea
-                    onChange={handleChange}
-                    name="comment_comunity_posts"
-                    cols="45"
-                    placeholder="Your Comment..."
-                    rows="5"
-                    maxlength="65525"
-                    required="required"
-                  ></textarea>
-                </p>
+                      <textarea
+                        onChange={handleChange}
+                        name="comment_comunity_posts"
+                        cols="45"
+                        placeholder="Your Comment..."
+                        rows="5"
+                        maxlength="65525"
+                        required="required"
+                      ></textarea>
+                    </p>
 
-                <p class="form-submit">
-                  <input
-                    type="submit"
-                    name="submit"
-                    id="submit"
-                    class="submit"
-                    value="Post A Comment"
-                  />
-                </p>
-              </form>
-            </div>
-          </div>
+                    <p class="form-submit">
+                      <input
+                        type="submit"
+                        name="submit"
+                        id="submit"
+                        class="submit"
+                        value="Post A Comment"
+                      />
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </>
+          )}
         </div>
+
         <section class="class-area bg-fdf6ed pt-100 pb-70">
           <div class="container">
             <div class="section-title">
@@ -141,11 +145,15 @@ const Comunity = () => {
                       <div class="class-content">
                         <h6>
                           Post by:
-                          <span style={{ color: "#6b6b84" }}> {post.name}</span> {post.created_at}
+                          <span style={{ color: "#6b6b84" }}>
+                            {" "}
+                            {post.name}
+                          </span>{" "}
+                          {post.created_at}
                         </h6>
                         <div class="price">
                           {" "}
-                          <button
+                       {check &&(    <button
                             style={{
                               background: "none",
                               color: "inherit",
@@ -164,7 +172,7 @@ const Comunity = () => {
                                 style={{ fontSize: "24px", color: "white" }}
                               />
                             </a>
-                          </button>
+                          </button>)}
                         </div>
 
                         <h3>
@@ -183,11 +191,14 @@ const Comunity = () => {
                             outline: "inherit",
                           }}
                         >
-                          <div class="class-btn">
-                            <a href={`/SingleComunity/${post.id}`} class="default-btn">
+                        {check &&(<div class="class-btn">
+                            <a
+                              href={`/SingleComunity/${post.id}`}
+                              class="default-btn"
+                            >
                               Join conversation
                             </a>
-                          </div>
+                          </div>)}
                         </button>
                       </div>
                     </div>
