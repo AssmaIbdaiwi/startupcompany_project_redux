@@ -8,25 +8,25 @@ const Profile = () => {
   const [data, setData] = useState({});
 
   function fech() {
-    // axios.get(`http://127.0.0.1:8000/api/get/` + { id }).then((res) => {
+    axios.get(`http://127.0.0.1:8000/api/get/` + { id }).then((res) => {
       
-    //   console.log("**********************");
-    //   console.log(res.data);
-    //   setData(res.data);
-    // });
+      console.log("**********************");
+      console.log(res.data);
+      setData(res.data);
+    });
 
-     const fetchProfile = async () => {
-    const response = await fetch('http://127.0.0.1:8000/api/get/'+id)
-    const myProfile = await response.json();
+    //  const fetchProfile = async () => {
+    // const response = await fetch(`http://127.0.0.1:8000/api/get/`+{id})
+    // const myProfile = await response.json();
 
-    setData(myProfile);
-    console.log("**********************");
-    console.log(myProfile);
+    // setData(myProfile);
+    // console.log("**********************");
+    // console.log(myProfile);
 
-    }
+    // }
   }
 
-  console.log(data);
+ // console.log(data);
   // let name = data.name;
 
   // setUser({name:data.name,email:"aa",password:"aa",mobile:"aa"});

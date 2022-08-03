@@ -99,14 +99,6 @@ class UserController extends Controller
 
         $user = User::find($id);
 
-        //     $user->update([
-        //     'name'=>$request->input('name'),
-        //     'email'=>$request->input('email'),
-        //     'age'=>$request->input('age'),
-        //     'address'=>$request->input('address'),
-        //     'phone'=>$request->input('phone')
-        // ]);
-
         $user->name = $request->name;
         $user->email = $request->email;
         // $user->age = $request->age;
