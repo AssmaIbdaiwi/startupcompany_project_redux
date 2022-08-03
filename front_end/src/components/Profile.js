@@ -125,7 +125,7 @@ const Profile = () => {
                       type="password"
                       class="form-control"
                       placeholder="password"
-                      defaultValue={data.password}
+                    //   defaultValue={data.password}
                       onChange={(e) =>
                         setData((prev) => ({
                           ...prev,
