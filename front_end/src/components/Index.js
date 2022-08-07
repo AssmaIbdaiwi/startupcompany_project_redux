@@ -386,7 +386,7 @@ const Index = () => {
                         <div class="single-gallery-box">
                             <img src={ "http://localhost:8000/upload/1659418438.jpg" } style={{height:'320px'}} alt="image"/>
     
-                            <a href="assets/img/gallery/gallery-2.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
+                            <a src={ "http://localhost:8000/upload/1659418438.jpg" } class="gallery-btn" data-imagelightbox="popup-btn">
                                 <i class='bx bx-search-alt'></i>
                             </a>
                         </div>
@@ -416,7 +416,7 @@ const Index = () => {
                         <div class="single-gallery-box">
                             <img src={"http://localhost:8000/upload/1659422916.jfif"} style={{height:'320px'}} alt="image"/>
     
-                            <a href="assets/img/gallery/gallery-5.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
+                            <a src={"http://localhost:8000/upload/1659422916.jfif"} class="gallery-btn" data-imagelightbox="popup-btn">
                                 <i class='bx bx-search-alt'></i>
                             </a>
                         </div>
