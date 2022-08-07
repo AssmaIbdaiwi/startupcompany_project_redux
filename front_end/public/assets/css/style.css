@@ -242,7 +242,7 @@ Section Title CSS
 }
 
 .section-title span {
-  font-size: 20px;
+  font-size: 35px;
   color: #ea512e;
   font-weight: 600;
   font-family: "Sacramento", cursive;
@@ -1612,7 +1612,7 @@ Who We Are Area CSS
 }
 
 .who-we-are-content span {
-  font-size: 20px;
+  font-size: 35px;
   color: #ea512e;
   font-weight: 600;
   font-family: "Sacramento", cursive;
@@ -3193,10 +3193,10 @@ Quote Area CSS
 }
 
 .quote-item .content span {
-  font-size: 20px;
+  font-size: 35px;
   color: #ea512e;
   font-weight: 600;
-  font-family: "Sacramento", cursive;
+  font-family: "Sacramento";
 }
 
 .quote-item .content h3 {

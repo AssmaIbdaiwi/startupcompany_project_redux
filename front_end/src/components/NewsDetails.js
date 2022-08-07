@@ -155,8 +155,8 @@ const handleSubmitEdit = (e) => {
                       <figure>
                         <img
                           src={
-                            "http://localhost:8000/upload/" +
-                            singlepost.singlepost.main_image
+                            "http://localhost:8000/upload/im1.jfif" 
+                         
                           }
                           alt="image"
                         />
@@ -167,8 +167,8 @@ const handleSubmitEdit = (e) => {
                       <figure>
                         <img
                           src={
-                            "http://localhost:8000/upload/" +
-                            singlepost.singlepost.main_image
+                            "http://localhost:8000/upload/im2.jfif" 
+                            
                           }
                           alt="image"
                         />
@@ -179,8 +179,8 @@ const handleSubmitEdit = (e) => {
                       <figure>
                         <img
                           src={
-                            "http://localhost:8000/upload/" +
-                            singlepost.singlepost.main_image
+                            "http://localhost:8000/upload/im3.jfif" 
+                            
                           }
                           alt="image"
                         />
