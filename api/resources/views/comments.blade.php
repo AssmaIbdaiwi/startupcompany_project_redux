@@ -66,8 +66,12 @@
                     {{$comment->created_at;}}
                   </td>
                   <td >
-                    {{$comment->state;}}
+                    @if( $comment->state==0)
+                  <p style="color: red" >Piending</p>
                     
+                   @else 
+                   <p style="color: green" >Accepted</p>
+                   @endif
                   </td>
                   <td>
                     <form action=" {{ route('comment.destroy',$comment->id) }}" method="POST"> 

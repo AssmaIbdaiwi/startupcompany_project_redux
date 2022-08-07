@@ -62,7 +62,8 @@ class AdminCPController extends Controller
      */
     public function edit($id)
     {
-        //
+       $post= ComunityPost::find($id);
+       return view('editComunityPosts',compact('post'));
     }
 
     /**
@@ -74,7 +75,20 @@ class AdminCPController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+             'subject' => 'required',
+             'body' => 'required',
+             'state' => 'required'
+         ]);
+      
+ 
+         ComunityPost::where('id',$id)->update([
+             'subject'=>$request->subject,
+             'comment_comunity_posts'=>  $request->body,
+            'state'=> $request->state
+         ]);
+         
+          return redirect()->route('comunityPost.index')->with('success','Post updateded successfully.');
     }
 
     /**

@@ -66,7 +66,7 @@ console.log(comment1);
                   <li>
                     <a href="index.html">Home</a>
                   </li>
-                  <li>Blog Details</li>
+                  <li>Post Details</li>
                 </ul>
               </div>
             </div>
@@ -92,17 +92,18 @@ console.log(comment1);
                         <div class="d-flex flex-start align-items-center">
                           <img
                             class="rounded-circle shadow-1-strong me-3"
-                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+                           
+                            src={"http://localhost:8000/upload/" + singlepost.singlecompost.image} 
                             alt="avatar"
                             width="60"
                             height="60"
                           />
                           <div>
-                            <h6 class="fw-bold text-primary mb-1">
-                              {singlepost.singlecompost.name}
+                            <h6 class="fw-bold  mb-1">
+                             Posted by {singlepost.singlecompost.name}
                             </h6>
                             <p class="text-muted small mb-0">
-                              Shared publicly -{" "}
+                             
                               {singlepost.singlecompost.created_at}
                             </p>
                           </div>
@@ -111,7 +112,11 @@ console.log(comment1);
                         <p class="mt-3 mb-4 pb-2">
                           {singlepost.singlecompost.comment_comunity_posts}
                         </p>
-                        <img src="#" />
+                        <img
+                               src="assets/img/class/class-1.jpg"
+                               alt="image"
+                             />
+                        {/* //src={"http://localhost:8000/upload/" + singlepost.singlecompost.image_comunity_posts}/> */}
                         {/* 
                         <div class="small d-flex justify-content-start">
                           <a href="#!" class="d-flex align-items-center me-3">
@@ -146,7 +151,7 @@ console.log(comment1);
                                         <div class="d-flex flex-start">
                                           <img
                                             class="rounded-circle shadow-1-strong me-3"
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+                                            src={"http://localhost:8000/upload/" + singlepost.singlecompost.image}
                                             alt="avatar"
                                             style={{
                                               width: "5%",
@@ -187,7 +192,7 @@ console.log(comment1);
                           <div class="d-flex flex-start w-100">
                             <img
                               class="rounded-circle shadow-1-strong me-3"
-                              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+                              src={"http://localhost:8000/upload/user.jfif" }
                               alt="avatar"
                               style={{ width: "5%", height: "5%" }}
                             />
@@ -202,14 +207,14 @@ console.log(comment1);
                                 style={{ background: "#fff" }}
                               ></textarea>
                               <label class="form-label" for="textAreaExample">
-                                Message
+                                
                               </label>
                             </div>
                           </div>
                           <div class="float-end mt-2 pt-1">
                             <button
                               type="submit"
-                              class="btn btn-primary btn-sm"
+                              class="default-btn"
                             >
                               Post comment
                             </button>

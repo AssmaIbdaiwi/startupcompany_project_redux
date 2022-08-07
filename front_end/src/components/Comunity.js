@@ -56,7 +56,7 @@ const Comunity = () => {
                   <li>
                     <a href="index.html">Home</a>
                   </li>
-                  <li>Blog Details</li>
+                  <li>Community</li>
                 </ul>
               </div>
             </div>
@@ -103,7 +103,7 @@ const Comunity = () => {
                         onChange={handleChange}
                         name="comment_comunity_posts"
                         cols="45"
-                        placeholder="Your Comment..."
+                        placeholder="Your Post..."
                         rows="5"
                         maxlength="65525"
                         required="required"
@@ -116,7 +116,7 @@ const Comunity = () => {
                         name="submit"
                         id="submit"
                         class="submit"
-                        value="Post A Comment"
+                        value="Post "
                       />
                     </p>
                   </form>
@@ -133,7 +133,7 @@ const Comunity = () => {
         <section class="class-area bg-fdf6ed pt-100 pb-70">
           <div class="container">
             <div class="section-title">
-              <h2>Popular Classes</h2>
+              <h2>Popular Posts</h2>
             </div>
 
             <div class="row">

@@ -313,9 +313,7 @@ const handleSubmitEdit = (e) => {
                                   <footer class="comment-meta">
                                     <div class="comment-author vcard">
                                       <img
-                                        src={
-                                          "http://localhost:8000/upload/user.jfif"
-                                        }
+                                       src= {"http://localhost:8000/upload/" + comment.image}
                                         class="avatar"
                                         alt="image"
                                       />

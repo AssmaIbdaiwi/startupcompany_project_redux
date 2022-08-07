@@ -22,34 +22,34 @@
     </div>
 @endif
 
-          <form action="{{ route('post.update',$post->id) }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('comment.update',$comment->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
+              {{-- <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>User Name</label>
+                    <input type="text" class="form-control" value='{{$comment->name}}' name='name'>
+                  </div>
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-6 pr-1">
                   <div class="form-group">
                     <label>Post Title</label>
-                    <input type="text" class="form-control" value='{{$post->title}}' name='title'>
+                    <input type="text" class="form-control" value='{{$comment->title}}' name='title'>
                   </div>
                 </div>
-              </div>
+              </div> --}}
               <div class="row">
                 <div class="col-md-6 pr-1">
                   <div class="form-group">
-                    <label>Post Sub Title</label>
-                    <input type="text" class="form-control" value='{{$post->subtitle}}' name='subtitle'>
+                    <label>Comment</label>
+                    <textarea class="form-control" style="height:100px" name="body" placeholder=".....">{{$comment->comment}}</textarea>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-6 pr-1">
-                  <div class="form-group">
-                    <label>Post Body</label>
-                    <textarea class="form-control" style="height:100px" name="body" placeholder=".....">{{$post->body}}</textarea>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
+              {{-- <div class="row">
                 <div class="col-md-6 pr-1">
                   <div class="form-group">
                     <label>Doctor</label>
@@ -61,32 +61,37 @@
                       </select>
                   </div>
                 </div>
-              </div>
+              </div> --}}
               <div class="row">
                 <div class="col-md-6 pr-1">
                   <div class="form-group">
                     <label>Status   </label>
-              <select class="form-select" aria-label="Default select example" name="status">
+              <select class="form-select"  name="state">
+                <option value="0">Piending</option>
                 <option value="1">Accept</option>
-                <option value="0">Reject</option>
+               
               </select>
                   </div>
                 </div>
               </div>
         <div class="row">
-            <div class="col-md-6 pr-1">
+            {{-- <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Image</label>
                 <input type="file" class="form-control"  name='image'>
               </div>
-            </div>
+            </div> --}}
         <div class="col-xs-12 col-sm-12 col-md-12 text-left" style="padding-left: 40px">
             <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+          </div>
        
+        </div>
       </div>
     </div>
   </div>
-</div>
+    
+  <form>
+  </div>
+  </div>
 
 @endsection

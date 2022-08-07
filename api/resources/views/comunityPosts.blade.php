@@ -73,11 +73,16 @@
                     {{$post->created_at;}}
                   </td>
                   <td >
-                    {{$post->state;}}
+                    @if( $post->state==0)
+                    <p style="color: red" >Piending</p>
+                      
+                     @else 
+                     <p style="color: green" >Accepted</p>
+                     @endif
                   </td>
                   <td>
-                    <form action=" {{ route('post.destroy',$post->id) }}" method="POST"> 
-                      <a class="btn btn-info" href="{{ route('post.edit' ,$post->id) }}">Edit</a>
+                    <form action=" {{ route('comunityPost.destroy',$post->id) }}" method="POST"> 
+                      <a class="btn btn-info" href="{{ route('comunityPost.edit' ,$post->id) }}">Edit</a>
                       @csrf
                       @method('DELETE')
                       

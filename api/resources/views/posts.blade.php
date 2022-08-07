@@ -69,7 +69,7 @@
                     {{$post->subtitle;}}
                   </td>
                   <td >
-                    {{$post->body;}}
+                    {{Str::limit($post->body,100)}}
                   </td>
                   <td >
                     {{$post->created_at;}}

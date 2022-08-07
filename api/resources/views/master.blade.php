@@ -73,6 +73,12 @@
               <p>Community Posts</p>
             </a>
           </li>
+          <li>
+            <a href="/comunityComment">
+              <i class="now-ui-icons education_paper"></i>
+              <p>Community-Comments</p>
+            </a>
+          </li>
           {{-- <li>
             <a href="/deliveryAdmin">
               <i class="now-ui-icons shopping_delivery-fast"></i>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCCController;
 use App\Http\Controllers\AdminCController;
 use App\Http\Controllers\AdminCPController;
 use App\Http\Controllers\AdminDController;
@@ -32,4 +33,5 @@ Route::get('/', function () {
  Route::resource('comment', AdminCController::class);
  Route::resource('login', AdminLoginController::class);
  Route::resource('comunityPost', AdminCPController::class);
+ Route::resource('comunityComment',AdminCCController::class);
 //Route::get('/', [UserController::class, 'registerAPI']);
