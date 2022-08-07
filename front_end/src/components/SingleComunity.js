@@ -26,7 +26,7 @@ const SingleComunity = () => {
     dispatch(getComcomments(id));
   }, [dispatch]);
   const comment1 = useSelector((state) => state.comunitypost);
-console.log(comment1);
+// console.log(comment1.comcomments[].name);
 
 
 
@@ -111,7 +111,12 @@ console.log(comment1);
                         <p class="mt-3 mb-4 pb-2">
                           {singlepost.singlecompost.comment_comunity_posts}
                         </p>
-                        <img src="#" />
+                        <img
+                          src={
+                            "http://localhost:8000/upload/" +
+                            singlepost.singlecompost.image_comunity_posts
+                          }
+                        />
                         {/* 
                         <div class="small d-flex justify-content-start">
                           <a href="#!" class="d-flex align-items-center me-3">
@@ -136,43 +141,45 @@ console.log(comment1);
                               <div class="card text-dark">
                                 {/* /////{" "} */}
                                 {comment1.comcomments.map((comment) => {
-                                   if (comment.state != false) {
-                                  return (
-                                    <>
-                                      <div class="card-body p-4">
-                                        <h4 class="mb-0">Comments</h4>
-                                        <p class="fw-light mb-4 pb-2"></p>
+                                  // if (comment.state != false) {
+                                    return (
+                                      <>
+                                        <div class="card-body p-4">
+                                          <h4 class="mb-0">Comments</h4>
+                                          <p class="fw-light mb-4 pb-2"></p>
 
-                                        <div class="d-flex flex-start">
-                                          <img
-                                            class="rounded-circle shadow-1-strong me-3"
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
-                                            alt="avatar"
-                                            style={{
-                                              width: "5%",
-                                              height: "5%",
-                                            }}
-                                          />
-                                          <div>
-                                            <h6 class="fw-bold mb-1">
-                                              {comment.name}
-                                            </h6>
-                                            <div class="d-flex align-items-center mb-3">
-                                              <p class="mb-0">March 07, 2021</p>
+                                          <div class="d-flex flex-start">
+                                            <img
+                                              class="rounded-circle shadow-1-strong me-3"
+                                              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+                                              alt="avatar"
+                                              style={{
+                                                width: "5%",
+                                                height: "5%",
+                                              }}
+                                            />
+                                            <div>
+                                              <h6 class="fw-bold mb-1">
+                                                {comment.name}
+                                              </h6>
+                                              <div class="d-flex align-items-center mb-3">
+                                                <p class="mb-0">
+                                                  March 07, 2021
+                                                </p>
+                                              </div>
+                                              <p class="mb-0">
+                                                {
+                                                  comment.comment_comunity_comments
+                                                }
+                                              </p>
                                             </div>
-                                            <p class="mb-0">
-                                              {
-                                                comment.comment_comunity_comments
-                                              }
-                                            </p>
                                           </div>
                                         </div>
-                                      </div>
 
-                                      <hr class="my-0" />
-                                    </>
-                                  );
-                                }
+                                        <hr class="my-0" />
+                                      </>
+                                    );
+                                  // }
                                 })}
                               </div>
                             </div>
