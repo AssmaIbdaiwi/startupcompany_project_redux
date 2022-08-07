@@ -149,14 +149,14 @@ const Sign_up = () => {
     SignInWithGoogle();
     setTimeout(function () {
       go();
-    }, 12000);
+    }, 10000);
   };
 
   const FacebookAuth = () => {
     SignInWithFacebook();
     setTimeout(function () {
       go();
-    }, 12000);
+    }, 10000);
   };
 
   function go() {

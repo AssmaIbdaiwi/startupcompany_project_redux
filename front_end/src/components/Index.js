@@ -490,7 +490,7 @@ const Index = () => {
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>Three Month</h3>
+                            <h3>One Month</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-1.png" alt="image"/>
                             </div>
@@ -501,7 +501,7 @@ const Index = () => {
 
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>PreSchool</h3>
+                            <h3>Three Month</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-2.png" alt="image"/>
                             </div>
