@@ -77,7 +77,7 @@ export const getComcomments = createAsyncThunk(
       `http://127.0.0.1:8000/api/apiCommunityComment/${id}`
     );
     const response = await api.json();
-    console.log(response)
+    // console.log(response)
     return response;
   }
 );

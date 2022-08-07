@@ -40,12 +40,14 @@ const Comunity = () => {
     );
    console.log(value);
   };
-  //  const handleChangeImage = (e) => {
-  //    setComunityData({
-  //      ...comunityData,
-  //     //  image_comunity_posts: e.target.files,
-  //    });
-  //  };
+
+
+   const handleChangeImage = (e) => {
+     setComunityData({
+       ...comunityData,
+       image_comunity_posts: e.target.files[0],
+     });
+   };
 
 
 
@@ -53,12 +55,22 @@ const Comunity = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-        // const comunityData = new FormData();
+        const comunityForm = new FormData();
+        comunityForm.append('comment_comunity_posts',comunityData.comment_comunity_posts);
+        comunityForm.append(
+          "image_comunity_posts",
+          comunityData.image_comunity_posts
+        );
+        comunityForm.append("subject", comunityData.subject);
+        comunityForm.append(
+          "user_id_ComunityPost",
+          comunityData.user_id_ComunityPost
+        );
+        
         // comunityData.append(
-        //   "image_comunity_posts",
-        //   comunityData.image_comunity_posts
+        //   "image_comunity_posts",comunityData.image_comunity_posts
         // );
-    dispatch(addComunityPosts(comunityData));
+    dispatch(addComunityPosts(comunityForm));
   };
 
     
@@ -111,7 +123,7 @@ console.log(comunityData)
                     <h5>Image</h5>
                     <input
                       type="file"
-                      onChange={handleChange}
+                      onChange={handleChangeImage}
                       name="image_comunity_posts"
                     />
                     <h5>Subject</h5>

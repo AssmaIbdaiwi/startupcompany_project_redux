@@ -26,7 +26,7 @@ const SingleComunity = () => {
     dispatch(getComcomments(id));
   }, [dispatch]);
   const comment1 = useSelector((state) => state.comunitypost);
-console.log(comment1);
+// console.log(comment1.comcomments[].name);
 
 
 
@@ -141,7 +141,7 @@ console.log(comment1);
                               <div class="card text-dark">
                                 {/* /////{" "} */}
                                 {comment1.comcomments.map((comment) => {
-                                  if (comment.state != false) {
+                                  // if (comment.state != false) {
                                     return (
                                       <>
                                         <div class="card-body p-4">
@@ -179,7 +179,7 @@ console.log(comment1);
                                         <hr class="my-0" />
                                       </>
                                     );
-                                  }
+                                  // }
                                 })}
                               </div>
                             </div>

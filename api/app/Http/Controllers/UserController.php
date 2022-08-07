@@ -106,7 +106,12 @@ class UserController extends Controller
 
 
         $user = User::find($id);
-
+        // if($request->has('image')) {
+        //         $image= $request->file('image');
+        //         $filename =time().'.'.$image->getClientOriginalExtension();
+        //         $image->move('upload/', $filename);
+        //         $user->image = $filename;
+        // }
         $user->name = $request->name;
         $user->email = $request->email;
         // $user->age = $request->age;

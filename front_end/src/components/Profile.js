@@ -40,6 +40,17 @@ const Profile = () => {
       });
   }
 
+  //  const handleChangeImage = (e) => {
+  //    setData({
+  //      ...data,
+  //      image: e.target.files[0],
+  //    });
+  //  };
+
+
+
+
+
   return (
     <>
       <div class="page-banner-area item-bg3">
@@ -125,7 +136,7 @@ const Profile = () => {
                       type="password"
                       class="form-control"
                       placeholder="password"
-                    //   defaultValue={data.password}
+                      //   defaultValue={data.password}
                       onChange={(e) =>
                         setData((prev) => ({
                           ...prev,
@@ -135,7 +146,11 @@ const Profile = () => {
                     />
                   </div>
                   <br />
-
+                  {/* <input
+                    type="file"
+                    onChange={handleChangeImage}
+                    name="image_comunity_posts"
+                  /> */}
                   <button type="submit" class="default-btn">
                     UPDATE
                   </button>

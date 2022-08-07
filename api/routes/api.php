@@ -77,6 +77,10 @@ Route::get('/users',function(){
     return response()->json($users);
 });
 
+// Route::get('apiuser/{id}',[ComunityPostController::class , 'addUserAPI']);
+
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
