@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
+import { Link, useNavigate } from "react-router-dom";
+
 
 const userSlice = createSlice({
   name: "user",
@@ -51,6 +53,8 @@ const userSlice = createSlice({
         showConfirmButton: false,
         timer: 2000,
       });
+
+      //navigate("/", { replace: true });
     },
   },
 });
