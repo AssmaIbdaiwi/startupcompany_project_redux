@@ -35,12 +35,31 @@ class ComunityPostController extends Controller
         $comment->state = false;     
         $comment->user_id_ComunityPost = $request->get('user_id_ComunityPost');   
         
+
         if($request->has('image_comunity_posts')) {
                 $image= $request->file('image_comunity_posts');
                 $filename =time().'.'.$image->getClientOriginalExtension();
                 $image->move('upload/', $filename);
                 $comment->image_comunity_posts = $filename;
         }
+
+        
+        // if ($request->hasfile('image_comunity_posts')) { 
+        //     $file = $request->file('image_comunity_posts');
+        //     dd($file);
+        //     $extention = $file->getClientOriginalExtension();
+        //     $filename = time() . '.' . $extention;
+        //     $file->move('upload/', $filename);
+            
+        //     $comment->image_comunity_posts = $filename;
+
+        // if($request->has('image_comunity_posts')) {
+        //         $image= $request->file('image_comunity_posts');
+        //         $filename =time().'.'.$image->getClientOriginalExtension();
+        //         $image->move('upload/', $filename);
+        //         $comment->image_comunity_posts = $filename;
+
+        // }
 
         $comment->save();      
         return response()->json($comment);

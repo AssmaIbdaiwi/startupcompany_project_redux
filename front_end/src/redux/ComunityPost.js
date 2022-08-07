@@ -36,8 +36,9 @@ export const addComunityPosts = createAsyncThunk(
     if (response.status == 200) {
       Swal.fire({
         title: "Post",
-        text: "Has been Added Successfully",
+        text: "Pending Admin Accept",
         type: "success",
+        confirmButtonColor: "#ea512e"
       });
     }
     return response.data;
@@ -60,8 +61,9 @@ export const deleteComunityPost = createAsyncThunk(
     if (response.ok) {
       Swal.fire({
         title: "Post",
-        text: "Has been deleted Successfully",
+        text: "Post Has been Deleted Successfully",
         type: "success",
+        confirmButtonColor: "#ea512e"
       });
     }
     const res = response.json();
@@ -93,9 +95,10 @@ export const addComunityComment = createAsyncThunk(
     // console.log('add',add)
     if (response.status == 200) {
       Swal.fire({
-        title: "Post",
-        text: "Has been Added Successfully",
+        title: "Comment",
+        text: "Pending Admin Accept",
         type: "success",
+        confirmButtonColor: "#ea512e"
       });
     }
     return response.data;

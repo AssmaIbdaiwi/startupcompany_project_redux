@@ -70,7 +70,7 @@ class AdminPController extends Controller
       
         $post->save();
 
-        return redirect()->route('post.index')->with('success', 'Post added successfully.');
+        return redirect()->route('post.index')->with('success', 'News added successfully.');
     }
 
     /**
@@ -130,7 +130,7 @@ class AdminPController extends Controller
            'main_image'=>$post->main_image
         ]);
         
-         return redirect()->route('post.index')->with('success','Post updateded successfully.');
+         return redirect()->route('post.index')->with('success','News updateded successfully.');
     }
 
     /**
@@ -144,6 +144,6 @@ class AdminPController extends Controller
         $delete = Post::find($id);
         $delete->delete();
         return redirect()->route('post.index')
-                        ->with('success','Post deleted successfully');
+                        ->with('success','News deleted successfully');
     }
 }

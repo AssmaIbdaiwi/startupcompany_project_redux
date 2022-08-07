@@ -161,8 +161,8 @@ const Index = () => {
                                     </div>
 
                                     <div class="content">
-                                        <h3>Profissional Doctors</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
+                                        <h3>Professional Doctors</h3>
+                                        {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +175,7 @@ const Index = () => {
 
                                     <div class="content">
                                         <h3>Latest News</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
+                                        {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@ const Index = () => {
 
                                     <div class="content">
                                         <h3>Contact With doctors directly</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
+                                        {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@ const Index = () => {
 
                                     <div class="content">
                                         <h3>Great community for subscribers </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
+                                        {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -644,7 +644,7 @@ const Index = () => {
         {/* <!-- End Blog Area -->
 
         <!-- Start Newsletter Area --> */}
-        <div class="newsletter-area ptb-100">
+        {/* <div class="newsletter-area ptb-100">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -660,7 +660,7 @@ const Index = () => {
         {/* <!-- End Newsletter Area -->
 
         <!-- Start Partner Area --> */}
-        <div class="partner-area ptb-100">
+        {/* <div class="partner-area ptb-100">
             <div class="container">
                 <div class="partner-slider owl-carousel owl-theme">
                     <div class="partner-item">
@@ -684,9 +684,9 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
 
-  </div>
+  {/* </div> */}
         
 
  

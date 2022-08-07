@@ -22,12 +22,12 @@ const News =()=>{
                 <div className="d-table-cell">
                   <div className="container">
                     <div className="page-banner-content">
-                      <h2>Post</h2>
+                      <h2>News</h2>
                       <ul>
                         <li>
                           <a href="index.html">Home</a>
                         </li>
-                        <li>Post</li>
+                        <li>News</li>
                       </ul>
                     </div>
                   </div>
@@ -45,10 +45,12 @@ const News =()=>{
                     return (
                       <div className="col-lg-4 col-md-6" key={post.id}>
                         <div className="single-blog-item">
-                          <div className="blog-image">
+                          <div className="blog-image"style={{width:'400px'}} >
                             <a href="#">
                               <img
+                              style={{height:'280px',width:'550px'}}
                                src={ "http://localhost:8000/upload/" + post.main_image}
+                               
                               />
                             </a>
                           </div>
@@ -67,7 +69,7 @@ const News =()=>{
                             <h3>
                               <a href="blog-details.html">{post.title}</a>
                             </h3>
-                            <p>{post.body}</p>
+                            <p>{post.body.substring(0, 40)}</p>
 
                             <div className="blog-btn">
                               <a

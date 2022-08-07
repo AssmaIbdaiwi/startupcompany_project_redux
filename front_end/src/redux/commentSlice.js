@@ -25,7 +25,7 @@ export const addComment = createAsyncThunk(
     if (response.status == 200) {
       Swal.fire({
         title: "comment",
-        text: "Has been Added Successfully",
+        text: "Pending Admin Accept",
         type: "success",
         confirmButtonColor: "#ea512e"
       });

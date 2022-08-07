@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\User;
@@ -8,7 +9,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-        public  function CommentAPI($id)
+    public  function CommentAPI($id)
     {
         // $com = Comment::select('comments.*' , 'posts.*')->join('users', 'comments.user_id_comment', '=', 'users.id')
         // ->Join('posts','comments.post_id_comment' ,'=','posts.id')->where('comments.user_id_comment',1)
@@ -16,7 +17,7 @@ class CommentController extends Controller
 
 
         $com = Comment::Join('users', 'comments.user_id_comment', '=', 'users.id')
-        ->Join('posts','comments.post_id_comment' ,'=','posts.id')->where('comments.post_id_comment',$id)->select('comments.*', 'users.name', 'users.image')->get();
+            ->Join('posts', 'comments.post_id_comment', '=', 'posts.id')->where('comments.post_id_comment', $id)->select('comments.*', 'users.name', 'users.image')->get();
         return $com;
     }
 
@@ -25,7 +26,7 @@ class CommentController extends Controller
 
     public function addComment(Request $request)
     {
-        
+
         $comment = new Comment();
         $comment->comment = $request->get('comment');    
          $comment->date = $request->get('date');    
@@ -40,7 +41,7 @@ class CommentController extends Controller
     }
 
 
-      public function updateComment(Request $request,$id )
+    public function updateComment(Request $request, $id)
     {
 
 
@@ -54,7 +55,7 @@ class CommentController extends Controller
 
         $comment->update();
 
-return $comment;
+        return $comment;
     }
 
 
@@ -65,12 +66,5 @@ return $comment;
         $delete = $comment;
         $comment->delete();
         return $delete;
-        
     }
-
-
-   
 }
-
-
-

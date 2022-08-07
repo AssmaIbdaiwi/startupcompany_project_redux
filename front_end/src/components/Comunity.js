@@ -23,6 +23,7 @@ const Comunity = () => {
     image_comunity_posts: '',
     subject: " ",
     user_id_ComunityPost: localStorage.id,
+    image_comunity_posts:null
   });
   // console.log(id)
 
@@ -95,7 +96,7 @@ console.log(comunityData)
                   <li>
                     <a href="index.html">Home</a>
                   </li>
-                  <li>Blog Details</li>
+                  <li>Community</li>
                 </ul>
               </div>
             </div>
@@ -142,7 +143,7 @@ console.log(comunityData)
                         onChange={handleChange}
                         name="comment_comunity_posts"
                         cols="45"
-                        placeholder="Your Comment..."
+                        placeholder="Your Post..."
                         rows="5"
                         maxlength="65525"
                         required="required"
@@ -155,7 +156,7 @@ console.log(comunityData)
                         name="submit"
                         id="submit"
                         class="submit"
-                        value="Post A Comment"
+                        value="Post "
                       />
                     </p>
                   </form>
@@ -174,18 +175,19 @@ console.log(comunityData)
         <section class="class-area bg-fdf6ed pt-100 pb-70">
           <div class="container">
             <div class="section-title">
-              <h2>Popular Classes</h2>
+              <h2>Popular Posts</h2>
             </div>
 
             <div class="row">
               {comunityposts.comunityposts.map((post) => {
-                if (post.state == false) {
+                if (post.state != false) {
                   return (
                     <div class="col-lg-4 col-md-6" key={post.id}>
                       <div class="single-class">
                         <div class="class-image">
                           <a href="#">
                             <img
+                            style={{height:'350px'}}
                               src={
                                 "http://localhost:8000/upload/" +
                                 post.image_comunity_posts

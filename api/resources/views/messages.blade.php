@@ -64,7 +64,7 @@
                  </td>
                   <td>
                     <form action=" {{ route('message.destroy',$message->id) }}" method="POST"> 
-                      <a class="btn btn-info" href="mailto:{{$message->message_email;}}">Replay</a>
+                      <a class="btn btn-info" href="mailto:{{$message->email;}}">Replay</a>
                       @csrf
                       @method('DELETE')
                       

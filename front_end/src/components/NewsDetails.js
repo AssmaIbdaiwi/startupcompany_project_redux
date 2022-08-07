@@ -155,8 +155,8 @@ const handleSubmitEdit = (e) => {
                       <figure>
                         <img
                           src={
-                            "http://localhost:8000/upload/" +
-                            singlepost.singlepost.main_image
+                            "http://localhost:8000/upload/im1.jfif" 
+                         
                           }
                           alt="image"
                         />
@@ -167,8 +167,8 @@ const handleSubmitEdit = (e) => {
                       <figure>
                         <img
                           src={
-                            "http://localhost:8000/upload/" +
-                            singlepost.singlepost.main_image
+                            "http://localhost:8000/upload/im2.jfif" 
+                            
                           }
                           alt="image"
                         />
@@ -179,8 +179,8 @@ const handleSubmitEdit = (e) => {
                       <figure>
                         <img
                           src={
-                            "http://localhost:8000/upload/" +
-                            singlepost.singlepost.main_image
+                            "http://localhost:8000/upload/im3.jfif" 
+                            
                           }
                           alt="image"
                         />
@@ -217,7 +217,7 @@ const handleSubmitEdit = (e) => {
                     magnam aliquam quaerat voluptatem.
                   </p>
                 </div>
-
+{/* 
                 <div class="article-footer">
                   <div class="article-tags">
                     <span>
@@ -248,7 +248,7 @@ const handleSubmitEdit = (e) => {
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> */}
 
                 {/* <div class="post-navigation">
                   <div class="navigation-links">
@@ -313,9 +313,7 @@ const handleSubmitEdit = (e) => {
                                   <footer class="comment-meta">
                                     <div class="comment-author vcard">
                                       <img
-                                        src={
-                                          "http://localhost:8000/upload/user.jfif"
-                                        }
+                                       src= {"http://localhost:8000/upload/" + comment.image}
                                         class="avatar"
                                         alt="image"
                                       />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Profile = () => {
   let id = localStorage.getItem("id");
@@ -35,7 +36,14 @@ const Profile = () => {
       .post(`http://127.0.0.1:8000/api/update/` + id, { ...data })
       .then((res) => {
         console.log(res.data);
-
+        if (res.status == 200) {
+          Swal.fire({
+            title: "Profile",
+            text: "Profile Updated Successfully",
+            type: "success",
+            confirmButtonColor: "#ea512e"
+          });
+        }
         localStorage.setItem("id", res.data.id);
       });
   }
@@ -77,7 +85,9 @@ const Profile = () => {
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
-              <div class="quote-image"></div>
+              <div class="quote-image">
+                <img  src={"http://localhost:8000/upload/" + data.image}  style={{width:'100%' , height:'100%'}} alt="image"/>
+              </div>
             </div>
 
             <div class="col-lg-6">
@@ -130,7 +140,7 @@ const Profile = () => {
                   </div>
                   <br />
 
-                  <div class="form-group">
+                  {/* <div class="form-group">
                     <label>Password</label>
                     <input
                       type="password"
@@ -144,7 +154,7 @@ const Profile = () => {
                         }))
                       }
                     />
-                  </div>
+                  </div> */}
                   <br />
                   {/* <input
                     type="file"

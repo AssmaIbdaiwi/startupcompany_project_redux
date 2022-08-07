@@ -1956,6 +1956,7 @@ p.description {
 .text-primary,
 a.text-primary:focus,
 a.text-primary:hover {
+  font-weight: bold !important;
   color: #f96332 !important;
 }
 

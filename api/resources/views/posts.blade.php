@@ -7,9 +7,9 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> Posts</h4>
+          <h4 class="card-title"> News</h4>
           <div class="pull-left">
-            <a class="btn btn-success" href="{{ route('post.create') }}"> Add New Post</a>
+            <a class="btn btn-success" href="{{ route('post.create') }}"> Add New News</a>
         </div>
         </div>
         <div class="card-body">
@@ -69,7 +69,7 @@
                     {{$post->subtitle;}}
                   </td>
                   <td >
-                    {{$post->body;}}
+                    {{Str::limit($post->body,100)}}
                   </td>
                   <td >
                     {{$post->created_at;}}

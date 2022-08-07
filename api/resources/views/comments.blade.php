@@ -38,7 +38,7 @@
                 </th>
                 <th>
 
-Status                </th>
+ State                </th>
                 <th >
                   Action
                 </th>
@@ -66,8 +66,12 @@ Status                </th>
                     {{$comment->created_at;}}
                   </td>
                   <td >
-                    {{-- {{$comment->status;}} --}}
-                     pending
+                    @if( $comment->state==0)
+                  <p style="color: red" >Pending</p>
+                    
+                   @else 
+                   <p style="color: green" >Accepted</p>
+                   @endif
                   </td>
                   <td>
                     <form action=" {{ route('comment.destroy',$comment->id) }}" method="POST"> 

@@ -42,7 +42,7 @@ const Nav = () => {
           <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
               <a class="navbar-brand" href="/">
-                <img src="assets/img/logo2.png" class="black-logo" alt="image" style={{width:"88px"}} />
+                <img src={"http://localhost:8000/upload/logo2.png" } class="black-logo" alt="image" style={{width:"88px"}} />
                 <img
                   src="assets/img/logo-2.png"
                   class="white-logo"
