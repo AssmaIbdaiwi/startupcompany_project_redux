@@ -36,7 +36,7 @@
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
-        <ul class="nav">
+        <ul class="nav" style="font-size: 18px">
           <li class="">
             <a href='/'>
               <i class="now-ui-icons design_app"></i>

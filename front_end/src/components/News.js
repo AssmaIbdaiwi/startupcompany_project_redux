@@ -48,7 +48,7 @@ const News =()=>{
                           <div className="blog-image"style={{width:'400px'}} >
                             <a href="#">
                               <img
-                              
+                              style={{height:'280px',width:'550px'}}
                                src={ "http://localhost:8000/upload/" + post.main_image}
                                
                               />

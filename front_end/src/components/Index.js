@@ -161,7 +161,7 @@ const Index = () => {
                                     </div>
 
                                     <div class="content">
-                                        <h3>Profissional Doctors</h3>
+                                        <h3>Professional Doctors</h3>
                                         {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>

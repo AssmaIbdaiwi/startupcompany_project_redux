@@ -74,7 +74,7 @@
                   </td>
                   <td >
                     @if( $post->state==0)
-                    <p style="color: red" >Piending</p>
+                    <p style="color: red" >Pending</p>
                       
                      @else 
                      <p style="color: green" >Accepted</p>

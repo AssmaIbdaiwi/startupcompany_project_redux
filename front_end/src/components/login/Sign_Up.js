@@ -149,14 +149,14 @@ const Sign_up = () => {
     SignInWithGoogle();
     setTimeout(function () {
       go();
-    }, 7000);
+    }, 12000);
   };
 
   const FacebookAuth = () => {
     SignInWithFacebook();
     setTimeout(function () {
       go();
-    }, 7000);
+    }, 12000);
   };
 
   function go() {
@@ -168,6 +168,8 @@ const Sign_up = () => {
     // console.log("************************");
     // console.log(godata);
 
+    if(godata.name !="" && godata.email!="")
+    {
     axios
       .post(`http://127.0.0.1:8000/api/register`, { ...godata })
       .then((res) => {
@@ -176,6 +178,7 @@ const Sign_up = () => {
         dispatch(signup(res.data.name));
         localStorage.setItem("id", res.data.id);
       });
+    }
   }
 
   useEffect(() => {

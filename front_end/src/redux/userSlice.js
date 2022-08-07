@@ -43,7 +43,7 @@ const userSlice = createSlice({
     },
     logout: (state) => {
       state.isLogged = false;
-      localStorage.removeItem("id");
+      localStorage.clear();
       Swal.fire({
         position: "top-end",
         icon: "success",

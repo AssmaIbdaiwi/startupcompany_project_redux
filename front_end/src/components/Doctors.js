@@ -54,7 +54,7 @@ const Doctors = () => {
                                 <div class="col-lg-3 col-md-6">
                                     <div class="single-teacher">
                                         <div class="image">
-                                            <img src={"http://localhost:8000/upload/" + doctor.image_doctor} alt="image" />
+                                            <img style={{height:'300px',width:'550px'}} src={"http://localhost:8000/upload/" + doctor.image_doctor} alt="image" />
 
                                             <ul class="social">
                                                 <li>

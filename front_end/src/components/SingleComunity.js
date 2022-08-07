@@ -26,7 +26,7 @@ const SingleComunity = () => {
     dispatch(getComcomments(id));
   }, [dispatch]);
   const comment1 = useSelector((state) => state.comunitypost);
-console.log(comment1);
+// console.log(comment1.comcomments[].name);
 
 
 
@@ -66,7 +66,7 @@ console.log(comment1);
                   <li>
                     <a href="index.html">Home</a>
                   </li>
-                  <li>Post Details</li>
+                  <li>Blog Details</li>
                 </ul>
               </div>
             </div>
@@ -92,18 +92,17 @@ console.log(comment1);
                         <div class="d-flex flex-start align-items-center">
                           <img
                             class="rounded-circle shadow-1-strong me-3"
-                           
-                            src={"http://localhost:8000/upload/" + singlepost.singlecompost.image} 
+                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
                             alt="avatar"
                             width="60"
                             height="60"
                           />
                           <div>
-                            <h6 class="fw-bold  mb-1">
-                             Posted by {singlepost.singlecompost.name}
+                            <h6 class="fw-bold text-primary mb-1">
+                              {singlepost.singlecompost.name}
                             </h6>
                             <p class="text-muted small mb-0">
-                             
+                              Shared publicly -{" "}
                               {singlepost.singlecompost.created_at}
                             </p>
                           </div>
@@ -113,10 +112,11 @@ console.log(comment1);
                           {singlepost.singlecompost.comment_comunity_posts}
                         </p>
                         <img
-                               src="assets/img/class/class-1.jpg"
-                               alt="image"
-                             />
-                        {/* //src={"http://localhost:8000/upload/" + singlepost.singlecompost.image_comunity_posts}/> */}
+                          src={
+                            "http://localhost:8000/upload/" +
+                            singlepost.singlecompost.image_comunity_posts
+                          }
+                        />
                         {/* 
                         <div class="small d-flex justify-content-start">
                           <a href="#!" class="d-flex align-items-center me-3">
@@ -141,43 +141,45 @@ console.log(comment1);
                               <div class="card text-dark">
                                 {/* /////{" "} */}
                                 {comment1.comcomments.map((comment) => {
-                                   if (comment.state != false) {
-                                  return (
-                                    <>
-                                      <div class="card-body p-4">
-                                        <h4 class="mb-0">Comments</h4>
-                                        <p class="fw-light mb-4 pb-2"></p>
+                                  // if (comment.state != false) {
+                                    return (
+                                      <>
+                                        <div class="card-body p-4">
+                                          <h4 class="mb-0">Comments</h4>
+                                          <p class="fw-light mb-4 pb-2"></p>
 
-                                        <div class="d-flex flex-start">
-                                          <img
-                                            class="rounded-circle shadow-1-strong me-3"
-                                            src={"http://localhost:8000/upload/" + singlepost.singlecompost.image}
-                                            alt="avatar"
-                                            style={{
-                                              width: "5%",
-                                              height: "5%",
-                                            }}
-                                          />
-                                          <div>
-                                            <h6 class="fw-bold mb-1">
-                                              {comment.name}
-                                            </h6>
-                                            <div class="d-flex align-items-center mb-3">
-                                              <p class="mb-0">March 07, 2021</p>
+                                          <div class="d-flex flex-start">
+                                            <img
+                                              class="rounded-circle shadow-1-strong me-3"
+                                              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+                                              alt="avatar"
+                                              style={{
+                                                width: "5%",
+                                                height: "5%",
+                                              }}
+                                            />
+                                            <div>
+                                              <h6 class="fw-bold mb-1">
+                                                {comment.name}
+                                              </h6>
+                                              <div class="d-flex align-items-center mb-3">
+                                                <p class="mb-0">
+                                                  March 07, 2021
+                                                </p>
+                                              </div>
+                                              <p class="mb-0">
+                                                {
+                                                  comment.comment_comunity_comments
+                                                }
+                                              </p>
                                             </div>
-                                            <p class="mb-0">
-                                              {
-                                                comment.comment_comunity_comments
-                                              }
-                                            </p>
                                           </div>
                                         </div>
-                                      </div>
 
-                                      <hr class="my-0" />
-                                    </>
-                                  );
-                                }
+                                        <hr class="my-0" />
+                                      </>
+                                    );
+                                  // }
                                 })}
                               </div>
                             </div>
@@ -192,7 +194,7 @@ console.log(comment1);
                           <div class="d-flex flex-start w-100">
                             <img
                               class="rounded-circle shadow-1-strong me-3"
-                              src={"http://localhost:8000/upload/user.jfif" }
+                              src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
                               alt="avatar"
                               style={{ width: "5%", height: "5%" }}
                             />
@@ -207,14 +209,14 @@ console.log(comment1);
                                 style={{ background: "#fff" }}
                               ></textarea>
                               <label class="form-label" for="textAreaExample">
-                                
+                                Message
                               </label>
                             </div>
                           </div>
                           <div class="float-end mt-2 pt-1">
                             <button
                               type="submit"
-                              class="default-btn"
+                              class="btn btn-primary btn-sm"
                             >
                               Post comment
                             </button>

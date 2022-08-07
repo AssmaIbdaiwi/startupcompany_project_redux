@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
+import "./style.css";
+import { SignInWithGoogle, SignInWithFacebook } from "../firebase/config";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/userSlice";
@@ -62,6 +64,57 @@ const Login = () => {
     // }
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  const GoogleAuth = () => {
+    SignInWithGoogle();
+    setTimeout(function () {
+      go();
+    }, 10000);
+  };
+
+  const FacebookAuth = () => {
+    SignInWithFacebook();
+    setTimeout(function () {
+      go();
+    }, 10000);
+  };
+
+  function go() {
+    const godata = {
+      name: localStorage.getItem("name"),
+      email: localStorage.getItem("email"),
+      password: "12345",
+    };
+    // console.log("************************");
+    // console.log(godata);
+
+    if(godata.name !="" && godata.email!="")
+    {
+    axios
+      .post(`http://127.0.0.1:8000/api/register`, { ...godata })
+      .then((res) => {
+        console.log(user);
+        console.log(res.data);
+        dispatch(login(res.data.name));
+        localStorage.setItem("id", res.data.id);
+      });
+    }
+  }
+
+
   useEffect(() => {
     if (user) {
       navigate("/", { replace: true });
@@ -78,6 +131,30 @@ const Login = () => {
             <h2>Login</h2>
 
             <form onSubmit={handelSubmet}>
+
+
+
+            <div className="goo">
+                <button
+                  type="button"
+                  class="login-with-google-btn"
+                  onClick={GoogleAuth}
+                >
+                  Sign in with Google
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button
+                  type="button"
+                  class="login-with-facebook-btn"
+                  onClick={FacebookAuth}
+                >
+                  Sign in with Facebook
+                </button>
+              </div>
+              <br></br> <h5 style={{ textAlign: "center" }}>OR</h5> <br></br>
+
+
+
               <div class="form-group">
                 {/* <label>Email or phone</label> */}
                 <input
