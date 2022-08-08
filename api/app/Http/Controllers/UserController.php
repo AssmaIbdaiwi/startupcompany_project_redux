@@ -106,14 +106,12 @@ class UserController extends Controller
 
 
         $user = User::find($id);
-        if ($request->hasfile('image')) {
+        if ($request->has('image')) {
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $image->move('upload/user_image/', $filename);
             $user->image = $filename;
         }
-
-        
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->input('password'));
@@ -123,7 +121,7 @@ class UserController extends Controller
         }
 
 
-        $user->update();
+        $user->save();
     }
 
 

@@ -33,7 +33,6 @@ const Profile = () => {
   const emailPattern =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const numpattern = /[07]{2,3}[7-9]{1,2}[0-9]{7,8}/;
-  // const regex  = "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
   const imgpattern = /\.(jpg|jpeg|png|webp|avif|gif|jfif|svg)$/;
   // "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
   // /^(.+\/)+.+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif|jfif))$/i;
@@ -254,7 +253,10 @@ const Profile = () => {
                   {/* <h3>Online Class Registration</h3> */}
                 </div>
                 {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-                <form onSubmit={handelSubmet}>
+
+
+
+                <form onSubmit={handelSubmet} method="post" enctype="multipart/form-data">
                   <div class="form-group">
                     <label>Name</label>
                     <input
