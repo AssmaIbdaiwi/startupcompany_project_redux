@@ -164,7 +164,7 @@ const Sign_up = () => {
     const godata = {
       name: localStorage.getItem("name"),
       email: localStorage.getItem("email"),
-      password: "12345",
+      password: "admin1@regexpattern.COM",
     };
     // console.log("************************");
     // console.log(godata);

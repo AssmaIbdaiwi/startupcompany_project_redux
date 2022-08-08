@@ -5,8 +5,10 @@ import Swal from "sweetalert2";
 
 const Profile = () => {
   let id = localStorage.getItem("id");
-  console.log(id);
+  // console.log(id);
   const [data, setData] = useState({});
+
+  const [img10, setimg10] = useState("");
 
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
@@ -23,43 +25,54 @@ const Profile = () => {
   const [done6, setdone6] = useState(false);
 
   const [all, setall] = useState("");
-  const[isimg,setis]= useState(false);
+  const [isimg, setis] = useState(false);
 
-  const passPattern = /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/;
+  const passPattern =
+    /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/;
   const namePattern = /(^[a-zA-Z][a-zA-Z\s]{2,20}[a-zA-Z]$)/;
   const emailPattern =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const numpattern = /[07]{2,3}[7-9]{1,2}[0-9]{7,8}/;
   // const regex  = "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
-  const imgpattern =/\.(jpg|jpeg|png|webp|avif|gif|jfif|svg)$/;
+  const imgpattern = /\.(jpg|jpeg|png|webp|avif|gif|jfif|svg)$/;
   // "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
-    // /^(.+\/)+.+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif|jfif))$/i;
-
- 
-
-  
+  // /^(.+\/)+.+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif|jfif))$/i;
 
   const fetchProfile = async () => {
     const response = await fetch(`http://127.0.0.1:8000/api/get/${id}`);
     const myProfile = await response.json();
 
-    if (data.image == null) {
-      data.image = "../img/quote.jpg";
-    }
     setData(myProfile);
-    console.log("**********************");
-    console.log(myProfile);
-  
 
+    // if (data.image == null) {
+    //   setData({...data, image: "https://www.pngall.com/wp-content/uploads/5/Profile-Female.png"});
+    //   // data.image = "https://www.pngall.com/wp-content/uploads/5/Profile-Female.png";
+    // }
+    // console.log("**********************");
+    // console.log(data);
+    // console.log(data.image);
   };
 
   useEffect(() => {
     fetchProfile();
+
+    if (data.image == null) {
+      setimg10("Profile-Female.png");
+    } else {
+      setimg10(data.image);
+    }
   }, []);
+
+  // if(data.image == null)
+  // {
+  //   setimg10("Profile-Female.png");
+  // }else{
+  //   setimg10(data.image);
+  // }
 
   function handelSubmet(e) {
     e.preventDefault();
- 
+
     setname("");
     setemail("");
     setpass("");
@@ -76,7 +89,9 @@ const Profile = () => {
     setdone5(true);
     setdone6(true);
 
-    if (data.name != null && data.email != null) {
+    // console.log(data.name);
+    // console.log(data.email);
+    if (data.name != "" && data.email != "") {
       if (namePattern.test(data.name)) {
         setdone(true);
       } else {
@@ -103,7 +118,7 @@ const Profile = () => {
       if (passPattern.test(data.password)) {
         setdone3(true);
       } else {
-        console.log(data.password);
+        // console.log(data.password);
         setdone3(false);
         setpass(
           <h6 style={{ color: "red", textAlign: "center" }}>
@@ -115,25 +130,27 @@ const Profile = () => {
       }
 
       if (data.mobile != null) {
-        if (numpattern.test(data.mobile)) {
-          setdone4(true);
-        } else {
-          setdone4(false);
-          setnum(
-            <h6 style={{ color: "red", textAlign: "center" }}>
-              * Enter correct phone number
-            </h6>
-          );
+        if (data.mobile != "") {
+          if (numpattern.test(data.mobile)) {
+            setdone4(true);
+          } else {
+            setdone4(false);
+            setnum(
+              <h6 style={{ color: "red", textAlign: "center" }}>
+                * Enter correct phone number
+              </h6>
+            );
+          }
         }
       }
 
-      if (data.image != null && isimg ) {
+      if (data.image != null && isimg) {
         console.log(data.image);
         console.log(data.image.name);
         console.log(data.image.size);
         // imgpattern.test(data.image)
-       // const i=data.image;
-        if ( imgpattern.test(data.image.name)) {
+        // const i=data.image;
+        if (imgpattern.test(data.image.name)) {
           setdone5(true);
         } else {
           setdone5(false);
@@ -144,11 +161,9 @@ const Profile = () => {
           );
         }
 
-        if(data.image.size <= 1024000)
-        {
-          setdone5(true);
-        }
-        else{
+        if (data.image.size <= 1024000) {
+          setdone6(true);
+        } else {
           setdone6(false);
           setsize(
             <h6 style={{ color: "red", textAlign: "center" }}>
@@ -159,10 +174,12 @@ const Profile = () => {
       }
 
       if (done && done2 && done3 && done4 && done5 && done6) {
+        setis(false);
+        console.log(data);
         axios
           .post(`http://127.0.0.1:8000/api/update/` + id, { ...data })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.status == 200) {
               Swal.fire({
                 title: "Profile",
@@ -174,7 +191,6 @@ const Profile = () => {
             //localStorage.setItem("id", res.data.id);
           });
       }
-
     } else {
       setall(
         <h5 style={{ color: "red", textAlign: "center" }}>
@@ -184,19 +200,6 @@ const Profile = () => {
     }
   }
 
-
-
-  
-  const [comunityData, setComunityData] = useState({
-    comment_comunity_posts: " ",
-    state: false,
-    image: '',
-    subject: " ",
-    user_id_ComunityPost: localStorage.id,
-    image:null
-  });
-
-
   const handleChangeImage = (e) => {
     setData({
       ...data,
@@ -204,54 +207,22 @@ const Profile = () => {
     });
 
     setis(true);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  };
 
   return (
     <>
-
-
-
-
       <div class="page-banner-area item-bg3">
         <div class="d-table">
           <div class="d-table-cell">
             <div class="container">
               <div class="page-banner-content">
                 <h2>Profile</h2>
-                            <ul>
-                                <li>
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li>Profile</li>
-                            </ul>
+                <ul>
+                  <li>
+                    <a href="index.html">Home</a>
+                  </li>
+                  <li>Profile</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -264,11 +235,12 @@ const Profile = () => {
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
-              <div class="quote-image"
-              // styles={{ backgroundImage:`url(${data.image})` }}
+              <div
+                class="quote-image"
+                // styles={{ backgroundImage:`url(${data.image})` }}
               >
                 <img
-                  src="https://www.pngall.com/wp-content/uploads/5/Profile-Female.png"
+                  src={"http://localhost:8000/upload/" + img10}
                   style={{ width: "75%", height: "75%" }}
                   alt="image"
                 />
@@ -350,7 +322,7 @@ const Profile = () => {
                   </label>
                   <input
                     type="file"
-                     onChange={handleChangeImage}
+                    onChange={handleChangeImage}
                     name="image"
                   />
                   {img}

@@ -30,15 +30,15 @@ class UserController extends Controller
         // if ($validator->fails()) {
         //     return response()->json(['errors' => $validator->errors()->all()]);
         // }
-        
+
         $user = User::where('email', $request->input('email'))->first();
 
-        if ($user ) {
-           return response($user, 201);
+        if ($user) {
+            return response($user, 201);
         }
-        
-            
-        
+
+
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -49,16 +49,16 @@ class UserController extends Controller
         // $user->email = "aaa";
         // $user->password = Hash::make("12345");
 
-        
+
         $user->save();
 
-       return response($user, 201);
+        return response($user, 201);
     }
 
 
 
 
-    
+
     public function loginAPI(Request $request)
     {
         // $email = $request->email;
@@ -83,7 +83,7 @@ class UserController extends Controller
             // return response()([
             //     'errors' => ['Email or Password is incorrect']
             // ]);
-           // return response($user, 400);
+            // return response($user, 400);
         }
         return response($user, 201);
     }
@@ -91,7 +91,7 @@ class UserController extends Controller
 
 
 
-    
+
 
     public  function getInfo($id)
     {
@@ -106,35 +106,31 @@ class UserController extends Controller
 
 
         $user = User::find($id);
-        // if($request->has('image')) {
-        //         $image= $request->file('image');
-        //         $filename =time().'.'.$image->getClientOriginalExtension();
-        //         $image->move('upload/', $filename);
-        //         $user->image = $filename;
-        // }
+        if ($request->hasfile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('upload/user_image/', $filename);
+            $user->image = $filename;
+        }
+
+        
         $user->name = $request->name;
         $user->email = $request->email;
-        // $user->age = $request->age;
-        $user->password = $request->password;
-        // $user->address = $request->address;
-        $user->mobile = $request->mobile;
+        $user->password = Hash::make($request->input('password'));
+        
+        if ($request->mobile != null) {
+            $user->mobile = $request->mobile;
+        }
+
 
         $user->update();
     }
 
-    
-   
+
+
     public function getUser($id)
     {
         $user = User::find($id);
         return $user;
     }
-
-
-
-
-
-
-
-
 }
