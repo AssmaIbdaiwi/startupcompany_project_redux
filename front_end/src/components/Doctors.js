@@ -54,7 +54,7 @@ const Doctors = () => {
                                 <div class="col-lg-3 col-md-6">
                                     <div class="single-teacher">
                                         <div class="image">
-                                       <img src={ "http://localhost:8000/upload/" + doctor.image_doctor } alt="image" />
+                                            <img src={"http://localhost:8000/upload/" + doctor.image_doctor} alt="image" />
 
                                             <ul class="social">
                                                 <li>
@@ -81,8 +81,8 @@ const Doctors = () => {
                                         </div>
 
                                         <div class="content">
-                                       
-                                        <a href={`DoctorDetails/${doctor.id}`}> <h3>{doctor.name_doctor}</h3></a>
+
+                                            <a href={`DoctorDetails/${doctor.id}`}> <h3>{doctor.name_doctor}</h3></a>
                                             <span>{doctor.specialization}</span>
                                         </div>
                                     </div>

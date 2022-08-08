@@ -14,7 +14,8 @@ const userSlice = createSlice({
                 Swal.fire({
                     title: "Login Successfull",
                     text: "Welcome to our site we hope you spent great time with us :)",
-                    type: "success"
+                    type: "success",
+                    confirmButtonColor: "#ea512e"
                 })
                 state.isLogged = true
              } //else{
@@ -31,7 +32,8 @@ const userSlice = createSlice({
                 Swal.fire({
                     title: "Login Successfull",
                     text: "Welcome to our site we hope you spent great time with us :)",
-                    type: "success"
+                    type: "success",
+                    confirmButtonColor: "#ea512e"
                 })
                 state.isLogged = true
             } //else{

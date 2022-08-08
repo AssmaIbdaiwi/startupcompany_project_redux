@@ -78,12 +78,12 @@ setShowEdit(false);
           <div class="d-table-cell">
             <div class="container">
               <div class="page-banner-content">
-                <h2>Blog Details</h2>
+                <h2>News Details</h2>
                 <ul>
                   <li>
                     <a href="index.html">Home</a>
                   </li>
-                  <li>Blog Details</li>
+                  <li>News Details</li>
                 </ul>
               </div>
             </div>
@@ -100,14 +100,14 @@ setShowEdit(false);
             <div class="col-lg-8 col-md-12">
               <div class="blog-details-desc">
                 <div class="article-image">
-                  <img src="assets/img/blog-details.jpg" alt="image" />
+                  <img  src={ "http://localhost:8000/upload/" +singlepost.singlepost.main_image} alt="image" />
                 </div>
                 <div class="article-content">
                   <div class="entry-meta">
                     <ul>
                       <li>
                         <span>Posted On:</span>
-                        <a href="#">{singlepost.singlepost.date}</a>
+                        <a href="#">{singlepost.singlepost.created_at}</a>
                       </li>
                       <li>
                         <span>Posted By:</span>
@@ -122,19 +122,19 @@ setShowEdit(false);
                   <ul class="wp-block-gallery columns-3">
                     <li class="blocks-gallery-item">
                       <figure>
-                        <img src="assets/img/blog/blog-4.jpg" alt="image" />
+                        <img src={ "http://localhost:8000/upload/" +singlepost.singlepost.main_image} alt="image" />
                       </figure>
                     </li>
 
                     <li class="blocks-gallery-item">
                       <figure>
-                        <img src="assets/img/blog/blog-5.jpg" alt="image" />
+                        <img src={ "http://localhost:8000/upload/" +singlepost.singlepost.main_image} alt="image" />
                       </figure>
                     </li>
 
                     <li class="blocks-gallery-item">
                       <figure>
-                        <img src="assets/img/blog/blog-6.jpg" alt="image" />
+                        <img src={ "http://localhost:8000/upload/" +singlepost.singlepost.main_image} alt="image" />
                       </figure>
                     </li>
                   </ul>
@@ -201,7 +201,7 @@ setShowEdit(false);
                   </div>
                 </div>
 
-                <div class="post-navigation">
+                {/* <div class="post-navigation">
                   <div class="navigation-links">
                     <div class="nav-previous">
                       <a href="index.html">
@@ -216,25 +216,22 @@ setShowEdit(false);
                       </a>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
                 <div class="comments-area">
                   <div class="comment-respond">
-                    <h3 class="comment-reply-title">Leave a Reply</h3>
+                    <h3 class="comment-reply-title">Leave a Comment</h3>
                     {/* comment start */}
                     <form class="comment-form" onSubmit={handleSubmit}>
                       <p class="comment-notes">
-                        <span id="email-notes">
-                          Your email address will not be published.
-                        </span>
-                        Required fields are marked
-                        <span class="required">*</span>
+                        
                       </p>
 
                       <p class="comment-form-comment">
                         <label>Comment</label>
 
-                        <textarea
+                        <textarea 
+                      
                           onChange={handleChange}
                           name="comment"
                           cols="45"
@@ -245,16 +242,8 @@ setShowEdit(false);
                         ></textarea>
                       </p>
                       <p class="comment-form-cookies-consent">
-                        <input
-                          type="checkbox"
-                          value="yes"
-                          name="wp-comment-cookies-consent"
-                          id="wp-comment-cookies-consent"
-                        />
-                        <label for="wp-comment-cookies-consent">
-                          Save my name, email, and website in this browser for
-                          the next time I comment.
-                        </label>
+                        
+                        
                       </p>
                       <p class="form-submit">
                         <input
@@ -269,7 +258,7 @@ setShowEdit(false);
                   </div>
 
                   <h3 class="comments-title">
-                    <br></br>3 Comments:
+                    <br></br> Comments:
                   </h3>
                   {comment1.comments.map((comment) => {
                     return (
@@ -279,7 +268,7 @@ setShowEdit(false);
                             <footer class="comment-meta">
                               <div class="comment-author vcard">
                                 <img
-                                  src="assets/img/client/client-1.jpg"
+                                  src={ "http://localhost:8000/upload/user.jfif"  } 
                                   class="avatar"
                                   alt="image"
                                 />
@@ -355,6 +344,7 @@ setShowEdit(false);
                       rows="5"
                       maxlength="65525"
                       required="required"
+                      
                     ></textarea>
                   </p>
                 </div>
@@ -397,7 +387,7 @@ setShowEdit(false);
                     return (
                       <article class="item" key={post.id}>
                         <a href={`/NewsDetails/${post.id}`} class="thumb">
-                          <img src="" class="fullimage cover bg1" role="img" />
+                          <img  src={ "http://localhost:8000/upload/" + post.main_image} class="fullimage cover bg1" role="img" />
                         </a>
                         <div class="info">
                           <span>{post.date}</span>

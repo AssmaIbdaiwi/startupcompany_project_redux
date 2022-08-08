@@ -75,48 +75,41 @@ const About =()=>{
         <section class="fun-facts-area pt-100 pb-70">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer" data-count="1200">00</span>
+                                <span class="odometer" data-count="1200">10</span>
                             </h3>
-                            <p>Students</p>
+                            <p>Doctors</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact bg-1">
                             <h3>
-                                <span class="odometer" data-count="305">00</span>
+                                <span class="odometer" data-count="305">7</span>
                             </h3>
-                            <p>Teachers</p>
+                            <p>Posts</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact bg-2">
                             <h3>
-                                <span class="odometer" data-count="48">00</span>
+                                <span class="odometer" data-count="48">20</span>
                             </h3>
-                            <p>Classroom</p>
+                            <p>Comments</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-fun-fact bg-3">
-                            <h3>
-                                <span class="odometer" data-count="50">00</span>
-                            </h3>
-                            <p>Bus</p>
-                        </div>
-                    </div>
+              
                 </div>
             </div>
         </section>
         {/* <!-- End Fun Facts Area -->
 
         <!-- Start Teacher Area --> */}
-        <section class="teacher-area pt-100 pb-70">
+        {/* <section class="teacher-area pt-100 pb-70">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-md-6">
@@ -289,11 +282,11 @@ const About =()=>{
                     </div>
                 </div>
             </div>
-        </section>
+        </section> */}
         {/* <!-- End Teacher Area -->
 
         <!-- Start Quote Area --> */}
-        <section class="quote-area bg-item ptb-100">
+        {/* <section class="quote-area bg-item ptb-100">
             <div class="container">
                 <div class="quote-item item-two">
                     <div class="content">
@@ -324,7 +317,7 @@ const About =()=>{
                     </form>
                 </div>
             </div>
-        </section>
+        </section> */}
         {/* <!-- End Quote Area -->
 
         <!-- Start Choose Area --> */}
@@ -370,8 +363,8 @@ const About =()=>{
         <section class="testimonials-area bg-color ptb-100">
             <div class="container">
                 <div class="section-title">
-                    <span>Testimonials</span>
-                    <h2>What Parents Say About Us</h2>
+                    <span>Welcome to our site</span>
+                    <h2></h2>
                 </div>
 
                 <div class="feedback-slides owl-carousel owl-theme">

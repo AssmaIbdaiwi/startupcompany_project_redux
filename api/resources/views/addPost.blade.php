@@ -45,7 +45,8 @@
                 <div class="col-md-6 pr-1">
                   <div class="form-group">
                     <label>Body</label>
-                    <input type="text" class="form-control" placeholder="body" name='body'>
+                    <textarea class="form-control" style="height:100px" name="body" placeholder="....."></textarea>
+                    {{-- <input type="text" class="form-control" placeholder="body" name='body'> --}}
                   </div>
                 </div>
               </div>

@@ -17,7 +17,7 @@ const Index = () => {
                             <div class="main-banner-content">
                                 <span>Play, Learn and Grow</span>
                                 <h1>We are a Childcare Professional</h1>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p>Get advice from the best experts in the area.</p>
 
                                 <div class="banner-btn">
                                     <a href="#" class="default-btn">
@@ -64,9 +64,9 @@ const Index = () => {
                     <div class="col-lg-6">
                         <div class="who-we-are-content">
                             <span>Who We Are</span>
-                            <h3>Learn About Our Work and Cultural Activities</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <h3>Learn About Children Health Care</h3>
+                            <p>I am also interested in the health of children and also interested in the educational level and their method of education, so we provide the latest and best methods of education for children under the age of ten years under the supervision of the best experts and specialists.</p>
+                            {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> */}
 
                             <ul class="who-we-are-list">
                                 <li>
@@ -79,7 +79,7 @@ const Index = () => {
                                 </li>
                                 <li>
                                     <span>3</span>
-                                    Safety and Security
+                                    Health Care
                                 </li>
                                 <li>
                                     <span>4</span>
@@ -106,41 +106,34 @@ const Index = () => {
         <section class="fun-facts-area pt-100 pb-70">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact">
                             <h3>
-                                <span class="odometer" data-count="1200">00</span>
+                                <span class="odometer" data-count="1200">10+</span>
                             </h3>
-                            <p>Students</p>
+                            <p>Doctors</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact bg-1">
                             <h3>
-                                <span class="odometer" data-count="305">00</span>
+                                <span class="odometer" data-count="305">75+</span>
                             </h3>
-                            <p>Teachers</p>
+                            <p>Posts</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="single-fun-fact bg-2">
                             <h3>
-                                <span class="odometer" data-count="48">00</span>
+                                <span class="odometer" data-count="48">15+</span>
                             </h3>
-                            <p>Classroom</p>
+                            <p>Team</p>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single-fun-fact bg-3">
-                            <h3>
-                                <span class="odometer" data-count="50">00</span>
-                            </h3>
-                            <p>Bus</p>
-                        </div>
-                    </div>
+              
                 </div>
             </div>
         </section>
@@ -164,7 +157,7 @@ const Index = () => {
                                     </div>
 
                                     <div class="content">
-                                        <h3>Creative Activities</h3>
+                                        <h3>Profissional Doctors</h3>
                                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
                                     </div>
                                 </div>
@@ -177,7 +170,7 @@ const Index = () => {
                                     </div>
 
                                     <div class="content">
-                                        <h3>Happy Environment</h3>
+                                        <h3>Latest News</h3>
                                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
                                     </div>
                                 </div>
@@ -190,7 +183,7 @@ const Index = () => {
                                     </div>
 
                                     <div class="content">
-                                        <h3>Amazing Playground</h3>
+                                        <h3>Contact With doctors directly</h3>
                                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
                                     </div>
                                 </div>
@@ -203,7 +196,7 @@ const Index = () => {
                                     </div>
 
                                     <div class="content">
-                                        <h3>Active Learning</h3>
+                                        <h3>Great community for subscribers </h3>
                                         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
                                     </div>
                                 </div>
@@ -234,7 +227,7 @@ const Index = () => {
         {/* <!-- End Choose Area -->
 
         <!-- Start Class Area --> */}
-        <section class="class-area bg-fdf6ed pt-100 pb-70">
+        {/* <section class="class-area bg-fdf6ed pt-100 pb-70">
             <div class="container">
                 <div class="section-title">
                     <span>Classes</span>
@@ -363,7 +356,7 @@ const Index = () => {
                     <img src="assets/img/class/class-shape-2.png" alt="image"/>
                 </div>
             </div>
-        </section>
+        </section> */}
         {/* <!-- End Class Area -->
         
         <!-- Start Gallery Area --> */}
@@ -387,7 +380,7 @@ const Index = () => {
 
                     <div class="col-lg-4 col-md-6">
                         <div class="single-gallery-box">
-                            <img src="assets/img/gallery/gallery-2.jpg" alt="image"/>
+                            <img src={ "http://localhost:8000/upload/1659418438.jpg" } style={{height:'320px'}} alt="image"/>
     
                             <a href="assets/img/gallery/gallery-2.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
                                 <i class='bx bx-search-alt'></i>
@@ -417,7 +410,7 @@ const Index = () => {
 
                     <div class="col-lg-4 col-md-6">
                         <div class="single-gallery-box">
-                            <img src="assets/img/gallery/gallery-5.jpg" alt="image"/>
+                            <img src={"http://localhost:8000/upload/1659422916.jfif"} style={{height:'320px'}} alt="image"/>
     
                             <a href="assets/img/gallery/gallery-5.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
                                 <i class='bx bx-search-alt'></i>
@@ -440,7 +433,7 @@ const Index = () => {
         {/* <!-- End Gallery Area -->
 
         <!-- Start Quote Area --> */}
-        <section class="quote-area pb-100">
+        {/* <section class="quote-area pb-100">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -479,7 +472,7 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section> */}
         {/* <!-- End Quote Area -->
 
         <!-- Start Tour Area --> */}
@@ -493,12 +486,12 @@ const Index = () => {
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>Infants</h3>
+                            <h3>Three Month</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-1.png" alt="image"/>
                             </div>
-                            <span>3-8 Months  8:00 am -11:00  am</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            {/* <span>3-8 Months  8:00 am -11:00  am</span> */}
+                            <p style={{color:"green",fontSize:"20px"}}>10 $</p>
                         </div>
                     </div>
 
@@ -508,30 +501,31 @@ const Index = () => {
                             <div class="image">
                                 <img src="assets/img/tour/tour-2.png" alt="image"/>
                             </div>
-                            <span>3-8 Months  8:00 am -11:00  am</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            {/* <span>3-8 Months  8:00 am -11:00  am</span> */}
+                            <p style={{color:"green",fontSize:"20px"}}>20 $</p>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>Toddler</h3>
+                            <h3>six Month</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-3.png" alt="image"/>
                             </div>
-                            <span>3-8 Months  8:00 am -11:00  am</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            {/* <span>3-8 Months  8:00 am -11:00  am</span> */}
+                            <p style={{color:"green",fontSize:"20px"}}>45 $</p>
+
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>Flexcare</h3>
+                            <h3>Year</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-4.png" alt="image"/>
                             </div>
-                            <span>3-8 Months  8:00 am -11:00  am</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            {/* <span>3-8 Months  8:00 am -11:00  am</span> */}
+                            <p style={{color:"green",fontSize:"20px"}}>90 $</p>
                         </div>
                     </div>
                 </div>
@@ -540,7 +534,7 @@ const Index = () => {
         {/* <!-- End Tour Area -->
 
         <!-- Start Blog Area --> */}
-        <section class="blog-area pb-70">
+        {/* <section class="blog-area pb-70">
             <div class="container">
                 <div class="section-title">
                     <span>News and Blog</span>
@@ -642,7 +636,7 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section> */}
         {/* <!-- End Blog Area -->
 
         <!-- Start Newsletter Area --> */}
@@ -651,7 +645,10 @@ const Index = () => {
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="newsletter-content">
-                            <h2>Do You Want To Know Get Update What’s Upcoming</h2>
+                            <div >
+                                 <h2 style={{fontSize:"25px",margin : "10px"}}>The first month is completely free, and the subscription starts from the second month</h2>
+                            </div>
+                           
                         </div>
                     </div>
 

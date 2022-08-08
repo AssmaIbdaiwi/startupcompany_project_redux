@@ -106,20 +106,11 @@ class AdminUController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            // 'password' => 'required',
             'mobile' => 'required',
             //'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048'
             
         ]);
-      
-        User::where('id', $id)->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'mobile' => $request->mobile,
-          
-        ]);
-
         $user = new User();
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -128,6 +119,15 @@ class AdminUController extends Controller
             $file->move('upload/', $filename);
             $user->image = $filename;
         }
+        User::where('id', $id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            // 'password' => $request->password,
+            'mobile' => $request->mobile,
+          'image'=>$user->image
+        ]);
+
+       
         
 
         return redirect()->route('user.index')
