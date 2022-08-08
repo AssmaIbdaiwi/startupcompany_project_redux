@@ -4,9 +4,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../redux/userSlice";
 import { addUser } from "../../redux/userLoginSlice";
 import axios from "axios";
+import "./style.css";
+
+import { SignInWithGoogle, SignInWithFacebook } from "../firebase/config";
 
 const Sign_up = () => {
   const [userData, setUser] = useState({ name: "", email: "", password: "" });
+  const [goData, setgo] = useState({});
+
+  // setUser({...userData, name : });
+  // setUser({...userData, email : });
+  // setUser({...userData, password : });
   const [conferm, setconferm] = useState("");
 
   const [name, setname] = useState("");
@@ -16,86 +24,161 @@ const Sign_up = () => {
 
   const [all, setall] = useState("");
   const [done, setdone] = useState(false);
-
+  const [done2, setdone2] = useState(false);
+  const [done3, setdone3] = useState(false);
+  const [done4, setdone4] = useState(false);
 
   let navigate = useNavigate();
   const user = useSelector((state) => state.user.isLogged);
   const dispatch = useDispatch();
 
-  const passPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
-  const namePattern = /^[a-z ]+$/gi;
-  const emailPattern =/^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/i;
+  // /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/
 
-  console.log(userData.name);
-  console.log(namePattern.test(userData.name));
+  const passPattern = /^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/;
+  const namePattern = /(^[a-zA-Z][a-zA-Z\s]{2,20}[a-zA-Z]$)/;
+  const emailPattern =/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  //console.log(userData.name);
+  //console.log(namePattern.test(userData.name));
 
   async function handelSubmet(e) {
     e.preventDefault();
-    setname("");setemail("");setpass("");setconferm2("");setall("");setdone(false);
+    setname("");
+    setemail("");
+    setpass("");
+    setconferm2("");
+    setall("");
+    setdone(false);
+    setdone2(false);
+    setdone3(false);
+    setdone4(false);
 
     //console.log(namePattern.test(userData.name));
 
-    if (userData.name != "" &&userData.email != "" &&userData.password != "" &&conferm != "" ) 
-      {
-
+    if (
+      userData.name != "" &&
+      userData.email != "" &&
+      userData.password != "" &&
+      conferm != ""
+    ) {
       if (namePattern.test(userData.name)) {
         setdone(true);
       } else {
         setdone(false);
-        setname(<h6 style={{color: "red",textAlign: "center"}} >** undefind name</h6>)
+        setname(
+          <h6 style={{ color: "red", textAlign: "center" }}>
+            * just use liters (a-z)&&(A-Z) <br></br>*name must be at least 3
+            liters{" "}
+          </h6>
+        );
       }
 
       if (emailPattern.test(userData.email)) {
-        setdone(true);
+        setdone2(true);
       } else {
-        setdone(false);
-        setemail(<h6 style={{color: "red",textAlign: "center"}} >** undefind email</h6>)
+        setdone2(false);
+        setemail(
+          <h6 style={{ color: "red", textAlign: "center" }}>
+            * Enter correct email
+          </h6>
+        );
       }
 
       if (passPattern.test(userData.password)) {
-        setdone(true);
+        setdone3(true);
       } else {
-        setdone(false);
-        setpass(<h6 style={{color: "red",textAlign: "center"}} >** password mush be : <br></br>1- more than 8 character
-        <br></br> 2- contain at least one number,character,special character </h6>)
+        setdone3(false);
+        setpass(
+          <h6 style={{ color: "red", textAlign: "center" }}>
+            - Minimum 6 characters
+            <br></br>- At least 1 upper case English letter <br></br> - At least
+            1 letter<br></br>- At least 1 special character{" "}
+          </h6>
+        );
       }
 
       if (pass == conferm2) {
-        setdone(true);
+        setdone4(true);
       } else {
-        setdone(false);
-        setconferm2(<h6 style={{color: "red",textAlign: "center"}} >conferm password mush match password</h6>)
+        setdone4(false);
+        setconferm2(
+          <h6 style={{ color: "red", textAlign: "center" }}>
+            conferm password mush match password
+          </h6>
+        );
       }
 
-
-
-      if(done)
-      {
+      if (done && done2 && done3 && done4) {
         axios
-        .post(`http://127.0.0.1:8000/api/register`, { ...userData })
-        .then((res) => {
-          console.log(user);
-          console.log(res.data);
-          dispatch(signup(res.data.name));
-          localStorage.setItem("id", res.data.id);
-        });
+          .post(`http://127.0.0.1:8000/api/register`, { ...userData })
+          .then((res) => {
+            console.log(user);
+            console.log(res.data);
+            dispatch(signup(res.data.name));
+            localStorage.setItem("id", res.data.id);
+          });
       }
-      
-
     } else {
+      setall(
+        <h5 style={{ color: "red", textAlign: "center" }}>
+          
+          *** you have to fill all fields ***
+        </h5>
+      );
+    }
+  }
 
 
-    axios.post(`http://127.0.0.1:8000/api/register`, { ...userData })
-    .then(res => {
-      console.log(user);
-      console.log(res.data);
-      dispatch(signup(res.data.name));
-      localStorage.setItem("id", res.data.id);
-      
 
-    })
 
-      setall(<h5 style={{color: "red",textAlign: "center"}}> *** you have to fill all fields ***</h5>);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const GoogleAuth = () => {
+    SignInWithGoogle();
+    setTimeout(function () {
+      go();
+    }, 10000);
+  };
+
+  const FacebookAuth = () => {
+    SignInWithFacebook();
+    setTimeout(function () {
+      go();
+    }, 10000);
+  };
+
+  function go() {
+    const godata = {
+      name: localStorage.getItem("name"),
+      email: localStorage.getItem("email"),
+      password: "12345",
+    };
+    // console.log("************************");
+    // console.log(godata);
+
+    if(godata.name !="" && godata.email!="")
+    {
+    axios
+      .post(`http://127.0.0.1:8000/api/register`, { ...godata })
+      .then((res) => {
+        console.log(user);
+        console.log(res.data);
+        dispatch(signup(res.data.name));
+        localStorage.setItem("id", res.data.id);
+      });
     }
   }
 
@@ -115,6 +198,24 @@ const Sign_up = () => {
             <h2>Sign Up</h2>
 
             <form onSubmit={handelSubmet}>
+              <div className="goo">
+                <button
+                  type="button"
+                  class="login-with-google-btn"
+                  onClick={GoogleAuth}
+                >
+                  Sign in with Google
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button
+                  type="button"
+                  class="login-with-facebook-btn"
+                  onClick={FacebookAuth}
+                >
+                  Sign in with Facebook
+                </button>
+              </div>
+              <br></br> <h5 style={{ textAlign: "center" }}>OR</h5> <br></br>
               <div class="form-group">
                 {/* <label>Username</label> */}
                 <input
@@ -130,7 +231,6 @@ const Sign_up = () => {
                 />
               </div>
               {name}
-
               <div class="form-group">
                 {/* <label>Email or phone</label> */}
                 <input
@@ -145,7 +245,7 @@ const Sign_up = () => {
                   }
                 />
               </div>
-          {email}
+              {email}
               <div class="form-group">
                 {/* <label>Password</label> */}
                 <input
@@ -160,7 +260,7 @@ const Sign_up = () => {
                   }
                 />
               </div>
-             {pass}
+              {pass}
               <div class="form-group">
                 {/* <label>Password</label> */}
                 <input
@@ -193,7 +293,6 @@ const Sign_up = () => {
                   </a>
                 </div>
               </div>
-
               <button type="submit">Sign Up</button>
             </form>
 

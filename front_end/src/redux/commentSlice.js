@@ -19,12 +19,13 @@ export const addComment = createAsyncThunk(
       "http://127.0.0.1:8000/api/addComment",
       data
     );
+    
 // const add = await response.data;
 // console.log('add',add)
     if (response.status == 200) {
       Swal.fire({
         title: "comment",
-        text: "Has been Added Successfully",
+        text: "Pending Admin Accept",
         type: "success",
         confirmButtonColor: "#ea512e"
       });
@@ -35,33 +36,46 @@ export const addComment = createAsyncThunk(
  
 );
 ///////update
-export const updateComment = createAsyncThunk("comment/updateComment", async (args) => {
-  const id = args.commentId;
-  console.log(args,id)
-  const response = await fetch(
-    `http://127.0.0.1:8000/api/updateComment/${id}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment: args.comment, user_id_comment:args.user_id_comment,post_id_comment: args.post_id_comment}),
+export const updateComment = createAsyncThunk(
+  "comment/updateComment",
+  async (comment, thunkAPI) => {
+    // const id = args.id;
+    // console.log(args, id);
+    const response = await fetch(
+      `http://127.0.0.1:8000/api/updateComment/${comment.id}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(comment),
+      }
+    );
+      
+    if (response.ok) {
+      Swal.fire({
+        title: "comment",
+        text: "Has been updated Successfully",
+        type: "success",
+      });
     }
-
-  );
-
-
-  if (response.ok) {
-    Swal.fire({
-      title: "comment",
-      text: "Has been updated Successfully",
-      type: "success",
-      confirmButtonColor: "#ea512e"
-    });
+    const res = await response.json();
+     console.log(res);
+    thunkAPI.dispatch(getComments(res.post_id_comment));
+   
+    return res;
   }
-  const res = response.json();
-  
-  return res;
+);
 
-});
+
+
+
+
+
+
+
+
+
+
+
 
 
 

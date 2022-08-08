@@ -30,7 +30,15 @@ class UserController extends Controller
         // if ($validator->fails()) {
         //     return response()->json(['errors' => $validator->errors()->all()]);
         // }
+        
+        $user = User::where('email', $request->input('email'))->first();
 
+        if ($user ) {
+           return response($user, 201);
+        }
+        
+            
+        
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
@@ -98,7 +106,12 @@ class UserController extends Controller
 
 
         $user = User::find($id);
-
+        // if($request->has('image')) {
+        //         $image= $request->file('image');
+        //         $filename =time().'.'.$image->getClientOriginalExtension();
+        //         $image->move('upload/', $filename);
+        //         $user->image = $filename;
+        // }
         $user->name = $request->name;
         $user->email = $request->email;
         // $user->age = $request->age;

@@ -103,6 +103,9 @@ const Index = () => {
         {/* <!-- End Who We Are Area -->
         
         <!-- Start Fun Facts Area --> */}
+
+     
+
         <section class="fun-facts-area pt-100 pb-70">
             <div class="container">
                 <div class="row">
@@ -137,6 +140,7 @@ const Index = () => {
                 </div>
             </div>
         </section>
+
         {/* <!-- End Fun Facts Area -->
 
         <!-- Start Choose Area --> */}
@@ -157,8 +161,8 @@ const Index = () => {
                                     </div>
 
                                     <div class="content">
-                                        <h3>Profissional Doctors</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
+                                        <h3>Professional Doctors</h3>
+                                        {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -171,7 +175,7 @@ const Index = () => {
 
                                     <div class="content">
                                         <h3>Latest News</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
+                                        {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +188,7 @@ const Index = () => {
 
                                     <div class="content">
                                         <h3>Contact With doctors directly</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
+                                        {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +201,7 @@ const Index = () => {
 
                                     <div class="content">
                                         <h3>Great community for subscribers </h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p>
+                                        {/* <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt</p> */}
                                     </div>
                                 </div>
                             </div>
@@ -382,7 +386,7 @@ const Index = () => {
                         <div class="single-gallery-box">
                             <img src={ "http://localhost:8000/upload/1659418438.jpg" } style={{height:'320px'}} alt="image"/>
     
-                            <a href="assets/img/gallery/gallery-2.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
+                            <a src={ "http://localhost:8000/upload/1659418438.jpg" } class="gallery-btn" data-imagelightbox="popup-btn">
                                 <i class='bx bx-search-alt'></i>
                             </a>
                         </div>
@@ -412,7 +416,7 @@ const Index = () => {
                         <div class="single-gallery-box">
                             <img src={"http://localhost:8000/upload/1659422916.jfif"} style={{height:'320px'}} alt="image"/>
     
-                            <a href="assets/img/gallery/gallery-5.jpg" class="gallery-btn" data-imagelightbox="popup-btn">
+                            <a src={"http://localhost:8000/upload/1659422916.jfif"} class="gallery-btn" data-imagelightbox="popup-btn">
                                 <i class='bx bx-search-alt'></i>
                             </a>
                         </div>
@@ -486,7 +490,7 @@ const Index = () => {
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>Three Month</h3>
+                            <h3>One Month</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-1.png" alt="image"/>
                             </div>
@@ -497,7 +501,7 @@ const Index = () => {
 
                     <div class="col-lg-3 col-md-6">
                         <div class="single-tour">
-                            <h3>PreSchool</h3>
+                            <h3>Three Month</h3>
                             <div class="image">
                                 <img src="assets/img/tour/tour-2.png" alt="image"/>
                             </div>
@@ -640,7 +644,7 @@ const Index = () => {
         {/* <!-- End Blog Area -->
 
         <!-- Start Newsletter Area --> */}
-        <div class="newsletter-area ptb-100">
+        {/* <div class="newsletter-area ptb-100">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -648,35 +652,15 @@ const Index = () => {
                             <div >
                                  <h2 style={{fontSize:"25px",margin : "10px"}}>The first month is completely free, and the subscription starts from the second month</h2>
                             </div>
-                           
+                             </div>
+                    </div>
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
-                        <form class="newsletter-form">
-                            <input type="email" class="input-newsletter" placeholder="Enter Email Address" name="EMAIL" required autocomplete="off"/>
-
-                            <button type="submit">Subscribe Now</button>
-                            
-                            <div id="validator-newsletter" class="form-result"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <div class="newsletter-shape">
-                <div class="shape-1">
-                    <img src="assets/img/newsletter/newsletter-shape-1.png" alt="image"/>
-                </div>
-                <div class="shape-2">
-                    <img src="assets/img/newsletter/newsletter-shape-2.png" alt="image"/>
-                </div>
-            </div>
-        </div>
         {/* <!-- End Newsletter Area -->
 
         <!-- Start Partner Area --> */}
-        <div class="partner-area ptb-100">
+        {/* <div class="partner-area ptb-100">
             <div class="container">
                 <div class="partner-slider owl-carousel owl-theme">
                     <div class="partner-item">
@@ -700,8 +684,10 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
 
+  {/* </div> */}
+        
 
  
         </>

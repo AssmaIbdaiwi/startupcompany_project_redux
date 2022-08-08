@@ -15,7 +15,7 @@ class AdminDController extends Controller
      */
     public function index()
     {
-        
+
         $doctors = Doctor::latest()->paginate(20);
         return view('doctors', compact('doctors'))
             ->with(request()->input('page'));
@@ -49,17 +49,17 @@ class AdminDController extends Controller
             'experience' => 'required',
             'specialization' => 'required',
             'description' => 'required',
-            
+
         ]);
 
 
         $doctor = new Doctor();
-     
+
 
 
         $doctor->name_doctor = $request->input('fname');
         $doctor->email_doctor = $request->input('email');
-        $doctor->description =$request->input('description');
+        $doctor->description = $request->input('description');
         $doctor->clinic_mobile = $request->input('clinic_mobile');
         $doctor->clinic_address = $request->input('clinic_address');
         $doctor->description = $request->input('description');
@@ -73,8 +73,8 @@ class AdminDController extends Controller
             $doctor->image_doctor = $filename;
         }
 
-    
-       
+
+
         $doctor->save();
 
 
@@ -119,22 +119,11 @@ class AdminDController extends Controller
             'email' => 'required',
             'clinic_address' => 'required',
             'clinic_mobile' => 'required|regex:/[07]{2,3}[7-9]{1,2}[0-9]{7,8}/|min:10',
-           // 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,jfif|max:2048',
             'experience' => 'required',
             'specialization' => 'required',
             'description' => 'required',
-        ]);
-       ;
-        Doctor::where('id', $id)->update([
-            'name_doctor' => $request->name,
-            'email_doctor' => $request->email,
-            'clinic_address' => $request->clinic_address,
-            'clinic_mobile' => $request->clinic_mobile,
-            'experience' => $request->experience,
-            'specialization' => $request->specialization,
-            'description' => $request->description,
-        ]);
-
+        ]);;
         $doctor = new Doctor();
         if ($request->hasfile('image')) {
             $file = $request->file('image');
@@ -143,7 +132,20 @@ class AdminDController extends Controller
             $file->move('upload/', $filename);
             $doctor->image_doctor = $filename;
         }
-      
+
+        Doctor::where('id', $id)->update([
+            'name_doctor' => $request->name,
+            'email_doctor' => $request->email,
+            'clinic_address' => $request->clinic_address,
+            'clinic_mobile' => $request->clinic_mobile,
+            'experience' => $request->experience,
+            'specialization' => $request->specialization,
+            'description' => $request->description,
+            'image_doctor' => $doctor->image_doctor
+        ]);
+
+
+
         return redirect()->route('doctor.index')
             ->with('success', 'Doctor updated successfully');
     }
@@ -160,6 +162,5 @@ class AdminDController extends Controller
         $delete->delete();
         return redirect()->route('doctor.index')
             ->with('success', 'Doctor deleted successfully');
-    
     }
 }

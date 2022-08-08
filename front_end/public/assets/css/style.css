@@ -114,6 +114,7 @@ i {
 
 img {
   max-width: 100%;
+  
   height: auto;
   display: inline-block;
 }
@@ -241,7 +242,7 @@ Section Title CSS
 }
 
 .section-title span {
-  font-size: 20px;
+  font-size: 35px;
   color: #ea512e;
   font-weight: 600;
   font-family: "Sacramento", cursive;
@@ -572,7 +573,7 @@ Navbar Area CSS
   margin-right: 15px;
 }
 
-.main-navbar .navbar .navbar-nav .nav-item a {
+.main-navbar .navbar .navbar-nav .nav-item  {
   color: #1b0238;
   font-size: 16px;
   font-weight: 600;
@@ -1611,7 +1612,7 @@ Who We Are Area CSS
 }
 
 .who-we-are-content span {
-  font-size: 20px;
+  font-size: 35px;
   color: #ea512e;
   font-weight: 600;
   font-family: "Sacramento", cursive;
@@ -3172,7 +3173,7 @@ Quote Area CSS
 }
 
 .quote-image {
-  background-image: url(../img/quote.jpg);
+   /* background-image: url(../img/quote.jpg); */ 
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3192,10 +3193,10 @@ Quote Area CSS
 }
 
 .quote-item .content span {
-  font-size: 20px;
+  font-size: 35px;
   color: #ea512e;
   font-weight: 600;
-  font-family: "Sacramento", cursive;
+  font-family: "Sacramento";
 }
 
 .quote-item .content h3 {
@@ -3205,11 +3206,11 @@ Quote Area CSS
 }
 
 .quote-item form .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .quote-item form .form-group .form-control {
-  height: 70px;
+  height: 50px;
   color: #1b0238;
   -webkit-box-shadow: unset !important;
           box-shadow: unset !important;
@@ -3219,7 +3220,7 @@ Quote Area CSS
   transition: 0.5s;
   border-radius: 10px;
   padding: 0 0 0 15px;
-  font-weight: 500;
+  font-weight: 250;
 }
 
 .quote-item form .form-group .form-control::-webkit-input-placeholder {

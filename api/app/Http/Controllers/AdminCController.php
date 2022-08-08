@@ -16,12 +16,12 @@ class AdminCController extends Controller
      */
     public function index()
     {
-        $comments= User::Join('comments' ,'comments.user_id_comment','=','users.id')
-        ->Join('posts','posts.id' ,'=','comments.post_id_comment')
-        ->get(['users.name' ,'posts.title', 'comments.comment','comments.id','comments.created_at']);
+        $comments = User::Join('comments', 'comments.user_id_comment', '=', 'users.id')
+            ->Join('posts', 'posts.id', '=', 'comments.post_id_comment')
+            ->get(['users.name', 'posts.title', 'comments.comment', 'comments.id', 'comments.created_at','comments.state']);
 
 
-       // $comments = User::latest()->paginate(20);
+        // $comments = User::latest()->paginate(20);
         return view('comments', compact('comments'))
             ->with(request()->input('page'));
     }
@@ -66,7 +66,11 @@ class AdminCController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $comment = User::Join('comments', 'comments.user_id_comment', '=', 'users.id')
+        //     ->Join('posts', 'posts.id', '=', 'comments.post_id_comment') ->where('comments.id',$id)->first()
+        //    ;
+        $comment=Comment::find($id);
+        return view('editComment', compact('comment'));
     }
 
     /**
@@ -78,7 +82,21 @@ class AdminCController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $request->validate([
+           // 'title' => 'required',
+            'body' => 'required',
+            'state' => 'required'
+        ]);
+     
+
+        Comment::where('id',$id)->update([
+            //'title'=>$request->title,
+            'comment'=>  $request->body,
+           'state'=> $request->state
+        ]);
+        
+         return redirect()->route('comment.index')->with('success','Comment updateded successfully.');
     }
 
     /**

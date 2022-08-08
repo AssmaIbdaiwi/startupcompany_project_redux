@@ -18,7 +18,7 @@ class DoctorController extends Controller
 
     public  function getDoctorDetail($id)
     {
-        $doctor = Doctor::find( $id);
+        $doctor = Doctor::find($id);
 
         return $doctor;
     }
@@ -37,12 +37,12 @@ class DoctorController extends Controller
         $doctor->specialization = $request->specialization;
         $doctor->description = $request->description;
 
-       
+
         $doctor->save();
     }
 
 
-  
+
 
 
     // /**
