@@ -268,7 +268,7 @@ const Profile = () => {
               // styles={{ backgroundImage:`url(${data.image})` }}
               >
                 <img
-                  src="https://www.pngall.com/wp-content/uploads/5/Profile-Female.png"
+                  src="https://pfpmaker.com/_nuxt/img/profile-3-1.3e702c5.png"
                   style={{ width: "75%", height: "75%" }}
                   alt="image"
                 />
