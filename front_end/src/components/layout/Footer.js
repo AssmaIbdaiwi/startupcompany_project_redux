@@ -14,8 +14,7 @@ const Footer = () => {
                   </h2>
                 </div>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                consultations for mothers who have a newborn child under 5 years.
                 </p>
                 <ul class="social">
                   <li>

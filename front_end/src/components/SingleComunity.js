@@ -64,7 +64,7 @@ const SingleComunity = () => {
                 <h2>Community</h2>
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="\">Home</a>
                   </li>
                   <li>Blog Details</li>
                 </ul>

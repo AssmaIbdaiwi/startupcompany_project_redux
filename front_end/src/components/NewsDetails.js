@@ -106,7 +106,7 @@ const handleSubmitEdit = (e) => {
                 <h2>News Details</h2>
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="\">Home</a>
                   </li>
                   <li>News Details</li>
                 </ul>

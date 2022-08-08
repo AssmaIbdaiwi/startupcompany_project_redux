@@ -20,11 +20,11 @@ const Index = () => {
                                 <p>Get advice from the best experts in the area.</p>
 
                                 <div class="banner-btn">
-                                    <a href="#" class="default-btn">
+                                    <a href="\about" class="default-btn">
                                         Learn More
                                     </a>
-                                    <a href="#" class="optional-btn">
-                                        Find Out More
+                                    <a href="\doctors" class="optional-btn">
+                                        Ask our doctors
                                     </a>
                                 </div>
                             </div>

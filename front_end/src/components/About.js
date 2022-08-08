@@ -15,7 +15,7 @@ const About =()=>{
                             <h2>About</h2>
                             <ul>
                                 <li>
-                                    <a href="index.html">Home</a>
+                                    <a href="\">Home</a>
                                 </li>
                                 <li>About</li>
                             </ul>

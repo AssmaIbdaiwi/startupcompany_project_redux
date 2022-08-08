@@ -55,11 +55,11 @@ const Profile = () => {
   useEffect(() => {
     fetchProfile();
 
-    if (data.image == null) {
-      setimg10("Profile-Female.png");
-    } else {
-      setimg10(data.image);
-    }
+    // if (data.image == null) {
+    //   setimg10("Profile-Female.png");
+    // } else {
+    //   setimg10(data.image);
+    // }
   }, []);
 
   // if(data.image == null)
@@ -218,7 +218,7 @@ const Profile = () => {
                 <h2>Profile</h2>
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="\">Home</a>
                   </li>
                   <li>Profile</li>
                 </ul>
@@ -239,7 +239,7 @@ const Profile = () => {
                 // styles={{ backgroundImage:`url(${data.image})` }}
               >
                 <img
-                  src={"http://localhost:8000/upload/" + img10}
+                  src={"http://localhost:8000/upload/" + data.image}
                   style={{ width: "75%", height: "75%" }}
                   alt="image"
                 />

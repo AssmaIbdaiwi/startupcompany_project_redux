@@ -53,7 +53,7 @@ const Contact =()=>{
                       <h2>Contact</h2>
                       <ul>
                         <li>
-                          <a href="index.html">Home</a>
+                          <a href="\">Home</a>
                         </li>
                         <li>Contact</li>
                       </ul>

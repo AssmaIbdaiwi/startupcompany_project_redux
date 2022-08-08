@@ -25,7 +25,7 @@ const News =()=>{
                       <h2>News</h2>
                       <ul>
                         <li>
-                          <a href="index.html">Home</a>
+                          <a href="\">Home</a>
                         </li>
                         <li>News</li>
                       </ul>

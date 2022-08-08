@@ -71,6 +71,7 @@ const Comunity = () => {
         // comunityData.append(
         //   "image_comunity_posts",comunityData.image_comunity_posts
         // );
+
     dispatch(addComunityPosts(comunityForm));
   };
 
@@ -94,7 +95,7 @@ console.log(comunityData)
                 <h2>Community</h2>
                 <ul>
                   <li>
-                    <a href="index.html">Home</a>
+                    <a href="\">Home</a>
                   </li>
                   <li>Community</li>
                 </ul>
